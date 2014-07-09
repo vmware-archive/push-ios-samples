@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>pushAutoRegistrationEnabled</key>
+        <true/>
+        <key>pushAPIURL</key>
+        <string>http://push-notifications.sherry.wine.cf-app.com</string>
+        <key>pushDeviceAlias</key>
+        <string>Default Device Alias</string>
+        <key>productionPushReleaseSecret</key>
+        <string>5c9b1b8a-b2fe-4c66-a01b-37797af485fd</string>
+        <key>productionPushVariantUUID</key>
+        <string>a183a4ab-83b1-45ef-ba92-3727454dbc4b</string>
+        <key>developmentPushReleaseSecret</key>
+        <string>5c9b1b8a-b2fe-4c66-a01b-37797af485fd</string>
+        <key>developmentPushVariantUUID</key>
+        <string>a183a4ab-83b1-45ef-ba92-3727454dbc4b</string>
+        <key>analyticsAPIURL</key>
+        <string>http://ANALYTICSAPIURL.com</string>
+        <key>productionAnalyticsKey</key>
+        <string>ANALYTICS-KEY</string>
+        <key>developmentAnalyticsKey</key>
+        <string>ANALYTICS-KEY</string>
+    </dict>
+</plist>

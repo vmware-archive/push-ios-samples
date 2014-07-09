@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		755D96C11965E0030039A1C4 /* MSSPushURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D968E1965E0030039A1C4 /* MSSPushURLConnection.m */; };
+		755D96C21965E0030039A1C4 /* MSSPushRegistrationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96911965E0030039A1C4 /* MSSPushRegistrationData.m */; };
+		755D96C31965E0030039A1C4 /* MSSPushRegistrationRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96931965E0030039A1C4 /* MSSPushRegistrationRequestData.m */; };
+		755D96C41965E0030039A1C4 /* MSSPushRegistrationResponseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96951965E0030039A1C4 /* MSSPushRegistrationResponseData.m */; };
+		755D96C51965E0030039A1C4 /* MSSPushClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96971965E0030039A1C4 /* MSSPushClient.m */; };
+		755D96C61965E0030039A1C4 /* MSSPushSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96991965E0030039A1C4 /* MSSPushSDK.m */; };
+		755D96C71965E0030039A1C4 /* MSSPersistentStorage+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D969C1965E0030039A1C4 /* MSSPersistentStorage+Push.m */; };
+		755D96C81965E0030039A1C4 /* NSURLConnection+MSSBackEndConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96A01965E0030039A1C4 /* NSURLConnection+MSSBackEndConnection.m */; };
+		755D96C91965E0030039A1C4 /* NSObject+MSSJSONizable.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96A31965E0030039A1C4 /* NSObject+MSSJSONizable.m */; };
+		755D96CA1965E0030039A1C4 /* MSSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96A51965E0030039A1C4 /* MSSAppDelegate.m */; };
+		755D96CB1965E0030039A1C4 /* MSSAppDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96A71965E0030039A1C4 /* MSSAppDelegateProxy.m */; };
+		755D96CC1965E0030039A1C4 /* MSSClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96A91965E0030039A1C4 /* MSSClient.m */; };
+		755D96CD1965E0030039A1C4 /* MSSParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96AB1965E0030039A1C4 /* MSSParameters.m */; };
+		755D96CE1965E0030039A1C4 /* MSSSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96AD1965E0030039A1C4 /* MSSSDK.m */; };
+		755D96CF1965E0030039A1C4 /* MSSHardwareUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96B31965E0030039A1C4 /* MSSHardwareUtil.m */; };
+		755D96D01965E0030039A1C4 /* MSSJSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96B51965E0030039A1C4 /* MSSJSONValueTransformer.m */; };
+		755D96D11965E0030039A1C4 /* MSSNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96B71965E0030039A1C4 /* MSSNotifications.m */; };
+		755D96D21965E0030039A1C4 /* MSSPersistentStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96B91965E0030039A1C4 /* MSSPersistentStorage.m */; };
+		755D96D31965E0030039A1C4 /* MSSPushDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96BB1965E0030039A1C4 /* MSSPushDebug.m */; };
+		755D96D41965E0030039A1C4 /* MSSPushErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96BE1965E0030039A1C4 /* MSSPushErrorUtil.m */; };
+		755D96D51965E0030039A1C4 /* MSSPushHexUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 755D96C01965E0030039A1C4 /* MSSPushHexUtil.m */; };
+		75985408196AFA1C00A55A10 /* MSSParameters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75985407196AFA1C00A55A10 /* MSSParameters.plist */; };
+		75992D201964BE64005DC940 /* LogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 75992D031964BE64005DC940 /* LogItem.m */; };
+		75992D211964BE64005DC940 /* RegistrationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 75992D051964BE64005DC940 /* RegistrationSettings.m */; };
+		75992D231964BE64005DC940 /* MSSPushProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75992D0B1964BE64005DC940 /* MSSPushProxy.m */; };
+		75992D241964BE64005DC940 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75992D0D1964BE64005DC940 /* Images.xcassets */; };
+		75992D251964BE64005DC940 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75992D0E1964BE64005DC940 /* Main_iPhone.storyboard */; };
+		75992D261964BE64005DC940 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75992D111964BE64005DC940 /* InfoPlist.strings */; };
+		75992D2B1964BE64005DC940 /* LogItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75992D1D1964BE64005DC940 /* LogItemCollectionViewCell.m */; };
+		75992D2C1964BE64005DC940 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75992D1F1964BE64005DC940 /* SettingsView.m */; };
+		75992D321964BF43005DC940 /* LogItemCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75992D2F1964BF43005DC940 /* LogItemCollectionViewController.m */; };
+		75992D331964BF43005DC940 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75992D311964BF43005DC940 /* SettingsViewController.m */; };
+		75992D361964BF9E005DC940 /* TriggerNotificationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75992D351964BF9E005DC940 /* TriggerNotificationOperation.m */; };
+		F1FDE1B418D7806B009EBE38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B318D7806B009EBE38 /* main.m */; };
+		F1FDE1B818D7806B009EBE38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B718D7806B009EBE38 /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		755D968D1965E0030039A1C4 /* MSSPushURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushURLConnection.h; sourceTree = "<group>"; };
+		755D968E1965E0030039A1C4 /* MSSPushURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushURLConnection.m; sourceTree = "<group>"; };
+		755D96901965E0030039A1C4 /* MSSPushRegistrationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushRegistrationData.h; sourceTree = "<group>"; };
+		755D96911965E0030039A1C4 /* MSSPushRegistrationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushRegistrationData.m; sourceTree = "<group>"; };
+		755D96921965E0030039A1C4 /* MSSPushRegistrationRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushRegistrationRequestData.h; sourceTree = "<group>"; };
+		755D96931965E0030039A1C4 /* MSSPushRegistrationRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushRegistrationRequestData.m; sourceTree = "<group>"; };
+		755D96941965E0030039A1C4 /* MSSPushRegistrationResponseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushRegistrationResponseData.h; sourceTree = "<group>"; };
+		755D96951965E0030039A1C4 /* MSSPushRegistrationResponseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushRegistrationResponseData.m; sourceTree = "<group>"; };
+		755D96961965E0030039A1C4 /* MSSPushClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushClient.h; sourceTree = "<group>"; };
+		755D96971965E0030039A1C4 /* MSSPushClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushClient.m; sourceTree = "<group>"; };
+		755D96981965E0030039A1C4 /* MSSPushSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushSDK.h; sourceTree = "<group>"; };
+		755D96991965E0030039A1C4 /* MSSPushSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushSDK.m; sourceTree = "<group>"; };
+		755D969B1965E0030039A1C4 /* MSSPersistentStorage+Push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSSPersistentStorage+Push.h"; sourceTree = "<group>"; };
+		755D969C1965E0030039A1C4 /* MSSPersistentStorage+Push.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MSSPersistentStorage+Push.m"; sourceTree = "<group>"; };
+		755D969F1965E0030039A1C4 /* NSURLConnection+MSSBackEndConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+MSSBackEndConnection.h"; sourceTree = "<group>"; };
+		755D96A01965E0030039A1C4 /* NSURLConnection+MSSBackEndConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+MSSBackEndConnection.m"; sourceTree = "<group>"; };
+		755D96A21965E0030039A1C4 /* NSObject+MSSJSONizable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MSSJSONizable.h"; sourceTree = "<group>"; };
+		755D96A31965E0030039A1C4 /* NSObject+MSSJSONizable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MSSJSONizable.m"; sourceTree = "<group>"; };
+		755D96A41965E0030039A1C4 /* MSSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSAppDelegate.h; sourceTree = "<group>"; };
+		755D96A51965E0030039A1C4 /* MSSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSAppDelegate.m; sourceTree = "<group>"; };
+		755D96A61965E0030039A1C4 /* MSSAppDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSAppDelegateProxy.h; sourceTree = "<group>"; };
+		755D96A71965E0030039A1C4 /* MSSAppDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSAppDelegateProxy.m; sourceTree = "<group>"; };
+		755D96A81965E0030039A1C4 /* MSSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSClient.h; sourceTree = "<group>"; };
+		755D96A91965E0030039A1C4 /* MSSClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSClient.m; sourceTree = "<group>"; };
+		755D96AA1965E0030039A1C4 /* MSSParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSParameters.h; sourceTree = "<group>"; };
+		755D96AB1965E0030039A1C4 /* MSSParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSParameters.m; sourceTree = "<group>"; };
+		755D96AC1965E0030039A1C4 /* MSSSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSSDK.h; sourceTree = "<group>"; };
+		755D96AD1965E0030039A1C4 /* MSSSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSSDK.m; sourceTree = "<group>"; };
+		755D96AF1965E0030039A1C4 /* MSSMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSMapping.h; sourceTree = "<group>"; };
+		755D96B01965E0030039A1C4 /* MSSSortDescriptors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSSortDescriptors.h; sourceTree = "<group>"; };
+		755D96B21965E0030039A1C4 /* MSSHardwareUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSHardwareUtil.h; sourceTree = "<group>"; };
+		755D96B31965E0030039A1C4 /* MSSHardwareUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSHardwareUtil.m; sourceTree = "<group>"; };
+		755D96B41965E0030039A1C4 /* MSSJSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSJSONValueTransformer.h; sourceTree = "<group>"; };
+		755D96B51965E0030039A1C4 /* MSSJSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSJSONValueTransformer.m; sourceTree = "<group>"; };
+		755D96B61965E0030039A1C4 /* MSSNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSNotifications.h; sourceTree = "<group>"; };
+		755D96B71965E0030039A1C4 /* MSSNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSNotifications.m; sourceTree = "<group>"; };
+		755D96B81965E0030039A1C4 /* MSSPersistentStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPersistentStorage.h; sourceTree = "<group>"; };
+		755D96B91965E0030039A1C4 /* MSSPersistentStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPersistentStorage.m; sourceTree = "<group>"; };
+		755D96BA1965E0030039A1C4 /* MSSPushDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushDebug.h; sourceTree = "<group>"; };
+		755D96BB1965E0030039A1C4 /* MSSPushDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushDebug.m; sourceTree = "<group>"; };
+		755D96BC1965E0030039A1C4 /* MSSPushErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushErrors.h; sourceTree = "<group>"; };
+		755D96BD1965E0030039A1C4 /* MSSPushErrorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushErrorUtil.h; sourceTree = "<group>"; };
+		755D96BE1965E0030039A1C4 /* MSSPushErrorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushErrorUtil.m; sourceTree = "<group>"; };
+		755D96BF1965E0030039A1C4 /* MSSPushHexUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushHexUtil.h; sourceTree = "<group>"; };
+		755D96C01965E0030039A1C4 /* MSSPushHexUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushHexUtil.m; sourceTree = "<group>"; };
+		75985407196AFA1C00A55A10 /* MSSParameters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MSSParameters.plist; sourceTree = "<group>"; };
+		75992D021964BE64005DC940 /* LogItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogItem.h; sourceTree = "<group>"; };
+		75992D031964BE64005DC940 /* LogItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogItem.m; sourceTree = "<group>"; };
+		75992D041964BE64005DC940 /* RegistrationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationSettings.h; sourceTree = "<group>"; };
+		75992D051964BE64005DC940 /* RegistrationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationSettings.m; sourceTree = "<group>"; };
+		75992D0A1964BE64005DC940 /* MSSPushProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSPushProxy.h; sourceTree = "<group>"; };
+		75992D0B1964BE64005DC940 /* MSSPushProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSPushProxy.m; sourceTree = "<group>"; };
+		75992D0D1964BE64005DC940 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		75992D0E1964BE64005DC940 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		75992D121964BE64005DC940 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		75992D141964BE64005DC940 /* MSSPushSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MSSPushSample-Info.plist"; sourceTree = "<group>"; };
+		75992D151964BE64005DC940 /* MSSPushSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSSPushSample-Prefix.pch"; sourceTree = "<group>"; };
+		75992D1C1964BE64005DC940 /* LogItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogItemCollectionViewCell.h; sourceTree = "<group>"; };
+		75992D1D1964BE64005DC940 /* LogItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogItemCollectionViewCell.m; sourceTree = "<group>"; };
+		75992D1E1964BE64005DC940 /* SettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
+		75992D1F1964BE64005DC940 /* SettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsView.m; sourceTree = "<group>"; };
+		75992D2E1964BF43005DC940 /* LogItemCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogItemCollectionViewController.h; sourceTree = "<group>"; };
+		75992D2F1964BF43005DC940 /* LogItemCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogItemCollectionViewController.m; sourceTree = "<group>"; };
+		75992D301964BF43005DC940 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		75992D311964BF43005DC940 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		75992D341964BF9E005DC940 /* TriggerNotificationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerNotificationOperation.h; sourceTree = "<group>"; };
+		75992D351964BF9E005DC940 /* TriggerNotificationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriggerNotificationOperation.m; sourceTree = "<group>"; };
+		F1FDE1A418D7806B009EBE38 /* MSSPushSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSSPushSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1FDE1B318D7806B009EBE38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F1FDE1B618D7806B009EBE38 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F1FDE1B718D7806B009EBE38 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1FDE1A118D7806B009EBE38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		755D968B1965E0030039A1C4 /* MSSPush */ = {
+			isa = PBXGroup;
+			children = (
+				755D968C1965E0030039A1C4 /* BackEnd */,
+				755D968F1965E0030039A1C4 /* Models */,
+				755D96961965E0030039A1C4 /* MSSPushClient.h */,
+				755D96971965E0030039A1C4 /* MSSPushClient.m */,
+				755D96981965E0030039A1C4 /* MSSPushSDK.h */,
+				755D96991965E0030039A1C4 /* MSSPushSDK.m */,
+				755D969A1965E0030039A1C4 /* Persistent Storage */,
+			);
+			name = MSSPush;
+			path = "../push-ios/MSSPush";
+			sourceTree = "<group>";
+		};
+		755D968C1965E0030039A1C4 /* BackEnd */ = {
+			isa = PBXGroup;
+			children = (
+				755D968D1965E0030039A1C4 /* MSSPushURLConnection.h */,
+				755D968E1965E0030039A1C4 /* MSSPushURLConnection.m */,
+			);
+			path = BackEnd;
+			sourceTree = "<group>";
+		};
+		755D968F1965E0030039A1C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				755D96901965E0030039A1C4 /* MSSPushRegistrationData.h */,
+				755D96911965E0030039A1C4 /* MSSPushRegistrationData.m */,
+				755D96921965E0030039A1C4 /* MSSPushRegistrationRequestData.h */,
+				755D96931965E0030039A1C4 /* MSSPushRegistrationRequestData.m */,
+				755D96941965E0030039A1C4 /* MSSPushRegistrationResponseData.h */,
+				755D96951965E0030039A1C4 /* MSSPushRegistrationResponseData.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		755D969A1965E0030039A1C4 /* Persistent Storage */ = {
+			isa = PBXGroup;
+			children = (
+				755D969B1965E0030039A1C4 /* MSSPersistentStorage+Push.h */,
+				755D969C1965E0030039A1C4 /* MSSPersistentStorage+Push.m */,
+			);
+			path = "Persistent Storage";
+			sourceTree = "<group>";
+		};
+		755D969D1965E0030039A1C4 /* MSSSDK */ = {
+			isa = PBXGroup;
+			children = (
+				755D969E1965E0030039A1C4 /* BackEnd */,
+				755D96A11965E0030039A1C4 /* Categories */,
+				755D96A41965E0030039A1C4 /* MSSAppDelegate.h */,
+				755D96A51965E0030039A1C4 /* MSSAppDelegate.m */,
+				755D96A61965E0030039A1C4 /* MSSAppDelegateProxy.h */,
+				755D96A71965E0030039A1C4 /* MSSAppDelegateProxy.m */,
+				755D96A81965E0030039A1C4 /* MSSClient.h */,
+				755D96A91965E0030039A1C4 /* MSSClient.m */,
+				755D96AA1965E0030039A1C4 /* MSSParameters.h */,
+				755D96AB1965E0030039A1C4 /* MSSParameters.m */,
+				755D96AC1965E0030039A1C4 /* MSSSDK.h */,
+				755D96AD1965E0030039A1C4 /* MSSSDK.m */,
+				755D96AE1965E0030039A1C4 /* Protocols */,
+				755D96B11965E0030039A1C4 /* Utils */,
+			);
+			name = MSSSDK;
+			path = "../push-ios/MSSSDK";
+			sourceTree = "<group>";
+		};
+		755D969E1965E0030039A1C4 /* BackEnd */ = {
+			isa = PBXGroup;
+			children = (
+				755D969F1965E0030039A1C4 /* NSURLConnection+MSSBackEndConnection.h */,
+				755D96A01965E0030039A1C4 /* NSURLConnection+MSSBackEndConnection.m */,
+			);
+			path = BackEnd;
+			sourceTree = "<group>";
+		};
+		755D96A11965E0030039A1C4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				755D96A21965E0030039A1C4 /* NSObject+MSSJSONizable.h */,
+				755D96A31965E0030039A1C4 /* NSObject+MSSJSONizable.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		755D96AE1965E0030039A1C4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				755D96AF1965E0030039A1C4 /* MSSMapping.h */,
+				755D96B01965E0030039A1C4 /* MSSSortDescriptors.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		755D96B11965E0030039A1C4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				755D96B21965E0030039A1C4 /* MSSHardwareUtil.h */,
+				755D96B31965E0030039A1C4 /* MSSHardwareUtil.m */,
+				755D96B41965E0030039A1C4 /* MSSJSONValueTransformer.h */,
+				755D96B51965E0030039A1C4 /* MSSJSONValueTransformer.m */,
+				755D96B61965E0030039A1C4 /* MSSNotifications.h */,
+				755D96B71965E0030039A1C4 /* MSSNotifications.m */,
+				755D96B81965E0030039A1C4 /* MSSPersistentStorage.h */,
+				755D96B91965E0030039A1C4 /* MSSPersistentStorage.m */,
+				755D96BA1965E0030039A1C4 /* MSSPushDebug.h */,
+				755D96BB1965E0030039A1C4 /* MSSPushDebug.m */,
+				755D96BC1965E0030039A1C4 /* MSSPushErrors.h */,
+				755D96BD1965E0030039A1C4 /* MSSPushErrorUtil.h */,
+				755D96BE1965E0030039A1C4 /* MSSPushErrorUtil.m */,
+				755D96BF1965E0030039A1C4 /* MSSPushHexUtil.h */,
+				755D96C01965E0030039A1C4 /* MSSPushHexUtil.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		75992D011964BE64005DC940 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				75992D021964BE64005DC940 /* LogItem.h */,
+				75992D031964BE64005DC940 /* LogItem.m */,
+				75992D041964BE64005DC940 /* RegistrationSettings.h */,
+				75992D051964BE64005DC940 /* RegistrationSettings.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		75992D061964BE64005DC940 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				75992D341964BF9E005DC940 /* TriggerNotificationOperation.h */,
+				75992D351964BF9E005DC940 /* TriggerNotificationOperation.m */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		75992D091964BE64005DC940 /* Proxies */ = {
+			isa = PBXGroup;
+			children = (
+				75992D0A1964BE64005DC940 /* MSSPushProxy.h */,
+				75992D0B1964BE64005DC940 /* MSSPushProxy.m */,
+			);
+			path = Proxies;
+			sourceTree = "<group>";
+		};
+		75992D0C1964BE64005DC940 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				75992D0D1964BE64005DC940 /* Images.xcassets */,
+				75992D0E1964BE64005DC940 /* Main_iPhone.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		75992D101964BE64005DC940 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75992D111964BE64005DC940 /* InfoPlist.strings */,
+				75992D141964BE64005DC940 /* MSSPushSample-Info.plist */,
+				75992D151964BE64005DC940 /* MSSPushSample-Prefix.pch */,
+				75985407196AFA1C00A55A10 /* MSSParameters.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75992D1B1964BE64005DC940 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				75992D1C1964BE64005DC940 /* LogItemCollectionViewCell.h */,
+				75992D1D1964BE64005DC940 /* LogItemCollectionViewCell.m */,
+				75992D1E1964BE64005DC940 /* SettingsView.h */,
+				75992D1F1964BE64005DC940 /* SettingsView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		75992D2D1964BF43005DC940 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				75992D2E1964BF43005DC940 /* LogItemCollectionViewController.h */,
+				75992D2F1964BF43005DC940 /* LogItemCollectionViewController.m */,
+				75992D301964BF43005DC940 /* SettingsViewController.h */,
+				75992D311964BF43005DC940 /* SettingsViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F1FDE19B18D7806B009EBE38 = {
+			isa = PBXGroup;
+			children = (
+				755D968B1965E0030039A1C4 /* MSSPush */,
+				755D969D1965E0030039A1C4 /* MSSSDK */,
+				F1FDE1AD18D7806B009EBE38 /* MSSPushSample */,
+				F1FDE1A518D7806B009EBE38 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F1FDE1A518D7806B009EBE38 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1FDE1A418D7806B009EBE38 /* MSSPushSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1FDE1AD18D7806B009EBE38 /* MSSPushSample */ = {
+			isa = PBXGroup;
+			children = (
+				75992D2D1964BF43005DC940 /* View Controllers */,
+				75992D011964BE64005DC940 /* Models */,
+				75992D061964BE64005DC940 /* Operations */,
+				75992D091964BE64005DC940 /* Proxies */,
+				75992D0C1964BE64005DC940 /* Resources */,
+				75992D101964BE64005DC940 /* Supporting Files */,
+				75992D1B1964BE64005DC940 /* Views */,
+				F1FDE1B318D7806B009EBE38 /* main.m */,
+				F1FDE1B618D7806B009EBE38 /* AppDelegate.h */,
+				F1FDE1B718D7806B009EBE38 /* AppDelegate.m */,
+			);
+			path = MSSPushSample;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F1FDE1A318D7806B009EBE38 /* MSSPushSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1FDE1D618D7806B009EBE38 /* Build configuration list for PBXNativeTarget "MSSPushSample" */;
+			buildPhases = (
+				F1FDE1A018D7806B009EBE38 /* Sources */,
+				F1FDE1A118D7806B009EBE38 /* Frameworks */,
+				F1FDE1A218D7806B009EBE38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MSSPushSample;
+			productName = MSSPushSample;
+			productReference = F1FDE1A418D7806B009EBE38 /* MSSPushSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1FDE19C18D7806B009EBE38 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "DX123-XL";
+				TargetAttributes = {
+					F1FDE1A318D7806B009EBE38 = {
+						DevelopmentTeam = 85A485AJB8;
+					};
+				};
+			};
+			buildConfigurationList = F1FDE19F18D7806B009EBE38 /* Build configuration list for PBXProject "MSSPushSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F1FDE19B18D7806B009EBE38;
+			productRefGroup = F1FDE1A518D7806B009EBE38 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1FDE1A318D7806B009EBE38 /* MSSPushSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1FDE1A218D7806B009EBE38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75985408196AFA1C00A55A10 /* MSSParameters.plist in Resources */,
+				75992D251964BE64005DC940 /* Main_iPhone.storyboard in Resources */,
+				75992D261964BE64005DC940 /* InfoPlist.strings in Resources */,
+				75992D241964BE64005DC940 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1FDE1A018D7806B009EBE38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				755D96C21965E0030039A1C4 /* MSSPushRegistrationData.m in Sources */,
+				755D96CD1965E0030039A1C4 /* MSSParameters.m in Sources */,
+				755D96C71965E0030039A1C4 /* MSSPersistentStorage+Push.m in Sources */,
+				755D96CC1965E0030039A1C4 /* MSSClient.m in Sources */,
+				755D96C31965E0030039A1C4 /* MSSPushRegistrationRequestData.m in Sources */,
+				755D96CB1965E0030039A1C4 /* MSSAppDelegateProxy.m in Sources */,
+				F1FDE1B818D7806B009EBE38 /* AppDelegate.m in Sources */,
+				755D96CF1965E0030039A1C4 /* MSSHardwareUtil.m in Sources */,
+				75992D211964BE64005DC940 /* RegistrationSettings.m in Sources */,
+				F1FDE1B418D7806B009EBE38 /* main.m in Sources */,
+				75992D201964BE64005DC940 /* LogItem.m in Sources */,
+				755D96D31965E0030039A1C4 /* MSSPushDebug.m in Sources */,
+				755D96D01965E0030039A1C4 /* MSSJSONValueTransformer.m in Sources */,
+				75992D231964BE64005DC940 /* MSSPushProxy.m in Sources */,
+				75992D321964BF43005DC940 /* LogItemCollectionViewController.m in Sources */,
+				755D96D21965E0030039A1C4 /* MSSPersistentStorage.m in Sources */,
+				755D96C11965E0030039A1C4 /* MSSPushURLConnection.m in Sources */,
+				755D96C41965E0030039A1C4 /* MSSPushRegistrationResponseData.m in Sources */,
+				75992D2B1964BE64005DC940 /* LogItemCollectionViewCell.m in Sources */,
+				75992D361964BF9E005DC940 /* TriggerNotificationOperation.m in Sources */,
+				755D96D41965E0030039A1C4 /* MSSPushErrorUtil.m in Sources */,
+				755D96CE1965E0030039A1C4 /* MSSSDK.m in Sources */,
+				755D96D51965E0030039A1C4 /* MSSPushHexUtil.m in Sources */,
+				755D96C61965E0030039A1C4 /* MSSPushSDK.m in Sources */,
+				75992D331964BF43005DC940 /* SettingsViewController.m in Sources */,
+				755D96D11965E0030039A1C4 /* MSSNotifications.m in Sources */,
+				755D96C81965E0030039A1C4 /* NSURLConnection+MSSBackEndConnection.m in Sources */,
+				755D96C51965E0030039A1C4 /* MSSPushClient.m in Sources */,
+				755D96C91965E0030039A1C4 /* NSObject+MSSJSONizable.m in Sources */,
+				755D96CA1965E0030039A1C4 /* MSSAppDelegate.m in Sources */,
+				75992D2C1964BE64005DC940 /* SettingsView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		75992D111964BE64005DC940 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75992D121964BE64005DC940 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F1FDE1D418D7806B009EBE38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F1FDE1D518D7806B009EBE38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F1FDE1D718D7806B009EBE38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MSSPushSample/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MSSPushSample/Supporting Files/MSSPushSample-Prefix.pch";
+				INFOPLIST_FILE = "MSSPushSample/Supporting Files/MSSPushSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FBDCE989-E9DD-4D21-A1E3-92D888504899";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F1FDE1D818D7806B009EBE38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MSSPushSample/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MSSPushSample/Supporting Files/MSSPushSample-Prefix.pch";
+				INFOPLIST_FILE = "MSSPushSample/Supporting Files/MSSPushSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FBDCE989-E9DD-4D21-A1E3-92D888504899";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1FDE19F18D7806B009EBE38 /* Build configuration list for PBXProject "MSSPushSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1FDE1D418D7806B009EBE38 /* Debug */,
+				F1FDE1D518D7806B009EBE38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1FDE1D618D7806B009EBE38 /* Build configuration list for PBXNativeTarget "MSSPushSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1FDE1D718D7806B009EBE38 /* Debug */,
+				F1FDE1D818D7806B009EBE38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1FDE19C18D7806B009EBE38 /* Project object */;
+}
