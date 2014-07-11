@@ -7,7 +7,7 @@
 //
 
 #import "Settings.h"
-#import "MSSParameters.h"
+#import <Push/MSSParameters.h>
 
 static NSString *const BACK_END_REQUEST_URL = @"http://cfms-push-service-dev.main.vchs.cfms-apps.com/v1/";
 

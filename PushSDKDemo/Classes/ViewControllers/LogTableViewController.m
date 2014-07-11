@@ -7,15 +7,15 @@
 //
 
 #import "LogTableViewController.h"
-#import "MSSParameters.h"
-#import "MSSPushSDK.h"
-#import "MSSPushDebug.h"
+#import <Push/MSSParameters.h>
+#import <Push/MSSPushSDK.h>
+#import <Push/MSSPushDebug.h>
+#import <Push/MSSPersistentStorage+Push.h>
 #import "LogItem.h"
 #import "LogItemCell.h"
 #import "SettingsTableViewController.h"
 #import "Settings.h"
 #import "BackEndMessageRequest.h"
-#import "MSSPersistentStorage+Push.h"
 
 static NSString *const APP_UUID       = @"11623d1b-6a80-4a6f-9597-e5d0f320ade9";
 static NSString *const APP_SECRET_KEY = @"8c18277b-1b41-453b-b1a2-9f600c9e0d8e";

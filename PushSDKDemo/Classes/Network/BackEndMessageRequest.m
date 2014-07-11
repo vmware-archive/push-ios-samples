@@ -7,7 +7,8 @@
 //
 
 #import "BackEndMessageRequest.h"
-#import "MSSPushDebug.h"
+#import <Push/MSSPersistentStorage+Push.h>
+#import <Push/MSSPushDebug.h>
 
 static NSString *const BACK_END_PUSH_MESSAGE_API          = @"http://ec2-54-234-124-123.compute-1.amazonaws.com:8090/v1/push";
 static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;

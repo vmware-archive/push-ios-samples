@@ -8,10 +8,11 @@
 
 #import "AppDelegate.h"
 #import "Settings.h"
-#import "MSSPushDebug.h"
-#import "MSSParameters.h"
-#import "MSSPushSDK.h"
-#import "MSSSDK+Analytics.h"
+#import <Push/MSSPushSDK.h>
+#import <Push/MSSSDK.h>
+#import <Push/MSSParameters.h>
+#import <Push/MSSPersistentStorage+Push.h>
+#import <Push/MSSPushDebug.h>
 
 @interface AppDelegate ()
 
@@ -35,7 +36,6 @@
     
     static BOOL usePlist = YES;
     MSSParameters *parameters;
-    [MSSSDK setAnalyticsEnabled:YES];
     if (usePlist) {
         parameters = [MSSParameters defaultParameters];
         

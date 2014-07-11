@@ -7,7 +7,8 @@
 //
 
 #import "SettingsTableViewController.h"
-#import "MSSPersistentStorage+Push.h"
+#import <Push/MSSPersistentStorage+Push.h>
+#import <Push/MSSPushDebug.h>
 #import "Settings.h"
 
 @implementation SettingsTableViewController
