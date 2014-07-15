@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E1904483-D65D-43EF-AAD7-EA4F0847C554</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PushSample</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7335D1E6-C397-4E40-8313-EF963E2F1557</key>
+		<string>ssh://github.com/cfmobile/push-ios-samples.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PushSample.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7335D1E6-C397-4E40-8313-EF963E2F1557</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/cfmobile/push-ios-samples.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7335D1E6-C397-4E40-8313-EF963E2F1557</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7335D1E6-C397-4E40-8313-EF963E2F1557</string>
+			<key>IDESourceControlWCCName</key>
+			<string>push-ios-samples</string>
+		</dict>
+	</array>
+</dict>
+</plist>
