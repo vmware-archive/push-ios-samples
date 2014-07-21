@@ -15,12 +15,6 @@ Device Requirements
 The device must be registered on a developer profile which includes push notifications for the app bundle id.
 
 
-Application Requirements
-------------------------
-
-The most recent version of Xcode and the [CocoaPods](http://cocoapods.org/) dependency system.
-
-
 Sample Application
 ------------------
 
