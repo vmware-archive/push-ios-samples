@@ -1,9 +1,5 @@
 //
-//  main.m
-//  DemoApp
-//
-//  Created by Rob Szumlakowski on 2013-12-13.
-//  Copyright (c) 2013 Pivotal. All rights reserved.
+//  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -1,9 +1,5 @@
 //
-//  LogTableViewController.m
-//  MSSPush
-//
-//  Created by Rob Szumlakowski on 2013-12-17.
-//  Copyright (c) 2013 Pivotal. All rights reserved.
+//  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
 #import "LogTableViewController.h"
