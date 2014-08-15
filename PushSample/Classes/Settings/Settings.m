@@ -5,14 +5,14 @@
 #import "Settings.h"
 #import <MSSPush/MSSParameters.h>
 
-static NSString *const BACK_END_REQUEST_URL = @"http://cfms-push-service-dev.main.vchs.cfms-apps.com/v1/";
+static NSString *const BACK_END_REQUEST_URL = @"http://cfms-push-service-dev.main.vchs.cfms-apps.com";
 
-static NSString *const DEFAULT_VARIANT_UUID   = @"288866db-f631-4da2-8508-8385fc9c4880";
-static NSString *const DEFAULT_RELEASE_SECRET = @"1b1a4163-5ee5-4b69-813b-5530c9fcd395";
+static NSString *const DEFAULT_VARIANT_UUID   = @"ada50420-640d-43a3-8bb0-6fd0e0b212ba";
+static NSString *const DEFAULT_VARIANT_SECRET = @"603ebaf5-3ef6-4465-a119-5f0b80cc7443";
 static NSString *const DEFAULT_DEVICE_ALIAS   = @"Default Device Alias";
 
 static NSString *const KEY_VARIANT_UUID    = @"KEY_VARIANT_UUID";
-static NSString *const KEY_RELEASE_SECRET  = @"KEY_RELEASE_SECRET";
+static NSString *const KEY_VARIANT_SECRET  = @"KEY_VARIANT_SECRET";
 static NSString *const KEY_DEVICE_ALIAS    = @"KEY_DEVICE_ALIAS";
 
 @implementation Settings
@@ -26,14 +26,14 @@ static NSString *const KEY_DEVICE_ALIAS    = @"KEY_DEVICE_ALIAS";
     [[NSUserDefaults standardUserDefaults] setObject:variantUUID forKey:KEY_VARIANT_UUID];
 }
 
-+ (NSString *)releaseSecret
++ (NSString *)variantSecret
 {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:KEY_RELEASE_SECRET];
+    return [[NSUserDefaults standardUserDefaults] stringForKey:KEY_VARIANT_SECRET];
 }
 
-+ (void)setReleaseSecret:(NSString *)releaseSecret
++ (void)setVariantSecret:(NSString *)variantSecret
 {
-    [[NSUserDefaults standardUserDefaults] setObject:releaseSecret forKey:KEY_RELEASE_SECRET];
+    [[NSUserDefaults standardUserDefaults] setObject:variantSecret forKey:KEY_VARIANT_SECRET];
 }
 
 + (NSString *)deviceAlias
@@ -49,7 +49,7 @@ static NSString *const KEY_DEVICE_ALIAS    = @"KEY_DEVICE_ALIAS";
 + (void)resetToDefaults
 {
     [self setVariantUUID:DEFAULT_VARIANT_UUID];
-    [self setReleaseSecret:DEFAULT_RELEASE_SECRET];
+    [self setVariantSecret:DEFAULT_VARIANT_SECRET];
     [self setDeviceAlias:DEFAULT_DEVICE_ALIAS];
 }
 
@@ -58,7 +58,7 @@ static NSString *const KEY_DEVICE_ALIAS    = @"KEY_DEVICE_ALIAS";
     MSSParameters *params = [MSSParameters parameters];
     [params setPushAPIURL:BACK_END_REQUEST_URL];
     [params setDevelopmentPushVariantUUID:[Settings variantUUID]];
-    [params setDevelopmentPushReleaseSecret:[Settings releaseSecret]];
+    [params setDevelopmentPushVariantSecret:[Settings variantSecret]];
     [params setPushDeviceAlias:[Settings deviceAlias]];
     return params;
 }
@@ -66,9 +66,9 @@ static NSString *const KEY_DEVICE_ALIAS    = @"KEY_DEVICE_ALIAS";
 + (NSDictionary *)defaults
 {
 	NSDictionary *defaults = @{
-		KEY_VARIANT_UUID : DEFAULT_VARIANT_UUID,
-		KEY_RELEASE_SECRET : DEFAULT_RELEASE_SECRET,
-		KEY_DEVICE_ALIAS : DEFAULT_DEVICE_ALIAS,
+		KEY_VARIANT_UUID   : DEFAULT_VARIANT_UUID,
+		KEY_VARIANT_SECRET : DEFAULT_VARIANT_SECRET,
+		KEY_DEVICE_ALIAS   : DEFAULT_DEVICE_ALIAS,
 	};
 	return defaults;
 }

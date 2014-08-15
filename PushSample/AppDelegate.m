@@ -38,9 +38,9 @@
     } else {
         //MSSParameters configured in code
         parameters = [Settings registrationParameters];
-        NSString *message = [NSString stringWithFormat:@"Initializing library with parameters: releaseUUID: \"%@\" releaseSecret: \"%@\" deviceAlias: \"%@\".",
+        NSString *message = [NSString stringWithFormat:@"Initializing library with parameters: variantUUID: \"%@\" variantSecret: \"%@\" deviceAlias: \"%@\".",
                              parameters.variantUUID,
-                             parameters.releaseSecret,
+                             parameters.variantSecret,
                              parameters.pushDeviceAlias];
         MSSPushLog(message);
     }

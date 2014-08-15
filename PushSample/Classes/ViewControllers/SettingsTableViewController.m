@@ -52,14 +52,14 @@
 - (void) loadSettings
 {
     self.releaseUuidTextField.text = [Settings variantUUID];
-    self.releaseSecretTextField.text = [Settings releaseSecret];
+    self.releaseSecretTextField.text = [Settings variantSecret];
     self.deviceAliasTextField.text = [Settings deviceAlias];
 }
 
 - (void) saveSettings
 {
     [Settings setVariantUUID:self.releaseUuidTextField.text];
-    [Settings setReleaseSecret:self.releaseSecretTextField.text];
+    [Settings setVariantSecret:self.releaseSecretTextField.text];
     [Settings setDeviceAlias:self.deviceAliasTextField.text];
 }
 
