@@ -1,0 +1,14 @@
+PODS:
+  - MSSPush (1.0.0)
+
+DEPENDENCIES:
+  - MSSPush (from `../push-ios`)
+
+EXTERNAL SOURCES:
+  MSSPush:
+    :path: ../push-ios
+
+SPEC CHECKSUMS:
+  MSSPush: 488e50fa7d41213afb44cabc5ea2c3886d1abecf
+
+COCOAPODS: 0.33.1
