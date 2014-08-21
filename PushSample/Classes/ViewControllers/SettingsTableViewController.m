@@ -3,7 +3,7 @@
 //
 
 #import "SettingsTableViewController.h"
-#import <MSSPush/MSSPersistentStorage+Push.h>
+#import <MSSPush/MSSPushPersistentStorage.h>
 #import <MSSPush/MSSPushDebug.h>
 #import "Settings.h"
 
@@ -38,7 +38,7 @@
 
 - (IBAction)clearRegistrationPressed:(id)sender
 {
-    [MSSPersistentStorage reset];
+    [MSSPushPersistentStorage reset];
     [self showAlert:@"Registration cleared."];
 }
 

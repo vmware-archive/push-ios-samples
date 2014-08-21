@@ -59,6 +59,8 @@ static NSString *const KEY_DEVICE_ALIAS    = @"KEY_DEVICE_ALIAS";
     [params setPushAPIURL:BACK_END_REQUEST_URL];
     [params setDevelopmentPushVariantUUID:[Settings variantUUID]];
     [params setDevelopmentPushVariantSecret:[Settings variantSecret]];
+    [params setProductionPushVariantUUID:[Settings variantUUID]];
+    [params setProductionPushVariantSecret:[Settings variantSecret]];
     [params setPushDeviceAlias:[Settings deviceAlias]];
     return params;
 }

@@ -3,7 +3,7 @@
 //
 
 #import "BackEndMessageRequest.h"
-#import <MSSPush/MSSPersistentStorage+Push.h>
+#import <MSSPush/MSSPushPersistentStorage.h>
 #import <MSSPush/MSSPushDebug.h>
 
 static NSString *const BACK_END_PUSH_MESSAGE_API          = @"http://ec2-54-234-124-123.compute-1.amazonaws.com:8090/v1/push";

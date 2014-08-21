@@ -6,7 +6,7 @@
 #import <MSSPush/MSSParameters.h>
 #import <MSSPush/MSSPush.h>
 #import <MSSPush/MSSPushDebug.h>
-#import <MSSPush/MSSPersistentStorage+Push.h>
+#import <MSSPush/MSSPushPersistentStorage.h>
 #import "LogItem.h"
 #import "LogItemCell.h"
 #import "SettingsTableViewController.h"
@@ -60,7 +60,7 @@ static NSString *const APP_SECRET_KEY = @"8c18277b-1b41-453b-b1a2-9f600c9e0d8e";
 - (void) sendButtonPressed
 {
     [self updateCurrentBaseRowColour];
-    NSString *backEndDeviceID = [MSSPersistentStorage serverDeviceID];
+    NSString *backEndDeviceID = [MSSPushPersistentStorage serverDeviceID];
     
     if (backEndDeviceID == nil) {
         [self addLogItem:@"You must register with the back-end server before attempting to send a message" timestamp:[NSDate date]];
