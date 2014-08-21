@@ -5,9 +5,8 @@
 #import "AppDelegate.h"
 #import "Settings.h"
 #import <MSSPush/MSSPush.h>
-#import <MSSPush/MSSBase.h>
 #import <MSSPush/MSSParameters.h>
-#import <MSSPush/MSSPersistentStorage+Push.h>
+#import <MSSPush/MSSPushPersistentStorage.h>
 #import <MSSPush/MSSPushDebug.h>
 
 @interface AppDelegate ()
@@ -30,7 +29,7 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    static BOOL usePlist = YES;
+    static BOOL usePlist = NO;
     MSSParameters *parameters;
     if (usePlist) {
         parameters = [MSSParameters defaultParameters];
