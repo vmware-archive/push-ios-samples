@@ -5,10 +5,10 @@
 #import "Settings.h"
 #import <MSSPush/MSSParameters.h>
 
-static NSString *const BACK_END_REQUEST_URL = @"http://cfms-push-service-dev.main.vchs.cfms-apps.com";
+static NSString *const BACK_END_REQUEST_URL = @"http://cfms-push-service-dev.one.pepsi.cf-app.com";
 
-static NSString *const DEFAULT_VARIANT_UUID   = @"ada50420-640d-43a3-8bb0-6fd0e0b212ba";
-static NSString *const DEFAULT_VARIANT_SECRET = @"603ebaf5-3ef6-4465-a119-5f0b80cc7443";
+static NSString *const DEFAULT_VARIANT_UUID   = @"e72f8cc0-0625-4e8f-8926-40f274c87838";
+static NSString *const DEFAULT_VARIANT_SECRET = @"e468d440-b912-47ec-8a0c-2502be9d596c";
 static NSString *const DEFAULT_DEVICE_ALIAS   = @"Default Device Alias";
 
 static NSString *const KEY_VARIANT_UUID    = @"KEY_VARIANT_UUID";
