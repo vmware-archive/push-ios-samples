@@ -5,16 +5,15 @@
 #import "LogTableViewController.h"
 #import <MSSPush/MSSParameters.h>
 #import <MSSPush/MSSPush.h>
+#import <MSSPush/MSSPushClient.h>
 #import <MSSPush/MSSPushDebug.h>
 #import <MSSPush/MSSPushPersistentStorage.h>
 #import "LogItem.h"
 #import "LogItemCell.h"
-#import "SettingsTableViewController.h"
-#import "Settings.h"
 #import "BackEndMessageRequest.h"
 
-static NSString *const APP_UUID       = @"11623d1b-6a80-4a6f-9597-e5d0f320ade9";
-static NSString *const APP_SECRET_KEY = @"8c18277b-1b41-453b-b1a2-9f600c9e0d8e";
+static NSString *const ENVIRONMENT_UUID   = @"11623d1b-6a80-4a6f-9597-e5d0f320ade9";
+static NSString *const ENVIRONMENT_SECRET = @"8c18277b-1b41-453b-b1a2-9f600c9e0d8e";
 
 @interface LogTableViewController ()
 
@@ -46,13 +45,11 @@ static NSString *const APP_SECRET_KEY = @"8c18277b-1b41-453b-b1a2-9f600c9e0d8e";
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Copy" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonPressed)];
     UIBarButtonItem *trashButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(trashButtonPressed)];
     UIBarButtonItem *sendButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(sendButtonPressed)];
-    UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(preferencesButtonPressed)];
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
-    [self setToolbarItems:@[space, saveButton, space, preferencesButton, space, sendButton, space, trashButton] animated:NO];
+    [self setToolbarItems:@[saveButton, space, sendButton, space, trashButton] animated:NO];
     
     [self addLogItem:@"Press the \"Copy\" button below to copy the log to the clipboard." timestamp:[NSDate date]];
-    [self addLogItem:@"Press the \"Settings\" button below to change the SDK settings." timestamp:[NSDate date]];
     [self addLogItem:@"Press the \"Play\" button below to send a push message via the back-end server." timestamp:[NSDate date]];
     [self addLogItem:@"Press the \"Trash\" button below to clear the log contents." timestamp:[NSDate date]];
 }
@@ -68,20 +65,12 @@ static NSString *const APP_SECRET_KEY = @"8c18277b-1b41-453b-b1a2-9f600c9e0d8e";
         
     }
     BackEndMessageRequest *request = [[BackEndMessageRequest alloc] init];
-    request.messageTitle = @"Sample Message Title";
     request.messageBody = [NSString stringWithFormat:@"This message was sent to the back-end at %@.", [[LogItem getDateFormatter] stringFromDate:[NSDate date]]];
-    request.appUuid = APP_UUID;
-    request.appSecretKey = APP_SECRET_KEY;
+    request.environmentUuid = ENVIRONMENT_UUID;
+    request.environmentSecret = ENVIRONMENT_SECRET;
     request.targetPlatform = @"ios";
     request.targetDevices = @[backEndDeviceID];
     [request sendMessage];
-}
-
-- (void) preferencesButtonPressed
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-    SettingsTableViewController *settingsTableViewController = (SettingsTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SettingsTableViewController"];
-    [self.navigationController pushViewController:settingsTableViewController animated:YES];
 }
 
 - (void) saveButtonPressed

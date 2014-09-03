@@ -3,7 +3,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Settings.h"
 #import <MSSPush/MSSPush.h>
 #import <MSSPush/MSSParameters.h>
 #import <MSSPush/MSSPushPersistentStorage.h>
@@ -19,41 +18,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[NSUserDefaults standardUserDefaults] registerDefaults:[Settings defaults]];
+    // Push notifications are automatically registered at start up.
+    // The parameters are stored in the file "MSSParameters.plist".
+    //
+    // Note that if the "pushAutoRegistrationEnabled" file in the plist file
+    // is set to "NO" then automatic registration will be disabled.
+    //
+    // In that case, you can register manually by preparing an "MSSParameters"
+    // object with your particular settings, passing it to [MSSPush setRegistrationParameters],
+    // and then calling [MSSPush registerForPushNotifications];
     
-    [self initializeSDK];
     return YES;
-}
-
-- (void)initializeSDK
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    static BOOL usePlist = NO;
-    MSSParameters *parameters;
-    if (usePlist) {
-        parameters = [MSSParameters defaultParameters];
-        
-    } else {
-        //MSSParameters configured in code
-        parameters = [Settings registrationParameters];
-        NSString *message = [NSString stringWithFormat:@"Initializing library with parameters: variantUUID: \"%@\" variantSecret: \"%@\" deviceAlias: \"%@\".",
-                             parameters.variantUUID,
-                             parameters.variantSecret,
-                             parameters.pushDeviceAlias];
-        MSSPushLog(message);
-    }
-    
-    [MSSPush setRegistrationParameters:parameters];
-
-    [MSSPush setCompletionBlockWithSuccess:^{
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        MSSPushLog(@"Application received callback \"registrationSucceeded\".");
-        
-    } failure:^(NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        MSSPushLog(@"Application received callback \"registrationFailedWithError:\". Error: \"%@\"", error.localizedDescription);
-    }];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo

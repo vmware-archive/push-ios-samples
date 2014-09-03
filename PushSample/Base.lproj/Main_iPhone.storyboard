@@ -41,7 +41,7 @@
                         <sections/>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Omnia Push SDK" id="zGW-sw-fAM"/>
+                    <navigationItem key="navigationItem" title="Pivotal CF Mobile Services Push SDK" id="zGW-sw-fAM"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awY-Vp-biX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,8 +200,8 @@
                     </tableView>
                     <connections>
                         <outlet property="deviceAliasTextField" destination="4B7-2A-AM5" id="k5v-HV-H1u"/>
-                        <outlet property="releaseSecretTextField" destination="3Ex-tG-1E2" id="pMh-l9-cGq"/>
-                        <outlet property="releaseUuidTextField" destination="ZMu-5h-hma" id="QKk-ew-aDg"/>
+                        <outlet property="variantSecretTextField" destination="3Ex-tG-1E2" id="pMh-l9-cGq"/>
+                        <outlet property="variantUuidTextField" destination="ZMu-5h-hma" id="QKk-ew-aDg"/>
                         <outlet property="versionLabel" destination="84g-AN-8Kr" id="Nto-V9-iKj"/>
                     </connections>
                 </tableViewController>

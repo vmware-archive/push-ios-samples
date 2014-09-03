@@ -16,9 +16,7 @@
 		F1FDE1C018D7806B009EBE38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1BF18D7806B009EBE38 /* Images.xcassets */; };
 		F1FDE1EF18D78115009EBE38 /* LogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1DF18D78115009EBE38 /* LogItem.m */; };
 		F1FDE1F018D78115009EBE38 /* BackEndMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1E218D78115009EBE38 /* BackEndMessageRequest.m */; };
-		F1FDE1F118D78115009EBE38 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1E518D78115009EBE38 /* Settings.m */; };
 		F1FDE1F218D78115009EBE38 /* LogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1E818D78115009EBE38 /* LogTableViewController.m */; };
-		F1FDE1F318D78115009EBE38 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1EA18D78115009EBE38 /* SettingsTableViewController.m */; };
 		F1FDE1F418D78115009EBE38 /* LogItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1ED18D78115009EBE38 /* LogItemCell.m */; };
 		F1FDE1F518D78115009EBE38 /* LogItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1EE18D78115009EBE38 /* LogItemCell.xib */; };
 /* End PBXBuildFile section */
@@ -40,12 +38,8 @@
 		F1FDE1DF18D78115009EBE38 /* LogItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogItem.m; sourceTree = "<group>"; };
 		F1FDE1E118D78115009EBE38 /* BackEndMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackEndMessageRequest.h; sourceTree = "<group>"; };
 		F1FDE1E218D78115009EBE38 /* BackEndMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackEndMessageRequest.m; sourceTree = "<group>"; };
-		F1FDE1E418D78115009EBE38 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		F1FDE1E518D78115009EBE38 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		F1FDE1E718D78115009EBE38 /* LogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewController.h; sourceTree = "<group>"; };
 		F1FDE1E818D78115009EBE38 /* LogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewController.m; sourceTree = "<group>"; };
-		F1FDE1E918D78115009EBE38 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
-		F1FDE1EA18D78115009EBE38 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		F1FDE1EC18D78115009EBE38 /* LogItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogItemCell.h; sourceTree = "<group>"; };
 		F1FDE1ED18D78115009EBE38 /* LogItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogItemCell.m; sourceTree = "<group>"; };
 		F1FDE1EE18D78115009EBE38 /* LogItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogItemCell.xib; sourceTree = "<group>"; };
@@ -119,7 +113,6 @@
 			children = (
 				F1FDE1DD18D78115009EBE38 /* Models */,
 				F1FDE1E018D78115009EBE38 /* Network */,
-				F1FDE1E318D78115009EBE38 /* Settings */,
 				F1FDE1E618D78115009EBE38 /* ViewControllers */,
 				F1FDE1EB18D78115009EBE38 /* Views */,
 			);
@@ -144,22 +137,11 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		F1FDE1E318D78115009EBE38 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				F1FDE1E418D78115009EBE38 /* Settings.h */,
-				F1FDE1E518D78115009EBE38 /* Settings.m */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		F1FDE1E618D78115009EBE38 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				F1FDE1E718D78115009EBE38 /* LogTableViewController.h */,
 				F1FDE1E818D78115009EBE38 /* LogTableViewController.m */,
-				F1FDE1E918D78115009EBE38 /* SettingsTableViewController.h */,
-				F1FDE1EA18D78115009EBE38 /* SettingsTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -281,12 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1FDE1F318D78115009EBE38 /* SettingsTableViewController.m in Sources */,
 				F1FDE1F418D78115009EBE38 /* LogItemCell.m in Sources */,
 				F1FDE1F018D78115009EBE38 /* BackEndMessageRequest.m in Sources */,
 				F1FDE1B818D7806B009EBE38 /* AppDelegate.m in Sources */,
 				F1FDE1F218D78115009EBE38 /* LogTableViewController.m in Sources */,
-				F1FDE1F118D78115009EBE38 /* Settings.m in Sources */,
 				F1FDE1B418D7806B009EBE38 /* main.m in Sources */,
 				F1FDE1EF18D78115009EBE38 /* LogItem.m in Sources */,
 			);
@@ -394,7 +374,7 @@
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = PushSample;
-				PROVISIONING_PROFILE = "e7f3fe0b-02a7-4968-94a4-bb19a5fb2948";
+				PROVISIONING_PROFILE = "b38ae467-1d84-4c40-accb-c5e8b9e87121";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -417,7 +397,7 @@
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = PushSample;
-				PROVISIONING_PROFILE = "e7f3fe0b-02a7-4968-94a4-bb19a5fb2948";
+				PROVISIONING_PROFILE = "b38ae467-1d84-4c40-accb-c5e8b9e87121";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
