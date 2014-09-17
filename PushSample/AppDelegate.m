@@ -38,7 +38,7 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-    MSSPushLog(@"FetchCompletionHandler Received message:");
+    MSSPushLog(@"FetchCompletionHandler Received message: %@", userInfo[@"aps"][@"alert"]);
     completionHandler(UIBackgroundFetchResultNoData);
 }
 

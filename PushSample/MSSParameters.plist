@@ -5,7 +5,7 @@
 	<key>pushAutoRegistrationEnabled</key>
 	<true/>
 	<key>pushAPIURL</key>
-	<string>http://cfms-push-service-dev.one.pepsi.cf-app.com</string>
+	<string>http://push-notifications.demo.vchs.cfms-apps.com</string>
 	<key>pushDeviceAlias</key>
 	<string>Default Device Alias</string>
 	<key>productionPushVariantSecret</key>

@@ -6,7 +6,7 @@
 #import <MSSPush/MSSPushPersistentStorage.h>
 #import <MSSPush/MSSPushDebug.h>
 
-static NSString *const BACK_END_PUSH_MESSAGE_API          = @"http://cfms-push-service-dev.one.pepsi.cf-app.com/v1/push";
+static NSString *const BACK_END_PUSH_MESSAGE_API          = @"http://push-notifications.demo.vchs.cfms-apps.com/v1/push";
 static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
 
 @interface BackEndMessageRequest ()
@@ -74,7 +74,7 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
 {
     return @{
              @"message":@{ @"body":self.messageBody },
-             @"target":@{ @"platforms":self.targetPlatform, @"devices": self.targetDevices },
+             @"target":@{ @"platform":self.targetPlatform, @"devices": self.targetDevices },
              };
 }
 
