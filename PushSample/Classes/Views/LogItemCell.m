@@ -17,12 +17,14 @@ static UIFont *labelFont = nil;
 
 @implementation LogItemCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     return self;
 }
 
-- (void) setLogItem:(LogItem *)logItem containerSize:(CGSize)containerSize; {
+- (void) setLogItem:(LogItem *)logItem containerSize:(CGSize)containerSize
+{
     self.logItem = logItem;
     self.labelTimestamp.text = logItem.formattedTimestamp;
     self.labelMessage.text = logItem.message;
@@ -35,7 +37,8 @@ static UIFont *labelFont = nil;
     self.contentView.backgroundColor = logItem.colour;
 }
 
-- (CGRect) frameForLabelWithText:(NSString*)text containerSize:(CGSize)containerSize {
+- (CGRect) frameForLabelWithText:(NSString*)text containerSize:(CGSize)containerSize
+{
     CGFloat x = MESSAGE_LABEL_X;
     CGFloat y = MESSAGE_LABEL_Y;
     CGFloat width = containerSize.width - x - PADDING;
@@ -44,14 +47,15 @@ static UIFont *labelFont = nil;
     return frame;
 }
 
-+ (CGFloat) heightForCellWithText:(NSString*)text containerSize:(CGSize)containerSize {
++ (CGFloat) heightForCellWithText:(NSString*)text containerSize:(CGSize)containerSize
+{
     CGFloat timestampLabelHeight = TIMESTAMP_LABEL_HEIGHT;
     CGFloat messageHeight = [LogItemCell heightForLabelWithText:text containerSize:containerSize];
     return timestampLabelHeight + messageHeight + PADDING * 3;
 }
 
-+ (CGFloat) heightForLabelWithText:(NSString*)text containerSize:(CGSize)containerSize {
-    
++ (CGFloat) heightForLabelWithText:(NSString*)text containerSize:(CGSize)containerSize
+{
     // Initialize font once
     if (labelFont == nil) {
         labelFont = [UIFont systemFontOfSize:MESSAGE_LABEL_FONT_SIZE];
@@ -67,7 +71,6 @@ static UIFont *labelFont = nil;
         CGSize measuredSize = [text sizeWithFont:labelFont constrainedToSize:maxSize lineBreakMode:NSLineBreakByWordWrapping];
         return measuredSize.height + 1;
     }
-    
 }
 
 @end

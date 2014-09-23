@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9BA17B6C8B044B3BBF263058 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545A6EF71EAC4A33AFE4ECC8 /* libPods.a */; };
+		D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ABDA119D1BB8A0092BFB7 /* Settings.m */; };
 		E7226B5F1987F61C00ABD0E5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */; };
 		F114D27D190958030008BE3C /* MSSParameters.plist in Resources */ = {isa = PBXBuildFile; fileRef = F114D27C190958030008BE3C /* MSSParameters.plist */; };
 		F1FDE1B218D7806B009EBE38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1B018D7806B009EBE38 /* InfoPlist.strings */; };
@@ -24,6 +25,8 @@
 /* Begin PBXFileReference section */
 		2A88257450D147D3B3B9CCD7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		545A6EF71EAC4A33AFE4ECC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D49ABDA019D1BB8A0092BFB7 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Settings/Settings.h; sourceTree = "<group>"; };
+		D49ABDA119D1BB8A0092BFB7 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
 		E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		F114D27C190958030008BE3C /* MSSParameters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MSSParameters.plist; sourceTree = "<group>"; };
 		F1FDE1A418D7806B009EBE38 /* PushSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +66,15 @@
 				545A6EF71EAC4A33AFE4ECC8 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D49ABD9F19D1BB440092BFB7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D49ABDA019D1BB8A0092BFB7 /* Settings.h */,
+				D49ABDA119D1BB8A0092BFB7 /* Settings.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		F1FDE19B18D7806B009EBE38 = {
@@ -111,6 +123,7 @@
 		F1FDE1DC18D78115009EBE38 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D49ABD9F19D1BB440092BFB7 /* Settings */,
 				F1FDE1DD18D78115009EBE38 /* Models */,
 				F1FDE1E018D78115009EBE38 /* Network */,
 				F1FDE1E618D78115009EBE38 /* ViewControllers */,
@@ -269,6 +282,7 @@
 				F1FDE1F218D78115009EBE38 /* LogTableViewController.m in Sources */,
 				F1FDE1B418D7806B009EBE38 /* main.m in Sources */,
 				F1FDE1EF18D78115009EBE38 /* LogItem.m in Sources */,
+				D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +388,7 @@
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = PushSample;
-				PROVISIONING_PROFILE = "b38ae467-1d84-4c40-accb-c5e8b9e87121";
+				PROVISIONING_PROFILE = "468b70a9-f967-494e-95a4-2f10918bc7e3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -397,7 +411,7 @@
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = PushSample;
-				PROVISIONING_PROFILE = "b38ae467-1d84-4c40-accb-c5e8b9e87121";
+				PROVISIONING_PROFILE = "468b70a9-f967-494e-95a4-2f10918bc7e3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

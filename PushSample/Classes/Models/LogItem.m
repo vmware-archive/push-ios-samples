@@ -17,7 +17,8 @@ static int numItems = 0;
 
 @implementation LogItem
 
-- (instancetype) initWithMessage:(NSString*)message timestamp:(NSDate*)timestamp {
+- (instancetype) initWithMessage:(NSString*)message timestamp:(NSDate*)timestamp
+{
     self = [super init];
     if (self) {
         self.message = message;
@@ -27,8 +28,8 @@ static int numItems = 0;
     return self;
 }
 
-- (UIColor*) getColour {
-    
+- (UIColor*) getColour
+{
     static NSArray *darkBaseRowColours = nil;
     if (darkBaseRowColours == nil) {
         darkBaseRowColours = @[[UIColor colorWithRed:0.85f green:0.75f blue:0.75f alpha:1.0f],
@@ -51,8 +52,8 @@ static int numItems = 0;
     }
 }
 
-- (NSString*) formattedTimestamp {
-    
+- (NSString*) formattedTimestamp
+{
     if (self._formattedTimestamp != nil) {
         return self._formattedTimestamp;
     }
@@ -66,7 +67,8 @@ static int numItems = 0;
     return self._formattedTimestamp;
 }
 
-+ (NSDateFormatter*) getDateFormatter {
++ (NSDateFormatter*) getDateFormatter
+{
     static NSDateFormatter *dateFormatter;
     if (dateFormatter == nil) {
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -76,7 +78,8 @@ static int numItems = 0;
     return dateFormatter;
 }
 
-+ (void) updateBaseColour {
++ (void) updateBaseColour
+{
     currentBaseRowColour += 1;
 }
 

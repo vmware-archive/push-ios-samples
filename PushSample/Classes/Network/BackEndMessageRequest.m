@@ -2,11 +2,11 @@
 //  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
-#import "BackEndMessageRequest.h"
 #import <MSSPush/MSSPushPersistentStorage.h>
 #import <MSSPush/MSSPushDebug.h>
+#import "BackEndMessageRequest.h"
+#import "Settings.h"
 
-static NSString *const BACK_END_PUSH_MESSAGE_API          = @"http://push-notifications.demo.vchs.cfms-apps.com/v1/push";
 static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
 
 @interface BackEndMessageRequest ()
@@ -36,7 +36,7 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
     return request;
 }
 
-- (void)addBasicAuthToURLRequest:(NSMutableURLRequest *)request
+- (void) addBasicAuthToURLRequest:(NSMutableURLRequest *)request
                  environmentUuid:(NSString *)environmentUuid
                  environmentSecret:(NSString *)environmentSecret
 {
@@ -45,10 +45,11 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
     [request setValue:authToken forHTTPHeaderField:@"Authorization"];
 }
 
-- (NSString *)base64String:(NSString *)normalString
+- (NSString*) base64String:(NSString *)normalString
 {
     NSData *plainData = [normalString dataUsingEncoding:NSUTF8StringEncoding];
     if ([plainData respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
+        
         return [plainData base64EncodedStringWithOptions:0];
         
     } else {
@@ -83,7 +84,7 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
     MSSPushLog(@"Got error when trying to push message via back-end server: %@", error);
 }
 
-- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response
+- (void) connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response
 {
     if (![response isKindOfClass:[NSHTTPURLResponse class]]) {
         MSSPushLog(@"Got error when trying to push message via back-end server: server response is not an NSHTTPURLResponse.");
@@ -97,10 +98,10 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
         return;
     }
     
-    MSSPushLog(@"Back-end server has accepted message for delivery");
+    MSSPushLog(@"Back-end server has accepted message for delivery.");
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+- (NSCachedURLResponse*) connection:(NSURLConnection *)connection
                   willCacheResponse:(NSCachedURLResponse*)cachedResponse
 {
     // Return nil to indicate not necessary to store a cached response for this connection

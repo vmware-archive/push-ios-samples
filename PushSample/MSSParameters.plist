@@ -9,12 +9,12 @@
 	<key>pushDeviceAlias</key>
 	<string>Default Device Alias</string>
 	<key>productionPushVariantSecret</key>
-	<string>e468d440-b912-47ec-8a0c-2502be9d596c</string>
+	<string>a0fe2509-f9a7-4169-a745-937b09604c9f</string>
 	<key>productionPushVariantUUID</key>
-	<string>e72f8cc0-0625-4e8f-8926-40f274c87838</string>
+	<string>11ff6a44-6018-4869-91af-9e97faf941a8</string>
 	<key>developmentPushVariantSecret</key>
-	<string>e468d440-b912-47ec-8a0c-2502be9d596c</string>
+	<string>a0fe2509-f9a7-4169-a745-937b09604c9f</string>
 	<key>developmentPushVariantUUID</key>
-	<string>e72f8cc0-0625-4e8f-8926-40f274c87838</string>
+	<string>11ff6a44-6018-4869-91af-9e97faf941a8</string>
 </dict>
 </plist>

@@ -2,7 +2,6 @@
 //  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
-#import "LogTableViewController.h"
 #import <MSSPush/MSSParameters.h>
 #import <MSSPush/MSSPush.h>
 #import <MSSPush/MSSPushClient.h>
@@ -10,10 +9,9 @@
 #import <MSSPush/MSSPushPersistentStorage.h>
 #import "LogItem.h"
 #import "LogItemCell.h"
+#import "LogTableViewController.h"
 #import "BackEndMessageRequest.h"
-
-static NSString *const ENVIRONMENT_UUID   = @"11623d1b-6a80-4a6f-9597-e5d0f320ade9";
-static NSString *const ENVIRONMENT_SECRET = @"8c18277b-1b41-453b-b1a2-9f600c9e0d8e";
+#import "Settings.h"
 
 @interface LogTableViewController ()
 
@@ -23,7 +21,7 @@ static NSString *const ENVIRONMENT_SECRET = @"8c18277b-1b41-453b-b1a2-9f600c9e0d
 
 @implementation LogTableViewController
 
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
  
@@ -36,6 +34,8 @@ static NSString *const ENVIRONMENT_SECRET = @"8c18277b-1b41-453b-b1a2-9f600c9e0d
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
+    // Listen for push messages to get posted to the debug log so that we
+    // can echo them to the display.
     [MSSPushDebug setLogListener:^(NSString *message, NSDate *timestamp) {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self addLogItem:message timestamp:timestamp];
@@ -62,8 +62,10 @@ static NSString *const ENVIRONMENT_SECRET = @"8c18277b-1b41-453b-b1a2-9f600c9e0d
     if (backEndDeviceID == nil) {
         [self addLogItem:@"You must register with the back-end server before attempting to send a message" timestamp:[NSDate date]];
         return;
-        
     }
+    
+    // Prepare a request that is used to request a push message from the Pivotal CF Mobile Services push server.
+    // This feature is NOT a feature of the Push Client SDK but is useful for helping debug.
     BackEndMessageRequest *request = [[BackEndMessageRequest alloc] init];
     request.messageBody = [NSString stringWithFormat:@"This message was sent to the back-end at %@.", [[LogItem getDateFormatter] stringFromDate:[NSDate date]]];
     request.environmentUuid = ENVIRONMENT_UUID;
@@ -126,12 +128,6 @@ static NSString *const ENVIRONMENT_SECRET = @"8c18277b-1b41-453b-b1a2-9f600c9e0d
     [self.logItems addObject:logItem];
     [self.tableView reloadData];
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.logItems.count-1) inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
