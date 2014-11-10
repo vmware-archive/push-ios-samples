@@ -8,6 +8,10 @@
 #import <MSSPush/MSSPushDebug.h>
 #import "AppDelegate.h"
 
+NSString * const kNotificationCategoryIdent  = @"ACTIONABLE";
+NSString * const kNotificationActionOneIdent = @"ACTION_ONE";
+NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
+
 @interface AppDelegate ()
 
 @property (nonatomic) BOOL registered;
@@ -27,7 +31,7 @@
     // In that case, you can register manually by preparing an "MSSParameters"
     // object with your particular settings, passing it to [MSSPush setRegistrationParameters],
     // and then calling [MSSPush registerForPushNotifications];
-
+    
     // If running on iOS 7.1 or less, then you must precede the call to [MSSPush setRegistrationParameters]
     // with a call to [MSSPush setRemoteNotificationTypes:] with your requested user notification types.
     //
@@ -36,14 +40,12 @@
     
     // If this line gives you a compiler error then you need to make sure you have updated
     // your Xcode to at least Xcode 6.0:
-
+    
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        
+                
         // iOS 8.0 +
         // Note that all of these notifications types are implicitly opted-in on iOS 8.0+ anyways.
-        UIUserNotificationType notificationTypes = UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
-        [application registerUserNotificationSettings:settings];
+        [application registerUserNotificationSettings:[self getUserNotificationSettings]];
         
     } else {
         
@@ -53,6 +55,39 @@
     }
     
     return YES;
+}
+
+- (UIUserNotificationSettings*) getUserNotificationSettings
+{
+    UIMutableUserNotificationAction *action1;
+    action1 = [[UIMutableUserNotificationAction alloc] init];
+    [action1 setActivationMode:UIUserNotificationActivationModeBackground];
+    [action1 setTitle:@"Action 1"];
+    [action1 setIdentifier:kNotificationActionOneIdent];
+    [action1 setDestructive:NO];
+    [action1 setAuthenticationRequired:NO];
+    
+    UIMutableUserNotificationAction *action2;
+    action2 = [[UIMutableUserNotificationAction alloc] init];
+    [action2 setActivationMode:UIUserNotificationActivationModeBackground];
+    [action2 setTitle:@"Action 2"];
+    [action2 setIdentifier:kNotificationActionTwoIdent];
+    [action2 setDestructive:NO];
+    [action2 setAuthenticationRequired:NO];
+    
+    UIMutableUserNotificationCategory *actionCategory;
+    actionCategory = [[UIMutableUserNotificationCategory alloc] init];
+    [actionCategory setIdentifier:kNotificationCategoryIdent];
+    [actionCategory setActions:@[action1, action2]
+                    forContext:UIUserNotificationActionContextDefault];
+    
+    NSSet *categories = [NSSet setWithObject:actionCategory];
+    UIUserNotificationType types = (UIUserNotificationTypeAlert|
+                                    UIUserNotificationTypeSound|
+                                    UIUserNotificationTypeBadge);
+    
+    return [UIUserNotificationSettings settingsForTypes:types
+                                             categories:categories];
 }
 
 #pragma mark - Handling remote notifications
@@ -65,15 +100,25 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     [self handleRemoteNotification:userInfo];
-    completionHandler(UIBackgroundFetchResultNoData);
+    if (completionHandler) {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
 }
 
 - (void) handleRemoteNotification:(NSDictionary*) userInfo
 {
-    if (userInfo[@"aps"][@"alert"]) {
-        MSSPushLog(@"Received remote message: %@", userInfo[@"aps"][@"alert"]);
+    if (userInfo) {
+        MSSPushLog(@"Received remote message: %@", userInfo);
     } else {
-        MSSPushLog(@"Received remote message.");
+        MSSPushLog(@"Received remote message (no userInfo).");
+    }
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+{
+    MSSPushLog(@"Handling action %@ for message %@", identifier, userInfo);
+    if (completionHandler) {
+        completionHandler();
     }
 }
 

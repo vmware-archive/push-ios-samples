@@ -5,16 +5,16 @@
 	<key>pushAutoRegistrationEnabled</key>
 	<true/>
 	<key>pushAPIURL</key>
-	<string>http://push-notifications.demo.vchs.cfms-apps.com</string>
+	<string>http://cfms-push-service-dev.one.pepsi.cf-app.com</string>
 	<key>pushDeviceAlias</key>
 	<string>Default Device Alias</string>
 	<key>productionPushVariantSecret</key>
-	<string>a0fe2509-f9a7-4169-a745-937b09604c9f</string>
+	<string>7c358bff-bd9c-4c9c-872c-ea68064744e5</string>
 	<key>productionPushVariantUUID</key>
-	<string>11ff6a44-6018-4869-91af-9e97faf941a8</string>
+	<string>6355ee17-935e-48a0-ad70-c56b10806844</string>
 	<key>developmentPushVariantSecret</key>
-	<string>a0fe2509-f9a7-4169-a745-937b09604c9f</string>
+	<string>7c358bff-bd9c-4c9c-872c-ea68064744e5</string>
 	<key>developmentPushVariantUUID</key>
-	<string>11ff6a44-6018-4869-91af-9e97faf941a8</string>
+	<string>6355ee17-935e-48a0-ad70-c56b10806844</string>
 </dict>
 </plist>

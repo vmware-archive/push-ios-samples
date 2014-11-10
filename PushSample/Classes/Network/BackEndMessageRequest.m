@@ -73,10 +73,18 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
 
 - (NSDictionary*) getRequestDictionary
 {
-    return @{
-             @"message":@{ @"body":self.messageBody },
-             @"target":@{ @"platform":self.targetPlatform, @"devices": self.targetDevices },
-             };
+    id message;
+    if (self.category) {
+        id ios = @{ @"category" : @"ACTIONABLE" };
+        id custom = @{ @"ios" : ios };
+        message = @{ @"body" : self.messageBody, @"custom" : custom };
+    } else {
+        message = @{ @"body" : self.messageBody};
+    }
+    
+    id target = @{ @"platform":@"ios", @"devices": self.targetDevices };
+    
+    return @{ @"message" : message, @"target" : target };
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error

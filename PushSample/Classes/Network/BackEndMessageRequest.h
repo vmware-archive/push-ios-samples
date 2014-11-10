@@ -9,7 +9,7 @@
 @property (nonatomic) NSString *environmentUuid;
 @property (nonatomic) NSString *environmentSecret;
 @property (nonatomic) NSString *messageBody;
-@property (nonatomic) NSString *targetPlatform;
+@property (nonatomic) NSString *category;
 @property (nonatomic) NSArray *targetDevices;
 
 - (void) sendMessage;
