@@ -41,6 +41,8 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     // If this line gives you a compiler error then you need to make sure you have updated
     // your Xcode to at least Xcode 6.0:
     
+    [self getPushRuntimeArguments];
+    
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
                 
         // iOS 8.0 +
@@ -55,6 +57,25 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     }
     
     return YES;
+}
+
+- (void)getPushRuntimeArguments {
+    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *pushApiUrl = [standardDefaults stringForKey:@"pushApiUrl"];
+    if (pushApiUrl) {
+        MSSParameters *parameters = [[MSSParameters alloc] init];
+        parameters.pushAPIURL = pushApiUrl;
+        parameters.pushDeviceAlias = [standardDefaults stringForKey:@"pushDeviceAlias"];
+        parameters.pushAutoRegistrationEnabled = [standardDefaults boolForKey:@"pushAutoRegistrationEnabled"];
+        
+        parameters.productionPushVariantUUID = [standardDefaults stringForKey:@"productionPushVariantUUID"];
+        parameters.developmentPushVariantUUID = [standardDefaults stringForKey:@"developmentPushVariantUUID"];
+        
+        parameters.productionPushVariantSecret = [standardDefaults stringForKey:@"productionPushVariantSecret"];
+        parameters.developmentPushVariantSecret = [standardDefaults stringForKey:@"developmentPushVariantSecret"];
+        
+        [MSSPush setRegistrationParameters:parameters];
+    }
 }
 
 - (UIUserNotificationSettings*) getUserNotificationSettings

@@ -23,11 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A88257450D147D3B3B9CCD7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		43C41973AF0B444EC782EEB6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		545A6EF71EAC4A33AFE4ECC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49ABDA019D1BB8A0092BFB7 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Settings/Settings.h; sourceTree = "<group>"; };
 		D49ABDA119D1BB8A0092BFB7 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
 		E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		F070C8BF7425886F6690AB66 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F114D27C190958030008BE3C /* MSSParameters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MSSParameters.plist; sourceTree = "<group>"; };
 		F1FDE1A418D7806B009EBE38 /* PushSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1FDE1AF18D7806B009EBE38 /* PushSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PushSample-Info.plist"; sourceTree = "<group>"; };
@@ -60,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0343EDBEFB5DD3C64E62EFF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				43C41973AF0B444EC782EEB6 /* Pods.debug.xcconfig */,
+				F070C8BF7425886F6690AB66 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6773DF5A92AB4D20BED68347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,8 +92,8 @@
 			children = (
 				F1FDE1AD18D7806B009EBE38 /* PushSample */,
 				F1FDE1A518D7806B009EBE38 /* Products */,
-				2A88257450D147D3B3B9CCD7 /* Pods.xcconfig */,
 				6773DF5A92AB4D20BED68347 /* Frameworks */,
+				0343EDBEFB5DD3C64E62EFF9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,7 +211,7 @@
 				ORGANIZATIONNAME = "DX123-XL";
 				TargetAttributes = {
 					F1FDE1A318D7806B009EBE38 = {
-						DevelopmentTeam = DB2ELL349P;
+						DevelopmentTeam = BVZYXK966R;
 					};
 				};
 			};
@@ -251,7 +261,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF06DB7DBACF4040B3D234C8 /* Check Pods Manifest.lock */ = {
@@ -372,12 +382,12 @@
 		};
 		F1FDE1D718D7806B009EBE38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A88257450D147D3B3B9CCD7 /* Pods.xcconfig */;
+			baseConfigurationReference = 43C41973AF0B444EC782EEB6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -388,19 +398,19 @@
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = PushSample;
-				PROVISIONING_PROFILE = "c26460e6-9a8f-43ce-8fd9-fa91b16672e7";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		F1FDE1D818D7806B009EBE38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A88257450D147D3B3B9CCD7 /* Pods.xcconfig */;
+			baseConfigurationReference = F070C8BF7425886F6690AB66 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -411,7 +421,7 @@
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = PushSample;
-				PROVISIONING_PROFILE = "c26460e6-9a8f-43ce-8fd9-fa91b16672e7";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
