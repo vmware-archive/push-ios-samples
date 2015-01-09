@@ -10,8 +10,8 @@
 // Pivotal CF Mobile Service Push Client SDK.
 //
 // These settings are NOT used when registering with the server.  Please see the file
-// "MSSParameters.plist" to change the registration parameters.
+// "PCFParameters.plist" to change the registration parameters.
 
-NSString *const ENVIRONMENT_UUID = @"a0983f9f-eeb2-4073-bcbe-011c0bad436f";
-NSString *const ENVIRONMENT_SECRET = @"56d0ecee-c83d-4c11-b26c-4ff4a9b6da40";
-NSString *const BACK_END_PUSH_MESSAGE_API = @"http://cfms-push-service-dev.one.pepsi.cf-app.com/v1/push";
+NSString *const APP_UUID = @"3f19f4a4-67b4-45a9-aa19-e73b9fc8bc68";
+NSString *const API_KEY = @"92d293de-ebf7-4426-8546-b98c8ebb4333";
+NSString *const BACK_END_PUSH_MESSAGE_API = @"http://transit-push.cfapps.io/v1/push";

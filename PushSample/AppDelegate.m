@@ -2,10 +2,10 @@
 //  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
-#import <MSSPush/MSSPush.h>
-#import <MSSPush/MSSParameters.h>
-#import <MSSPush/MSSPushPersistentStorage.h>
-#import <MSSPush/MSSPushDebug.h>
+#import <PCFPush/PCFPush.h>
+#import <PCFPush/PCFParameters.h>
+#import <PCFPush/PCFPushPersistentStorage.h>
+#import <PCFPush/PCFPushDebug.h>
 #import "AppDelegate.h"
 
 NSString * const kNotificationCategoryIdent  = @"ACTIONABLE";
@@ -23,17 +23,17 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Push notifications are automatically registered at start up.
-    // The parameters are stored in the file "MSSParameters.plist".
+    // The parameters are stored in the file "PCFParameters.plist".
     //
     // Note that if the "pushAutoRegistrationEnabled" file in the plist file
     // is set to "NO" then automatic registration will be disabled.
     //
-    // In that case, you can register manually by preparing an "MSSParameters"
-    // object with your particular settings, passing it to [MSSPush setRegistrationParameters],
-    // and then calling [MSSPush registerForPushNotifications];
+    // In that case, you can register manually by preparing an "PCFParameters"
+    // object with your particular settings, passing it to [PCFPush setRegistrationParameters],
+    // and then calling [PCFPush registerForPushNotifications];
     
-    // If running on iOS 7.1 or less, then you must precede the call to [MSSPush setRegistrationParameters]
-    // with a call to [MSSPush setRemoteNotificationTypes:] with your requested user notification types.
+    // If running on iOS 7.1 or less, then you must precede the call to [PCFPush setRegistrationParameters]
+    // with a call to [PCFPush setRemoteNotificationTypes:] with your requested user notification types.
     //
     // On iOS 8.0+ you should call [[UIApplication sharedDelegate] registerUserNotificationSettings:] to
     // configure your user notifications
@@ -53,7 +53,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
         
         // < iOS 8.0
         UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
-        [MSSPush setRemoteNotificationTypes:notificationTypes];
+        [PCFPush setRemoteNotificationTypes:notificationTypes];
     }
     
     return YES;
@@ -63,7 +63,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
     NSString *pushApiUrl = [standardDefaults stringForKey:@"pushApiUrl"];
     if (pushApiUrl) {
-        MSSParameters *parameters = [[MSSParameters alloc] init];
+        PCFParameters *parameters = [[PCFParameters alloc] init];
         parameters.pushAPIURL = pushApiUrl;
         parameters.pushDeviceAlias = [standardDefaults stringForKey:@"pushDeviceAlias"];
         parameters.pushAutoRegistrationEnabled = [standardDefaults boolForKey:@"pushAutoRegistrationEnabled"];
@@ -74,7 +74,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
         parameters.productionPushVariantSecret = [standardDefaults stringForKey:@"productionPushVariantSecret"];
         parameters.developmentPushVariantSecret = [standardDefaults stringForKey:@"developmentPushVariantSecret"];
         
-        [MSSPush setRegistrationParameters:parameters];
+        [PCFPush setRegistrationParameters:parameters];
     }
 }
 
@@ -129,15 +129,15 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 - (void) handleRemoteNotification:(NSDictionary*) userInfo
 {
     if (userInfo) {
-        MSSPushLog(@"Received remote message: %@", userInfo);
+        PCFPushLog(@"Received push message: %@", userInfo);
     } else {
-        MSSPushLog(@"Received remote message (no userInfo).");
+        PCFPushLog(@"Received push message (no userInfo).");
     }
 }
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
 {
-    MSSPushLog(@"Handling action %@ for message %@", identifier, userInfo);
+    PCFPushLog(@"Handling action %@ for message %@", identifier, userInfo);
     if (completionHandler) {
         completionHandler();
     }
@@ -154,13 +154,13 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 // registration with Pivotal CF Mobile Services to fail after this message is received.
 - (void) application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    MSSPushLog(@"APNS registration succeeded!");
+    PCFPushLog(@"APNS registration succeeded!");
 }
 
 // This message is called when APNS registration fails.
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err
 {
-    MSSPushLog(@"APNS registration failed: %@", err);
+    PCFPushLog(@"APNS registration failed: %@", err);
 }
 
 @end

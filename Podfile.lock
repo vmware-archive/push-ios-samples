@@ -1,14 +1,14 @@
 PODS:
-  - MSSPush (1.0.1)
+  - PCFPush (1.0.2)
 
 DEPENDENCIES:
-  - MSSPush (from `../push-ios`)
+  - PCFPush (from `../push-ios`)
 
 EXTERNAL SOURCES:
-  MSSPush:
+  PCFPush:
     :path: ../push-ios
 
 SPEC CHECKSUMS:
-  MSSPush: bf6e1ad3a29ec7c639f28d32dc77d91a07d86cbc
+  PCFPush: 1bcf9f5fdc8454a3b6c31fe8ab8d073cf0028f80
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.35.0

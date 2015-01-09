@@ -6,8 +6,8 @@
 
 @interface BackEndMessageRequest : NSObject<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
-@property (nonatomic) NSString *environmentUuid;
-@property (nonatomic) NSString *environmentSecret;
+@property (nonatomic) NSString *appUuid;
+@property (nonatomic) NSString *apiKey;
 @property (nonatomic) NSString *messageBody;
 @property (nonatomic) NSString *category;
 @property (nonatomic) NSArray *targetDevices;

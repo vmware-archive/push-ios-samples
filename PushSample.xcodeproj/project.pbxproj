@@ -10,7 +10,7 @@
 		9BA17B6C8B044B3BBF263058 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545A6EF71EAC4A33AFE4ECC8 /* libPods.a */; };
 		D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ABDA119D1BB8A0092BFB7 /* Settings.m */; };
 		E7226B5F1987F61C00ABD0E5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */; };
-		F114D27D190958030008BE3C /* MSSParameters.plist in Resources */ = {isa = PBXBuildFile; fileRef = F114D27C190958030008BE3C /* MSSParameters.plist */; };
+		F114D27D190958030008BE3C /* PCFParameters.plist in Resources */ = {isa = PBXBuildFile; fileRef = F114D27C190958030008BE3C /* PCFParameters.plist */; };
 		F1FDE1B218D7806B009EBE38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1B018D7806B009EBE38 /* InfoPlist.strings */; };
 		F1FDE1B418D7806B009EBE38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B318D7806B009EBE38 /* main.m */; };
 		F1FDE1B818D7806B009EBE38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B718D7806B009EBE38 /* AppDelegate.m */; };
@@ -29,7 +29,7 @@
 		D49ABDA119D1BB8A0092BFB7 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
 		E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		F070C8BF7425886F6690AB66 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		F114D27C190958030008BE3C /* MSSParameters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MSSParameters.plist; sourceTree = "<group>"; };
+		F114D27C190958030008BE3C /* PCFParameters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PCFParameters.plist; sourceTree = "<group>"; };
 		F1FDE1A418D7806B009EBE38 /* PushSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1FDE1AF18D7806B009EBE38 /* PushSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PushSample-Info.plist"; sourceTree = "<group>"; };
 		F1FDE1B118D7806B009EBE38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		F1FDE1AE18D7806B009EBE38 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F114D27C190958030008BE3C /* MSSParameters.plist */,
+				F114D27C190958030008BE3C /* PCFParameters.plist */,
 				F1FDE1AF18D7806B009EBE38 /* PushSample-Info.plist */,
 				F1FDE1B018D7806B009EBE38 /* InfoPlist.strings */,
 				F1FDE1B318D7806B009EBE38 /* main.m */,
@@ -241,7 +241,7 @@
 				F1FDE1F518D78115009EBE38 /* LogItemCell.xib in Resources */,
 				F1FDE1C018D7806B009EBE38 /* Images.xcassets in Resources */,
 				E7226B5F1987F61C00ABD0E5 /* Main_iPhone.storyboard in Resources */,
-				F114D27D190958030008BE3C /* MSSParameters.plist in Resources */,
+				F114D27D190958030008BE3C /* PCFParameters.plist in Resources */,
 				F1FDE1B218D7806B009EBE38 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,7 +391,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/MSSPush-cvwkmtzybidpmzekxyfvoojennkm/Build/Intermediates/ArchiveIntermediates/MSSPush/IntermediateBuildFilesPath/UninstalledProducts",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PCFPush-cvwkmtzybidpmzekxyfvoojennkm/Build/Intermediates/ArchiveIntermediates/PCFPush/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
@@ -414,7 +414,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/MSSPush-cvwkmtzybidpmzekxyfvoojennkm/Build/Intermediates/ArchiveIntermediates/MSSPush/IntermediateBuildFilesPath/UninstalledProducts",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/PCFPush-cvwkmtzybidpmzekxyfvoojennkm/Build/Intermediates/ArchiveIntermediates/PCFPush/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";

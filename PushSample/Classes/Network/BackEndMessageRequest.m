@@ -2,8 +2,7 @@
 //  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
-#import <MSSPush/MSSPushPersistentStorage.h>
-#import <MSSPush/MSSPushDebug.h>
+#import <PCFPush/PCFPushDebug.h>
 #import "BackEndMessageRequest.h"
 #import "Settings.h"
 
@@ -32,15 +31,15 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
     request.HTTPMethod = @"POST";
     request.HTTPBody = [self getURLRequestBodyData];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [self addBasicAuthToURLRequest:request environmentUuid:self.environmentUuid environmentSecret:self.environmentSecret];
+    [self addBasicAuthToURLRequest:request appUuid:self.appUuid apiKey:self.apiKey];
     return request;
 }
 
-- (void) addBasicAuthToURLRequest:(NSMutableURLRequest *)request
-                 environmentUuid:(NSString *)environmentUuid
-                 environmentSecret:(NSString *)environmentSecret
+- (void)addBasicAuthToURLRequest:(NSMutableURLRequest *)request
+                         appUuid:(NSString *)appUuid
+                          apiKey:(NSString *)apiKey
 {
-    NSString *authString = [self base64String:[NSString stringWithFormat:@"%@:%@", environmentUuid, environmentSecret]];
+    NSString *authString = [self base64String:[NSString stringWithFormat:@"%@:%@", appUuid, apiKey]];
     NSString *authToken = [NSString stringWithFormat:@"Basic  %@", authString];
     [request setValue:authToken forHTTPHeaderField:@"Authorization"];
 }
@@ -49,9 +48,9 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
 {
     NSData *plainData = [normalString dataUsingEncoding:NSUTF8StringEncoding];
     if ([plainData respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
-        
+
         return [plainData base64EncodedStringWithOptions:0];
-        
+
     } else {
         return [plainData base64Encoding];
     }
@@ -64,7 +63,7 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:requestDictionary options:0 error:&error];
     if (error) {
-        MSSPushCriticalLog(@"Error upon serializing object to JSON: %@", error);
+        PCFPushCriticalLog(@"Error upon serializing object to JSON: %@", error);
         return nil;
     } else {
         return jsonData;
@@ -81,32 +80,32 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
     } else {
         message = @{ @"body" : self.messageBody};
     }
-    
+
     id target = @{ @"platform":@"ios", @"devices": self.targetDevices };
-    
+
     return @{ @"message" : message, @"target" : target };
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
-    MSSPushLog(@"Got error when trying to push message via back-end server: %@", error);
+    PCFPushLog(@"Got error when trying to push message via back-end server: %@", error);
 }
 
 - (void) connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response
 {
     if (![response isKindOfClass:[NSHTTPURLResponse class]]) {
-        MSSPushLog(@"Got error when trying to push message via back-end server: server response is not an NSHTTPURLResponse.");
+        PCFPushLog(@"Got error when trying to push message via back-end server: server response is not an NSHTTPURLResponse.");
         return;
     }
-    
+
     NSHTTPURLResponse *httpURLResponse = (NSHTTPURLResponse*)response;
-    
+
     if (![self isSuccessfulResponseCode:httpURLResponse]) {
-        MSSPushLog(@"Got HTTP failure status code when trying to push message via back-end server: %d", httpURLResponse.statusCode);
+        PCFPushLog(@"Got HTTP failure status code when trying to push message via back-end server: %d", httpURLResponse.statusCode);
         return;
     }
-    
-    MSSPushLog(@"Back-end server has accepted message for delivery.");
+
+    PCFPushLog(@"Back-end server has accepted message for delivery.");
 }
 
 - (NSCachedURLResponse*) connection:(NSURLConnection *)connection
