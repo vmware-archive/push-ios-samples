@@ -4,7 +4,6 @@
 
 #import <PCFPush/PCFPush.h>
 #import <PCFPush/PCFParameters.h>
-#import <PCFPush/PCFPushPersistentStorage.h>
 #import <PCFPush/PCFPushDebug.h>
 #import "AppDelegate.h"
 
@@ -12,25 +11,11 @@ NSString * const kNotificationCategoryIdent  = @"ACTIONABLE";
 NSString * const kNotificationActionOneIdent = @"ACTION_ONE";
 NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 
-@interface AppDelegate ()
-
-@property (nonatomic) BOOL registered;
-
-@end
-
 @implementation AppDelegate
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Push notifications are automatically registered at start up.
     // The parameters are stored in the file "PCFParameters.plist".
-    //
-    // Note that if the "pushAutoRegistrationEnabled" file in the plist file
-    // is set to "NO" then automatic registration will be disabled.
-    //
-    // In that case, you can register manually by preparing an "PCFParameters"
-    // object with your particular settings, passing it to [PCFPush setRegistrationParameters],
-    // and then calling [PCFPush registerForPushNotifications];
     
     // If running on iOS 7.1 or less, then you must precede the call to [PCFPush setRegistrationParameters]
     // with a call to [PCFPush setRemoteNotificationTypes:] with your requested user notification types.
@@ -66,7 +51,6 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
         PCFParameters *parameters = [[PCFParameters alloc] init];
         parameters.pushAPIURL = pushApiUrl;
         parameters.pushDeviceAlias = [standardDefaults stringForKey:@"pushDeviceAlias"];
-        parameters.pushAutoRegistrationEnabled = [standardDefaults boolForKey:@"pushAutoRegistrationEnabled"];
         
         parameters.productionPushVariantUUID = [standardDefaults stringForKey:@"productionPushVariantUUID"];
         parameters.developmentPushVariantUUID = [standardDefaults stringForKey:@"developmentPushVariantUUID"];

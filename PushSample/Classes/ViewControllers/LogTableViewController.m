@@ -2,9 +2,7 @@
 //  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
-#import <PCFPush/PCFParameters.h>
 #import <PCFPush/PCFPush.h>
-#import <PCFPush/PCFPushClient.h>
 #import <PCFPush/PCFPushDebug.h>
 #import <PCFPush/PCFPushPersistentStorage.h>
 #import "LogItem.h"
@@ -56,6 +54,8 @@
     [self addLogItem:@"Press the \"Trash\" button below to clear the log contents." timestamp:[NSDate date]];
 
     [self updateCurrentBaseRowColour];
+    
+    [PCFPush registerForPushNotifications];
 }
 
 - (void) sendButtonWithCategoryPressed
