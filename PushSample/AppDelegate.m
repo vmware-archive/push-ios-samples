@@ -25,9 +25,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     
     // If this line gives you a compiler error then you need to make sure you have updated
     // your Xcode to at least Xcode 6.0:
-    
-    [self getPushRuntimeArguments];
-    
+
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
                 
         // iOS 8.0 +
@@ -40,26 +38,13 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
         UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
         [PCFPush setRemoteNotificationTypes:notificationTypes];
     }
-    
-    return YES;
-}
 
-- (void)getPushRuntimeArguments {
-    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *pushApiUrl = [standardDefaults stringForKey:@"pushApiUrl"];
-    if (pushApiUrl) {
-        PCFParameters *parameters = [[PCFParameters alloc] init];
-        parameters.pushAPIURL = pushApiUrl;
-        parameters.pushDeviceAlias = [standardDefaults stringForKey:@"pushDeviceAlias"];
-        
-        parameters.productionPushVariantUUID = [standardDefaults stringForKey:@"productionPushVariantUUID"];
-        parameters.developmentPushVariantUUID = [standardDefaults stringForKey:@"developmentPushVariantUUID"];
-        
-        parameters.productionPushVariantSecret = [standardDefaults stringForKey:@"productionPushVariantSecret"];
-        parameters.developmentPushVariantSecret = [standardDefaults stringForKey:@"developmentPushVariantSecret"];
-        
-        [PCFPush setRegistrationParameters:parameters];
-    }
+    [PCFPush setDeviceAlias:UIDevice.currentDevice.name];
+
+    // [PCFPush registerForRemoteNotifications] is called from the LogTableViewController since we want to be able to
+    // print the registration results to the screen.
+
+    return YES;
 }
 
 - (UIUserNotificationSettings*) getUserNotificationSettings
