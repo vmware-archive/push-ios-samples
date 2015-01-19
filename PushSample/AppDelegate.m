@@ -3,7 +3,6 @@
 //
 
 #import <PCFPush/PCFPush.h>
-#import <PCFPush/PCFParameters.h>
 #import <PCFPush/PCFPushDebug.h>
 #import "AppDelegate.h"
 
