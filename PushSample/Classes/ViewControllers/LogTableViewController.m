@@ -54,7 +54,8 @@
     [self addLogItem:@"Press the \"Trash\" button below to clear the log contents." timestamp:[NSDate date]];
 
     [self updateCurrentBaseRowColour];
-    
+
+    // IMPORTANT - this registers for remote notifications
     [PCFPush registerForPushNotifications];
 }
 

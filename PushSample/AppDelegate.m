@@ -14,10 +14,10 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // The parameters are stored in the file "PCFParameters.plist".
+    // The parameters are stored in the file "Pivotal.plist".
     
-    // If running on iOS 7.1 or less, then you must precede the call to [PCFPush setRegistrationParameters]
-    // with a call to [PCFPush setRemoteNotificationTypes:] with your requested user notification types.
+    // If running on iOS 7.1 or less then you must call [PCFPush setRemoteNotificationTypes:] with your requested user notification types
+    // before you call [PCFPush registerForRemoteNotifications]
     //
     // On iOS 8.0+ you should call [[UIApplication sharedDelegate] registerUserNotificationSettings:] to
     // configure your user notifications
@@ -123,12 +123,14 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 - (void) application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     PCFPushLog(@"APNS registration succeeded!");
+    [PCFPush APNSRegistrationSucceededWithDeviceToken:deviceToken];
 }
 
 // This message is called when APNS registration fails.
-- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    PCFPushLog(@"APNS registration failed: %@", err);
+    PCFPushLog(@"APNS registration failed: %@", error);
+    [PCFPush APNSRegistrationFailedWithError:error];
 }
 
 @end
