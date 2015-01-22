@@ -2,7 +2,6 @@
 //  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
-#import <PCFPush/PCFPush.h>
 #import <PCFPush/PCFPushDebug.h>
 #import <PCFPush/PCFPushPersistentStorage.h>
 #import "LogItem.h"
@@ -40,6 +39,7 @@
         }];
     }];
 
+    // Set up tool bar buttons
     UIBarButtonItem *copyButton = [[UIBarButtonItem alloc] initWithTitle:@"Copy" style:UIBarButtonItemStylePlain target:self action:@selector(copyButtonPressed)];
     UIBarButtonItem *trashButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(trashButtonPressed)];
     UIBarButtonItem *sendButtonWithoutCategory = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStylePlain target:self action:@selector(sendButtonWithoutCategoryPressed)];
@@ -54,9 +54,6 @@
     [self addLogItem:@"Press the \"Trash\" button below to clear the log contents." timestamp:[NSDate date]];
 
     [self updateCurrentBaseRowColour];
-
-    // IMPORTANT - this registers for remote notifications
-    [PCFPush registerForPushNotifications];
 }
 
 - (void) sendButtonWithCategoryPressed

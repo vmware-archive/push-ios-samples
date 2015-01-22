@@ -14,78 +14,78 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // The parameters are stored in the file "Pivotal.plist".
-    
-    // If running on iOS 7.1 or less then you must call [PCFPush setRemoteNotificationTypes:] with your requested user notification types
-    // before you call [PCFPush registerForRemoteNotifications]
+    // Register for push notifications with the Apple Push Notification Service (APNS).
     //
-    // On iOS 8.0+ you should call [[UIApplication sharedDelegate] registerUserNotificationSettings:] to
-    // configure your user notifications
-    
+    // On iOS 8.0+ you need to provide your user notification settings by calling
+    // [UIApplication.sharedDelegate registerUserNotificationSettings:] and then
+    // [UIApplication.sharedDelegate registerForRemoteNotifications];
+    //
+    // On < iOS 8.0 you need to provide your remote notification settings by calling
+    // [UIApplication.sharedDelegate registerForRemoteNotificationTypes:].  There are no
+    // user notification settings on < iOS 8.0.
+    //
     // If this line gives you a compiler error then you need to make sure you have updated
     // your Xcode to at least Xcode 6.0:
-
+    //
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-                
+
         // iOS 8.0 +
-        // Note that all of these notifications types are implicitly opted-in on iOS 8.0+ anyways.
         [application registerUserNotificationSettings:[self getUserNotificationSettings]];
-        
+        [application registerForRemoteNotifications];
+
     } else {
-        
+
         // < iOS 8.0
         UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
-        [PCFPush setRemoteNotificationTypes:notificationTypes];
+        [application registerForRemoteNotificationTypes:notificationTypes];
     }
-
-    [PCFPush setDeviceAlias:UIDevice.currentDevice.name];
-
-    // [PCFPush registerForRemoteNotifications] is called from the LogTableViewController since we want to be able to
-    // print the registration results to the screen.
 
     return YES;
 }
 
-- (UIUserNotificationSettings*) getUserNotificationSettings
+#pragma mark - UIApplicationDelegate remote registration callbacks
+
+// This method is called when APNS registration succeeds.
+- (void) application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    UIMutableUserNotificationAction *action1;
-    action1 = [[UIMutableUserNotificationAction alloc] init];
-    [action1 setActivationMode:UIUserNotificationActivationModeBackground];
-    [action1 setTitle:@"Action 1"];
-    [action1 setIdentifier:kNotificationActionOneIdent];
-    [action1 setDestructive:NO];
-    [action1 setAuthenticationRequired:NO];
-    
-    UIMutableUserNotificationAction *action2;
-    action2 = [[UIMutableUserNotificationAction alloc] init];
-    [action2 setActivationMode:UIUserNotificationActivationModeBackground];
-    [action2 setTitle:@"Action 2"];
-    [action2 setIdentifier:kNotificationActionTwoIdent];
-    [action2 setDestructive:NO];
-    [action2 setAuthenticationRequired:NO];
-    
-    UIMutableUserNotificationCategory *actionCategory;
-    actionCategory = [[UIMutableUserNotificationCategory alloc] init];
-    [actionCategory setIdentifier:kNotificationCategoryIdent];
-    [actionCategory setActions:@[action1, action2]
-                    forContext:UIUserNotificationActionContextDefault];
-    
-    NSSet *categories = [NSSet setWithObject:actionCategory];
-    UIUserNotificationType types = (UIUserNotificationTypeAlert|
-                                    UIUserNotificationTypeSound|
-                                    UIUserNotificationTypeBadge);
-    
-    return [UIUserNotificationSettings settingsForTypes:types
-                                             categories:categories];
+    PCFPushLog(@"APNS registration succeeded!");
+
+    // APNS registration has succeeded and provided the APNS device token.  Start registration with PCF Mobile Services
+    // and pass it the APNS device token.
+    //
+    // Required: Create a file in your project called "Pivotal.plist" in order to provide parameters for registering with
+    // PCF Mobile Services.
+    //
+    // Optional: You can also provide a set of tags to subscribe to.  At this time, this application is not setting any tags.
+    //
+    // Optional: You can also provide a device alias.  The use of this device alias is application-specific.  In general,
+    // you can pass the device name.
+    //
+    // Optional: You can pass blocks to get callbacks after registration succeeds or fails.
+    //
+    [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken tags:nil deviceAlias:UIDevice.currentDevice.name success:^{
+        PCFPushLog(@"CF registration succeeded!");
+    } failure:^(NSError *error) {
+        PCFPushLog(@"CF registration failed: %@", error);
+    }];
+}
+
+// This method is called when APNS registration fails.
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    PCFPushLog(@"APNS registration failed: %@", error);
 }
 
 #pragma mark - Handling remote notifications
 
+// This method is called when APNS sends a push notification to the application.
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     [self handleRemoteNotification:userInfo];
 }
 
+// This method is called when APNS sends a push notification to the application when the application is
+// not running (e.g.: in the background).
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     [self handleRemoteNotification:userInfo];
@@ -103,6 +103,8 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     }
 }
 
+// This method is called when the user touches one of the actions in a notification when the application is
+// not running (e.g.: in the background).  iOS 8.0+ only.
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
 {
     PCFPushLog(@"Handling action %@ for message %@", identifier, userInfo);
@@ -113,24 +115,46 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    // Clear the badge number displayed on the application icon.
     application.applicationIconBadgeNumber = 0;
 }
 
-#pragma mark - UIApplicationDelegate remote registration callbacks
+#pragma mark - Helpers
 
-// This message is called when APNS registration succeeds.  Note that it is still possible for
-// registration with Pivotal CF Mobile Services to fail after this message is received.
-- (void) application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+// Returns the user notification settings object used on iOS 8.0 +
+// This code will compile on apps that can run on < iOS 8.0 but will NOT run.
+// Do NOT call this method if running on < iOS 8.0.
+- (UIUserNotificationSettings*) getUserNotificationSettings
 {
-    PCFPushLog(@"APNS registration succeeded!");
-    [PCFPush APNSRegistrationSucceededWithDeviceToken:deviceToken];
-}
+    UIMutableUserNotificationAction *action1;
+    action1 = [[UIMutableUserNotificationAction alloc] init];
+    [action1 setActivationMode:UIUserNotificationActivationModeBackground];
+    [action1 setTitle:@"Action 1"];
+    [action1 setIdentifier:kNotificationActionOneIdent];
+    [action1 setDestructive:NO];
+    [action1 setAuthenticationRequired:NO];
 
-// This message is called when APNS registration fails.
-- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-    PCFPushLog(@"APNS registration failed: %@", error);
-    [PCFPush APNSRegistrationFailedWithError:error];
+    UIMutableUserNotificationAction *action2;
+    action2 = [[UIMutableUserNotificationAction alloc] init];
+    [action2 setActivationMode:UIUserNotificationActivationModeBackground];
+    [action2 setTitle:@"Action 2"];
+    [action2 setIdentifier:kNotificationActionTwoIdent];
+    [action2 setDestructive:NO];
+    [action2 setAuthenticationRequired:NO];
+
+    UIMutableUserNotificationCategory *actionCategory;
+    actionCategory = [[UIMutableUserNotificationCategory alloc] init];
+    [actionCategory setIdentifier:kNotificationCategoryIdent];
+    [actionCategory setActions:@[action1, action2]
+                    forContext:UIUserNotificationActionContextDefault];
+
+    NSSet *categories = [NSSet setWithObject:actionCategory];
+    UIUserNotificationType types = (UIUserNotificationTypeAlert|
+            UIUserNotificationTypeSound|
+            UIUserNotificationTypeBadge);
+
+    return [UIUserNotificationSettings settingsForTypes:types
+                                             categories:categories];
 }
 
 @end
