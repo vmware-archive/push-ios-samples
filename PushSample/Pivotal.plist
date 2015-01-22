@@ -5,9 +5,9 @@
 	<key>pivotal.push.serviceUrl</key>
 	<string>http://transit-push.cfapps.io</string>
 	<key>pivotal.push.variantSecret.production</key>
-	<string>a0fe2509-f9a7-4169-a745-937b09604c9f</string>
+	<string>9bee0071-2617-4039-a743-5d2c30ded080</string>
 	<key>pivotal.push.variantUuid.production</key>
-	<string>11ff6a44-6018-4869-91af-9e97faf941a8</string>
+	<string>03dc0a47-8114-42a8-be87-77916a654a04</string>
 	<key>pivotal.push.variantSecret.development</key>
 	<string>a0fe2509-f9a7-4169-a745-937b09604c9f</string>
 	<key>pivotal.push.variantUuid.development</key>
