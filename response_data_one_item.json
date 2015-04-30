@@ -1,0 +1,23 @@
+{
+    "num": 1,
+    "last_modified": 1424309210305,
+    "geofences": [
+        {
+            "id": 44,
+            "data": {
+                "message": "More Park"
+            },
+            "trigger_type": "exit",
+            "expiry_time": 2056720182000,
+            "locations": [
+                {
+                    "id": 77,
+                    "name": "Tommy Thompson Park",
+                    "lat": 43.628246,
+                    "long": -79.329028,
+                    "rad": 1800
+                }
+            ]
+        }
+    ]
+}
