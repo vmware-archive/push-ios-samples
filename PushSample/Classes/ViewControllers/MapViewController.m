@@ -29,6 +29,21 @@
     [self drawGeofences];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(geofencesUpdated:) name:@"pivotal.push.geofences.updated" object:nil];
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) geofencesUpdated:(NSNotification*)notification
+{
+    [self drawGeofences];
+}
+
 - (void) drawGeofences
 {
     [self clearAllGeofences];
@@ -46,7 +61,9 @@
         [self.overlays addObject:circle];
     }
 
-    [self zoomToOverlayBounds:self.overlays];
+    if (self.overlays.count > 0) {
+        [self zoomToOverlayBounds:self.overlays];
+    }
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay
