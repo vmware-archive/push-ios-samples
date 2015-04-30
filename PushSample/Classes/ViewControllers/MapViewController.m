@@ -13,18 +13,11 @@
 #define MINIMUM_VISIBLE_LATITUDE 0.01
 #define METERS_PER_DEGREEE_LATITUDE 111131.74
 
-@interface MapViewController ()
-
-@property (nonatomic) NSMutableArray *overlays;
-
-@end
-
 @implementation MapViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.overlays = [NSMutableArray array];
     self.mapView.showsUserLocation = YES;
     [self drawGeofences];
 }
@@ -54,31 +47,26 @@
 
     for (NSDictionary *geofence in geofences) {
         self.mapView.delegate = self;
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:((NSString*)(geofence[@"expiry"])).doubleValue];
         CLLocationDistance radius = ((NSString*)(geofence[@"rad"])).doubleValue;
         CLLocationCoordinate2D centre = CLLocationCoordinate2DMake(((NSString*)(geofence[@"lat"])).doubleValue, ((NSString*)(geofence[@"long"])).doubleValue);
         MKCircle *circle = [MKCircle circleWithCenterCoordinate:centre radius:radius];
+        circle.title = geofence[@"name"];
+        circle.subtitle = [@"Expires " stringByAppendingString:[NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
         [self.mapView addOverlay:circle];
-        [self.overlays addObject:circle];
+        [self.mapView addAnnotation:circle];
     }
 
-    if (self.overlays.count > 0) {
-        [self zoomToOverlayBounds:self.overlays];
+    if (self.mapView.overlays.count > 0) {
+        [self zoomToOverlayBounds:self.mapView.overlays];
     }
 }
 
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay
-{
-    MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
-    circleRenderer.strokeColor = [UIColor redColor];
-    circleRenderer.lineWidth = 1.0;
-    circleRenderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
-    return circleRenderer;
-}
 
 - (void) clearAllGeofences
 {
-    [self.mapView removeOverlays:self.overlays];
-    self.overlays = [NSMutableArray array];
+    [self.mapView removeOverlays:self.mapView.overlays];
+    [self.mapView removeAnnotations:self.mapView.annotations];
 }
 
 - (NSArray*) loadGeofences
@@ -136,6 +124,30 @@
 
     MKCoordinateRegion scaledRegion = [self.mapView regionThatFits:region];
     [self.mapView setRegion:scaledRegion animated:YES];
+}
+
+#pragma mark - MKMapViewDelegate methods
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay
+{
+    MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
+    circleRenderer.strokeColor = [UIColor redColor];
+    circleRenderer.lineWidth = 1.0;
+    circleRenderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.2];
+    return circleRenderer;
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    MKPinAnnotationView *view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"GeofenceAnnotation"];
+    view.pinColor = MKPinAnnotationColorRed;
+    view.canShowCallout = YES;
+    return view;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+
 }
 
 @end
