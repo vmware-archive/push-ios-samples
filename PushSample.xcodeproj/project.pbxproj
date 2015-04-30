@@ -11,6 +11,8 @@
 		D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ABDA119D1BB8A0092BFB7 /* Settings.m */; };
 		E7226B5F1987F61C00ABD0E5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */; };
 		F114D27D190958030008BE3C /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F114D27C190958030008BE3C /* Pivotal.plist */; };
+		F12C79C91AF2732C00556DAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12C79C81AF2732C00556DAE /* MapViewController.m */; };
+		F12C79CB1AF2739B00556DAE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C79CA1AF2739B00556DAE /* MapKit.framework */; };
 		F1FDE1B218D7806B009EBE38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1B018D7806B009EBE38 /* InfoPlist.strings */; };
 		F1FDE1B418D7806B009EBE38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B318D7806B009EBE38 /* main.m */; };
 		F1FDE1B818D7806B009EBE38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B718D7806B009EBE38 /* AppDelegate.m */; };
@@ -30,6 +32,9 @@
 		E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		F070C8BF7425886F6690AB66 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F114D27C190958030008BE3C /* Pivotal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Pivotal.plist; sourceTree = "<group>"; };
+		F12C79C71AF2732C00556DAE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		F12C79C81AF2732C00556DAE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		F12C79CA1AF2739B00556DAE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F1FDE1A418D7806B009EBE38 /* PushSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1FDE1AF18D7806B009EBE38 /* PushSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PushSample-Info.plist"; sourceTree = "<group>"; };
 		F1FDE1B118D7806B009EBE38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -54,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12C79CB1AF2739B00556DAE /* MapKit.framework in Frameworks */,
 				9BA17B6C8B044B3BBF263058 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +79,7 @@
 		6773DF5A92AB4D20BED68347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F12C79CA1AF2739B00556DAE /* MapKit.framework */,
 				545A6EF71EAC4A33AFE4ECC8 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -165,6 +172,8 @@
 			children = (
 				F1FDE1E718D78115009EBE38 /* LogTableViewController.h */,
 				F1FDE1E818D78115009EBE38 /* LogTableViewController.m */,
+				F12C79C71AF2732C00556DAE /* MapViewController.h */,
+				F12C79C81AF2732C00556DAE /* MapViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -289,6 +298,7 @@
 				F1FDE1F418D78115009EBE38 /* LogItemCell.m in Sources */,
 				F1FDE1F018D78115009EBE38 /* BackEndMessageRequest.m in Sources */,
 				F1FDE1B818D7806B009EBE38 /* AppDelegate.m in Sources */,
+				F12C79C91AF2732C00556DAE /* MapViewController.m in Sources */,
 				F1FDE1F218D78115009EBE38 /* LogTableViewController.m in Sources */,
 				F1FDE1B418D7806B009EBE38 /* main.m in Sources */,
 				F1FDE1EF18D78115009EBE38 /* LogItem.m in Sources */,
@@ -342,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -374,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -396,7 +406,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = PushSample;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -419,7 +429,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = PushSample;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

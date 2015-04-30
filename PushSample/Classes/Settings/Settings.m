@@ -12,6 +12,6 @@
 // These settings are NOT used when registering with the server.  Please see the file
 // "PCFParameters.plist" to change the registration parameters.
 
-NSString *const APP_UUID = @"3f19f4a4-67b4-45a9-aa19-e73b9fc8bc68";
-NSString *const API_KEY = @"92d293de-ebf7-4426-8546-b98c8ebb4333";
-NSString *const BACK_END_PUSH_MESSAGE_API = @"http://transit-push.cfapps.io/v1/push";
+NSString *const APP_UUID = @"fddb5fd2-85af-45a6-b828-9efaa66f019c";
+NSString *const API_KEY = @"25eb569a-750a-4c3f-9e7b-75be9097dd2b";
+NSString *const BACK_END_PUSH_MESSAGE_API = @"http://them-pirates.cfapps.io/v1/push";
