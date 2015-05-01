@@ -4,11 +4,14 @@
 
 #import <PCFPush/PCFPushDebug.h>
 #import <PCFPush/PCFPushPersistentStorage.h>
+#import <CoreLocation/CoreLocation.h>
 #import "LogItem.h"
 #import "LogItemCell.h"
 #import "LogTableViewController.h"
 #import "BackEndMessageRequest.h"
 #import "Settings.h"
+#import "PCFPushGeofencePersistentStore.h"
+#import "PCFPushGeofenceRegistrar.h"
 
 @interface LogTableViewController ()
 
@@ -40,18 +43,15 @@
     }];
 
     // Set up tool bar buttons
-    UIBarButtonItem *copyButton = [[UIBarButtonItem alloc] initWithTitle:@"Copy" style:UIBarButtonItemStylePlain target:self action:@selector(copyButtonPressed)];
-    UIBarButtonItem *trashButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(trashButtonPressed)];
     UIBarButtonItem *sendButtonWithoutCategory = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStylePlain target:self action:@selector(sendButtonWithoutCategoryPressed)];
-    UIBarButtonItem *sendButtonWithCategory = [[UIBarButtonItem alloc] initWithTitle:@"Send w/Cat." style:UIBarButtonItemStylePlain target:self action:@selector(sendButtonWithCategoryPressed)];
+    UIBarButtonItem *sendButtonWithCategory = [[UIBarButtonItem alloc] initWithTitle:@"Send w/Category" style:UIBarButtonItemStylePlain target:self action:@selector(sendButtonWithCategoryPressed)];
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *moreActions = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(moreActionsPressed)];
 
-    [self setToolbarItems:@[copyButton, space, sendButtonWithoutCategory, space, sendButtonWithCategory, space, trashButton] animated:NO];
+    [self setToolbarItems:@[sendButtonWithoutCategory, space, sendButtonWithCategory, space, moreActions] animated:NO];
 
-    [self addLogItem:@"Press the \"Copy\" button below to copy the log to the clipboard." timestamp:[NSDate date]];
     [self addLogItem:@"Press the \"Send\" button below to send a push message via the back-end server." timestamp:[NSDate date]];
     [self addLogItem:@"Press the \"Send w/Cat.\" button below to send a push message with a category via the back-end server." timestamp:[NSDate date]];
-    [self addLogItem:@"Press the \"Trash\" button below to clear the log contents." timestamp:[NSDate date]];
 
     [self updateCurrentBaseRowColour];
 }
@@ -99,6 +99,43 @@
     [alert show];
 }
 
+- (void) moreActionsPressed
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Options"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Clear Registration", nil];
+
+    [sheet showInView:UIApplication.sharedApplication.keyWindow];
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            [self copyButtonPressed];
+            break;
+        case 1:
+            [self clearLogPressed];
+            break;
+        case 2:
+            [self clearRegistrationPressed];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)clearRegistrationPressed
+{
+    PCFPushGeofencePersistentStore *store = [[PCFPushGeofencePersistentStore alloc] initWithFileManager:NSFileManager.defaultManager];
+    [store reset];
+    PCFPushGeofenceRegistrar *registrar = [[PCFPushGeofenceRegistrar alloc] initWithLocationManager:[[CLLocationManager alloc] init]];
+    [registrar reset];
+    [PCFPushPersistentStorage reset];
+}
+
 - (void) copyEntireLog
 {
     NSMutableString *s = [NSMutableString string];
@@ -115,7 +152,7 @@
     [pb setString:s];
 }
 
-- (void) trashButtonPressed
+- (void)clearLogPressed
 {
     self.logItems = [NSMutableArray array];
     [self.tableView reloadData];
@@ -159,14 +196,14 @@
     LogItemCell *cell = [tableView dequeueReusableCellWithIdentifier:LOG_ITEM_CELL forIndexPath:indexPath];
     cell.userInteractionEnabled = NO;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    LogItem *logItem = (LogItem*) self.logItems[indexPath.row];
+    LogItem *logItem = (LogItem*) self.logItems[(NSUInteger)indexPath.row];
     [cell setLogItem:logItem containerSize:self.view.frame.size];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LogItem *item = self.logItems[indexPath.row];
+    LogItem *item = self.logItems[(NSUInteger)indexPath.row];
     CGFloat height = [LogItemCell heightForCellWithText:item.message containerSize:self.view.frame.size];
     return height;
 }
