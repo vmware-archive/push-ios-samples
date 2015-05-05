@@ -13,18 +13,29 @@
 #define MINIMUM_VISIBLE_LATITUDE 0.01
 #define METERS_PER_DEGREEE_LATITUDE 111131.74
 
+@interface MapViewController()
+
+@property (nonatomic) UILabel *notificationLabel;
+@property (nonatomic) NSInteger notificationCount;
+
+@end
+
 @implementation MapViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.notificationCount = 0;
     self.mapView.showsUserLocation = YES;
+    self.navigationController.toolbarHidden = YES;
     [self drawGeofences];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(geofencesUpdated:) name:@"pivotal.push.geofences.updated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localNotificationReceived:) name:@"pivotal.push.demo.localnotification" object:nil];
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -37,8 +48,32 @@
     [self drawGeofences];
 }
 
+- (void) localNotificationReceived:(NSNotification*)notification
+{
+    if (!self.notificationLabel) {
+        self.notificationLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 5.0, 310.0, 30.0)];
+        self.notificationLabel.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:self.notificationLabel];
+    }
+    UILocalNotification *n = (UILocalNotification*) notification.object;
+    self.notificationLabel.text = n.alertBody;
+    self.notificationCount += 1;
+
+    __weak MapViewController *mapViewController = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (mapViewController) {
+            mapViewController.notificationCount -= 1;
+            if (!mapViewController.notificationCount) {
+                [mapViewController.notificationLabel removeFromSuperview];
+                mapViewController.notificationLabel = nil;
+            }
+        }
+    });
+}
+
 - (void) drawGeofences
 {
+    
     [self clearAllGeofences];
     NSArray *geofences = [self loadGeofences];
     if (!geofences) {
@@ -143,11 +178,6 @@
     view.pinColor = MKPinAnnotationColorRed;
     view.canShowCallout = YES;
     return view;
-}
-
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
-{
-
 }
 
 @end

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd"
+version="1.1" 
+creator="gpx-poi.com">
+
+  <wpt lat="43.622905" lon="-79.335365"> <time>2015-05-01T20:12:58Z</time> <name>Tommy Thompson Park</name> </wpt>
+  <wpt lat="43.623153" lon="-79.378967"> <time>2015-05-01T20:13:56Z</time> <name>Centre Island</name> </wpt>
+  <wpt lat="43.642411" lon="-79.461708"> <time>2015-05-01T20:14:21Z</time> <name>High Park</name> </wpt>
+  <wpt lat="43.720746" lon="-79.357681"> <time>2015-05-01T20:15:04Z</time> <name>Sunnybrook Park</name> </wpt>
+  <wpt lat="43.654335" lon="-79.400940"> <time>2015-05-01T20:15:32Z</time> <name>Kensington Market</name> </wpt>
+  <wpt lat="43.649926" lon="-79.375792"> <time>2015-05-01T20:15:58Z</time> <name>Pivotal Labs</name> </wpt>
+
+</gpx>
