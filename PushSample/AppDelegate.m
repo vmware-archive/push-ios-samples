@@ -2,6 +2,7 @@
 //  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import <PCFPush/PCFPush.h>
 #import <PCFPush/PCFPushDebug.h>
 #import "AppDelegate.h"
@@ -9,6 +10,13 @@
 NSString * const kNotificationCategoryIdent  = @"ACTIONABLE";
 NSString * const kNotificationActionOneIdent = @"ACTION_ONE";
 NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
+
+@interface AppDelegate()
+
+// Required to monitor geofences on iOS 8.0+
+@property (nonatomic) CLLocationManager *locationManager;
+
+@end
 
 @implementation AppDelegate
 
@@ -32,6 +40,10 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
         // iOS 8.0 +
         [application registerUserNotificationSettings:[self getUserNotificationSettings]];
         [application registerForRemoteNotifications];
+        
+        // Required before geofences can be monitored on iOS 8.0+
+        self.locationManager = [[CLLocationManager alloc] init];
+        [self.locationManager requestAlwaysAuthorization];
 
     } else {
 
@@ -119,6 +131,15 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 {
     // Clear the badge number displayed on the application icon.
     application.applicationIconBadgeNumber = 0;
+}
+
+#pragma mark - Handling local notifications
+
+- (void) application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    PCFPushLog(@"Received local notification '%@'", notification.alertBody);
+    NSNotification *n = [NSNotification notificationWithName:@"pivotal.push.demo.localnotification" object:notification];
+    [[NSNotificationCenter defaultCenter] postNotification:n];
 }
 
 #pragma mark - Helpers

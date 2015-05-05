@@ -5,7 +5,8 @@
         {
             "id": 5,
             "data": {
-                "message": "eating"
+                "ios":{"alertBody":"Eating here!"},
+                "android":{"message":"Eating here!"}
             },
             "expiry_time": 2056720182000,
             "trigger_type": "enter",
@@ -22,7 +23,8 @@
         {
             "id": 10,
             "data": {
-                "message": "coding"
+                "ios":{"alertBody":"Coding here!"},
+                "android":{"message":"Coding here!"}
             },
             "expiry_time": 2056720182000,
             "trigger_type": "enter",
@@ -39,7 +41,8 @@
         {
             "id": 44,
             "data": {
-                "message": "Various Nice Parks"
+                "ios":{"alertBody":"Various nice parks here!"},
+                "android":{"message":"Various nice parks here!"}
             },
             "expiry_time": 2056720182000,
             "trigger_type": "enter",
