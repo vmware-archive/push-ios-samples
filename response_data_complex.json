@@ -9,7 +9,7 @@
                 "android":{"message":"Eating here!"}
             },
             "expiry_time": 2056720182000,
-            "trigger_type": "enter",
+            "trigger_type": "enter_or_exit",
             "locations": [
                 {
                     "id": 88,
@@ -27,7 +27,7 @@
                 "android":{"message":"Coding here!"}
             },
             "expiry_time": 2056720182000,
-            "trigger_type": "enter",
+            "trigger_type": "exit",
             "locations": [
                 {
                     "id": 66,
