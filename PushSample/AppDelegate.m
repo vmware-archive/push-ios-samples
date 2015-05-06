@@ -138,7 +138,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 
 - (void) application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    PCFPushLog(@"Received local notification '%@'", notification.alertBody);
+    PCFPushLog(@"Received %@ local notification '%@'", notification.userInfo[@"pivotal.push.geofence_trigger_condition"], notification.alertBody);
     NSNotification *n = [NSNotification notificationWithName:@"pivotal.push.demo.localnotification" object:notification];
     [[NSNotificationCenter defaultCenter] postNotification:n];
 }
