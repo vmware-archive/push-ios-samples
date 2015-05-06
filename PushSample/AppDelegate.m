@@ -100,8 +100,9 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 // not running (e.g.: in the background).
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
+    [self handleRemoteNotification:userInfo];
+
     [PCFPush didReceiveRemoteNotification:userInfo completionHandler:^(BOOL wasIgnored, UIBackgroundFetchResult fetchResult, NSError *error) {
-        [self handleRemoteNotification:userInfo];
         if (completionHandler) {
             completionHandler(fetchResult);
         }

@@ -11,7 +11,7 @@ UPDATE_JSON=`jq '.|tostring' < ${RESPONSE_DATA_JSON}`
 
 http -v -a ${APPUUID}:${APPKEY} http://them-pirates.cfapps.io/v1/push <<HTTPBODY
   {"message":
-    {"body":"hello rob and anisha!",
+    {
       "custom":
         {"ios":
           {"content-available":true,
