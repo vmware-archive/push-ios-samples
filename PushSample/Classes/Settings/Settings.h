@@ -7,3 +7,10 @@
 OBJC_EXTERN NSString *const APP_UUID;
 OBJC_EXTERN NSString *const API_KEY;
 OBJC_EXTERN NSString *const BACK_END_PUSH_MESSAGE_API;
+
+@interface Settings : NSObject
+
++ (void) setTag:(NSString*)tag;
++ (NSString*) tag;
+
+@end

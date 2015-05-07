@@ -11,6 +11,7 @@
 @property (nonatomic) NSString *messageBody;
 @property (nonatomic) NSString *category;
 @property (nonatomic) NSArray *targetDevices;
+@property (nonatomic) NSSet *tags;
 
 - (void) sendMessage;
 

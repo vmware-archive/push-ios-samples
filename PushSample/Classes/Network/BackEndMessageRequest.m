@@ -81,7 +81,12 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
         message = @{ @"body" : self.messageBody};
     }
 
-    id target = @{ @"platform":@"ios", @"devices": self.targetDevices };
+    id target;
+    if (self.tags) {
+        target = @{@"platform" : @"ios", @"tags" : self.tags.allObjects};
+    } else {
+        target = @{@"platform" : @"ios", @"devices" : self.targetDevices};
+    }
 
     return @{ @"message" : message, @"target" : target };
 }

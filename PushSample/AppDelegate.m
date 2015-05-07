@@ -6,6 +6,7 @@
 #import <PCFPush/PCFPush.h>
 #import <PCFPush/PCFPushDebug.h>
 #import "AppDelegate.h"
+#import "Settings.h"
 
 NSString * const kNotificationCategoryIdent  = @"ACTIONABLE";
 NSString * const kNotificationActionOneIdent = @"ACTION_ONE";
@@ -75,7 +76,12 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     //
     // Optional: You can pass blocks to get callbacks after registration succeeds or fails.
     //
-    [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken tags:nil deviceAlias:UIDevice.currentDevice.name success:^{
+    NSSet *tags = nil;
+    if (Settings.tag) {
+        tags  = [NSSet setWithObject:Settings.tag];
+    }
+
+    [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken tags:tags deviceAlias:UIDevice.currentDevice.name success:^{
         PCFPushLog(@"CF registration succeeded!");
     } failure:^(NSError *error) {
         PCFPushLog(@"CF registration failed: %@", error);
