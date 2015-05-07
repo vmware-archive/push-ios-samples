@@ -27,7 +27,6 @@
     [super viewDidLoad];
     self.notificationCount = 0;
     self.mapView.showsUserLocation = YES;
-    self.navigationController.toolbarHidden = YES;
     [self drawGeofences];
 }
 
@@ -36,6 +35,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(geofencesUpdated:) name:@"pivotal.push.geofences.updated" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localNotificationReceived:) name:@"pivotal.push.demo.localnotification" object:nil];
+    self.navigationController.toolbarHidden = YES;
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -73,7 +73,6 @@
 
 - (void) drawGeofences
 {
-    
     [self clearAllGeofences];
     NSArray *geofences = [self loadGeofences];
     if (!geofences) {
@@ -87,7 +86,7 @@
         CLLocationCoordinate2D centre = CLLocationCoordinate2DMake(((NSString*)(geofence[@"lat"])).doubleValue, ((NSString*)(geofence[@"long"])).doubleValue);
         MKCircle *circle = [MKCircle circleWithCenterCoordinate:centre radius:radius];
         circle.title = geofence[@"name"];
-        circle.subtitle = [@"Expires " stringByAppendingString:[NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
+        circle.subtitle = [NSString stringWithFormat:@"Expires %@\rTags: %@", [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle], @"SOME TAGS"];
         [self.mapView addOverlay:circle];
         [self.mapView addAnnotation:circle];
     }
