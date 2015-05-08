@@ -1,0 +1,85 @@
+{
+    "num": 3,
+    "last_modified": 1424309210305,
+    "geofences": [
+        {
+            "id": 5,
+            "data": {
+                "ios":{"alertBody":"Eating here!"},
+                "android":{"message":"Eating here!"}
+            },
+            "expiry_time": 2056720182000,
+            "tags":["ALPHA"],
+            "trigger_type": "enter_or_exit",
+            "locations": [
+                {
+                    "id": 88,
+                    "name": "Kensington Market",
+                    "lat": 43.654834,
+                    "long": -79.4028751,
+                    "rad": 400
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "data": {
+                "ios":{"alertBody":"Coding here!"},
+                "android":{"message":"Coding here!"}
+            },
+            "expiry_time": 2056720182000,
+            "tags":["BETA"],
+            "trigger_type": "exit",
+            "locations": [
+                {
+                    "id": 66,
+                    "name": "Pivotal Toronto",
+                    "lat": 43.649949,
+                    "long": -79.375754,
+                    "rad": 500
+                }
+            ]
+        },
+        {
+            "id": 44,
+            "data": {
+                "ios":{"alertBody":"Various nice parks here!"},
+                "android":{"message":"Various nice parks here!"}
+            },
+            "expiry_time": 2056720182000,
+            "tags":["GAMMA", "OMEGA"],
+            "trigger_type": "enter",
+            "locations": [
+                {
+                    "id": 66,
+                    "name": "High Park",
+                    "lat": 43.646548,
+                    "long": -79.46369,
+                    "rad": 900
+                },
+                {
+                    "id": 77,
+                    "name": "Tommy Thompson Park",
+                    "lat": 43.628246,
+                    "long": -79.329028,
+                    "rad": 1800
+
+                },
+                {
+                    "id": 82,
+                    "name": "Centre Island",
+                    "lat": 43.6229772,
+                    "long": -79.3771699,
+                    "rad": 1200
+                },
+                {
+                    "id": 83,
+                    "name": "Sunnybrook Park",
+                    "lat": 43.724312,
+                    "long": -79.359269,
+                    "rad": 1100
+                }
+            ]
+        }
+    ]
+}

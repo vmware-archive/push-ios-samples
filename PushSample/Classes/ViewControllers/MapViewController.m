@@ -173,10 +173,13 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    MKPinAnnotationView *view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"GeofenceAnnotation"];
-    view.pinColor = MKPinAnnotationColorRed;
-    view.canShowCallout = YES;
-    return view;
+    if ([annotation isKindOfClass:[MKCircle class]]) {
+        MKPinAnnotationView *view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"GeofenceAnnotation"];
+        view.pinColor = MKPinAnnotationColorGreen;
+        view.canShowCallout = YES;
+        return view;
+    }
+    return nil; // Let the system decide which view to use for the other annotations (e.g.: the current user location).
 }
 
 @end
