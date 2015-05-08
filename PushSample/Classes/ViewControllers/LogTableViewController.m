@@ -88,7 +88,7 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Clear Registration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Send to Tag", @"Send with Category", nil];
+                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Clear Registration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Send to Tag", @"Send with Category", @"About", nil];
 
     sheet.tag = ACTION_SHEET_ACTIONS;
 
@@ -106,6 +106,7 @@
             case 4: [self unsubscribeFromTag]; break;
             case 5: [self sendWithTagPressed]; break;
             case 6: [self sendWithCategoryPressed]; break;
+            case 7: [self aboutPressed]; break;
             default: break;
         }
 
@@ -160,6 +161,15 @@
         [s appendString:[NSString stringWithFormat:@"%@\t%@\n", logItem.timestamp, logItem.message]];
     }
     [self copyStringToPasteboard:s];
+}
+
+- (void) aboutPressed
+{
+    NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString* version = [infoDict objectForKey:@"CFBundleVersion"];
+    NSString *message = [@"PCF Push version " stringByAppendingString:version];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"PCF Push Test" message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [alertView show];
 }
 
 - (void) copyStringToPasteboard:(NSString*)s
