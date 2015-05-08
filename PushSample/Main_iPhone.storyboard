@@ -66,7 +66,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PHL-d7-Aos">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PHL-d7-Aos">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <connections>
                                     <outlet property="delegate" destination="rgN-Vt-LBR" id="EFB-mP-nuy"/>
@@ -74,6 +74,12 @@
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PHL-d7-Aos" firstAttribute="bottom" secondItem="cSC-Ii-bej" secondAttribute="top" id="1ZR-td-jag"/>
+                            <constraint firstItem="PHL-d7-Aos" firstAttribute="leading" secondItem="Ib8-3j-0ae" secondAttribute="leading" id="QPV-FU-qIK"/>
+                            <constraint firstAttribute="trailing" secondItem="PHL-d7-Aos" secondAttribute="trailing" id="cLL-Tp-8I1"/>
+                            <constraint firstItem="PHL-d7-Aos" firstAttribute="top" secondItem="ngO-gb-Xya" secondAttribute="bottom" id="fkF-T9-Pkw"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Pfk-4y-QN5"/>
