@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>PCF Push would like to read your current location and monitor geofences.</string>
+	<string>PCF Push would like to read your current location and monitor geofences (if enabled).</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

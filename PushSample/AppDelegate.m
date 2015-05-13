@@ -109,6 +109,11 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     [self handleRemoteNotification:userInfo];
 
     [PCFPush didReceiveRemoteNotification:userInfo completionHandler:^(BOOL wasIgnored, UIBackgroundFetchResult fetchResult, NSError *error) {
+        
+        if (wasIgnored) {
+            PCFPushLog(@"PCFPush ignored this remote notification.");
+        }
+        
         if (completionHandler) {
             completionHandler(fetchResult);
         }
