@@ -2,15 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>pivotal.push.geofencesEnabled</key>
+	<true/>
 	<key>pivotal.push.serviceUrl</key>
 	<string>http://them-pirates.cfapps.io</string>
 	<key>pivotal.push.platformUuidDevelopment</key>
 	<string>5053a7f8-d5e3-426c-a2ed-ccd0f3bdccc3</string>
-    <key>pivotal.push.platformSecretDevelopment</key>
-    <string>7be665c8-ae40-40ab-af52-8bd718a18a4a</string>
-    <key>pivotal.push.platformUuidProduction</key>
-    <string>5053a7f8-d5e3-426c-a2ed-ccd0f3bdccc3</string>
-    <key>pivotal.push.platformSecretProduction</key>
-    <string>7be665c8-ae40-40ab-af52-8bd718a18a4a</string>
+	<key>pivotal.push.platformSecretDevelopment</key>
+	<string>7be665c8-ae40-40ab-af52-8bd718a18a4a</string>
+	<key>pivotal.push.platformUuidProduction</key>
+	<string>5053a7f8-d5e3-426c-a2ed-ccd0f3bdccc3</string>
+	<key>pivotal.push.platformSecretProduction</key>
+	<string>7be665c8-ae40-40ab-af52-8bd718a18a4a</string>
 </dict>
 </plist>
