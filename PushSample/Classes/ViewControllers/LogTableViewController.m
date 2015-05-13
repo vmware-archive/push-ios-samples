@@ -88,7 +88,7 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Clear Registration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Send to Tag", @"Send with Category", @"About", nil];
+                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Unregistration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Send to Tag", @"Send with Category", @"About", nil];
 
     sheet.tag = ACTION_SHEET_ACTIONS;
 
@@ -101,7 +101,7 @@
         switch (buttonIndex) {
             case 0: [self copyButtonPressed]; break;
             case 1: [self clearLogPressed]; break;
-            case 2: [self clearRegistrationPressed]; break;
+            case 2: [self unregistrationPressed]; break;
             case 3: [self subscribeToTag]; break;
             case 4: [self unsubscribeFromTag]; break;
             case 5: [self sendWithTagPressed]; break;
@@ -145,13 +145,13 @@
     }
 }
 
-- (void)clearRegistrationPressed
+- (void)unregistrationPressed
 {
-    PCFPushGeofencePersistentStore *store = [[PCFPushGeofencePersistentStore alloc] initWithFileManager:NSFileManager.defaultManager];
-    [store reset];
-    PCFPushGeofenceRegistrar *registrar = [[PCFPushGeofenceRegistrar alloc] initWithLocationManager:[[CLLocationManager alloc] init]];
-    [registrar reset];
-    [PCFPushPersistentStorage reset];
+    [PCFPush unregisterFromPCFPushNotificationsWithSuccess:^{
+        PCFPushLog(@"Successfully unregistered.");
+    } failure:^(NSError *error) {
+        PCFPushLog(@"Error unregistering: %@", error);
+    }];
 }
 
 - (void) copyEntireLog
