@@ -10,7 +10,7 @@
             },
             "expiry_time": 2056720182000,
             "tags":["ALPHA"],
-            "trigger_type": "enter_or_exit",
+            "trigger_type": "enter",
             "locations": [
                 {
                     "id": 88,
