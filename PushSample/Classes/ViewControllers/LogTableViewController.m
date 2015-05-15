@@ -68,6 +68,12 @@
 {
     [super viewDidAppear:animated];
     self.navigationController.toolbarHidden = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(geofenceStatusChanged:) name:PCF_PUSH_GEOFENCE_STATUS_UPDATE_NOTIFICATION object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void) copyButtonPressed
@@ -226,6 +232,12 @@
     sheet.tag = ACTION_SHEET_SUBSCRIBE_TO_TAG;
 
     [sheet showInView:UIApplication.sharedApplication.keyWindow];
+}
+
+- (void) geofenceStatusChanged:(NSNotification*)notification
+{
+    PCFPushGeofenceStatus *status = [PCFPush geofenceStatus];
+    PCFPushLog(@"%@", status);
 }
 
 #pragma mark - Sending Messages
