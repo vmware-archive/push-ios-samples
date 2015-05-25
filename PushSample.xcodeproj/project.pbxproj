@@ -10,6 +10,7 @@
 		9BA17B6C8B044B3BBF263058 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545A6EF71EAC4A33AFE4ECC8 /* libPods.a */; };
 		D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ABDA119D1BB8A0092BFB7 /* Settings.m */; };
 		E7226B5F1987F61C00ABD0E5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */; };
+		F1103A7C1B13C04100C5420D /* GeofenceOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F1103A7B1B13C04100C5420D /* GeofenceOverlay.m */; };
 		F114D27D190958030008BE3C /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F114D27C190958030008BE3C /* Pivotal.plist */; };
 		F12C79C91AF2732C00556DAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12C79C81AF2732C00556DAE /* MapViewController.m */; };
 		F12C79CB1AF2739B00556DAE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C79CA1AF2739B00556DAE /* MapKit.framework */; };
@@ -31,6 +32,8 @@
 		D49ABDA119D1BB8A0092BFB7 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
 		E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		F070C8BF7425886F6690AB66 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F1103A7A1B13C04100C5420D /* GeofenceOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceOverlay.h; sourceTree = "<group>"; };
+		F1103A7B1B13C04100C5420D /* GeofenceOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeofenceOverlay.m; sourceTree = "<group>"; };
 		F114D27C190958030008BE3C /* Pivotal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Pivotal.plist; sourceTree = "<group>"; };
 		F12C79C71AF2732C00556DAE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F12C79C81AF2732C00556DAE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 		F1FDE1DD18D78115009EBE38 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F1103A7A1B13C04100C5420D /* GeofenceOverlay.h */,
+				F1103A7B1B13C04100C5420D /* GeofenceOverlay.m */,
 				F1FDE1DE18D78115009EBE38 /* LogItem.h */,
 				F1FDE1DF18D78115009EBE38 /* LogItem.m */,
 			);
@@ -303,6 +308,7 @@
 				F1FDE1B418D7806B009EBE38 /* main.m in Sources */,
 				F1FDE1EF18D78115009EBE38 /* LogItem.m in Sources */,
 				D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */,
+				F1103A7C1B13C04100C5420D /* GeofenceOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
