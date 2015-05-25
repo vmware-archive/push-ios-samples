@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "GeofenceOverlay.h"
 #import "PCFPushDebug.h"
 
 #define MAP_PADDING 1.1
@@ -84,7 +85,9 @@
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:((NSString*)(geofence[@"expiry"])).doubleValue];
         CLLocationDistance radius = ((NSString*)(geofence[@"rad"])).doubleValue;
         CLLocationCoordinate2D centre = CLLocationCoordinate2DMake(((NSString*)(geofence[@"lat"])).doubleValue, ((NSString*)(geofence[@"long"])).doubleValue);
-        MKCircle *circle = [MKCircle circleWithCenterCoordinate:centre radius:radius];
+        
+        GeofenceOverlay *circle = [GeofenceOverlay circleWithCenterCoordinate:centre radius:radius];
+        circle.expiry = date;
         circle.title = geofence[@"name"];
         circle.subtitle = [NSString stringWithFormat:@"Expires %@\rTags: %@", [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle], @"SOME TAGS"];
         [self.mapView addOverlay:circle];
@@ -94,8 +97,9 @@
     if (self.mapView.overlays.count > 0) {
         [self zoomToOverlayBounds:self.mapView.overlays];
     }
+    
+    [self setupExpiryTimer:geofences];
 }
-
 
 - (void) clearAllGeofences
 {
@@ -142,7 +146,7 @@
     [self setMapRegionForMinLat:minLatitude minLong:minLongitude maxLat:maxLatitude maxLong:maxLongitude];
 }
 
--(void) setMapRegionForMinLat:(double)minLatitude minLong:(double)minLongitude maxLat:(double)maxLatitude maxLong:(double)maxLongitude
+- (void) setMapRegionForMinLat:(double)minLatitude minLong:(double)minLongitude maxLat:(double)maxLatitude maxLong:(double)maxLongitude
 {
     MKCoordinateRegion region;
     region.center.latitude = (minLatitude + maxLatitude) / 2;
@@ -160,15 +164,45 @@
     [self.mapView setRegion:scaledRegion animated:YES];
 }
 
+- (void) setupExpiryTimer:(NSArray*)geofences
+{
+    NSMutableArray *expiryTimes = [NSMutableArray array];
+    
+    for (NSDictionary *geofence in geofences) {
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:((NSString*)(geofence[@"expiry"])).doubleValue];
+        if (!isExpired(date)) {
+            [expiryTimes addObject:date];
+        }
+    }
+    
+    if (expiryTimes.count <= 0) {
+        return;
+    }
+    
+    [expiryTimes sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2];
+    }];
+    
+    NSDate *firstExpiry = expiryTimes[0];
+    
+    __weak MapViewController *this = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(firstExpiry.timeIntervalSinceNow * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (this) {
+            [this drawGeofences];
+        }
+    });
+}
+
 #pragma mark - MKMapViewDelegate methods
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay
 {
-    MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
-    circleRenderer.strokeColor = [UIColor redColor];
-    circleRenderer.lineWidth = 1.0;
-    circleRenderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.2];
-    return circleRenderer;
+    if ([overlay isKindOfClass:[GeofenceOverlay class]]) {
+        GeofenceOverlay *geofenceOverlay = (GeofenceOverlay*) overlay;
+        return geofenceOverlay.circleRenderer;
+    }
+    
+    return nil;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
