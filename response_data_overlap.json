@@ -1,0 +1,60 @@
+{
+    "num": 3,
+    "last_modified": 1424309210305,
+    "geofences": [
+        {
+            "id": 5,
+            "data": {
+                "ios":{"alertBody":"Eating here!"},
+                "android":{"message":"Eating here!"}
+            },
+            "expiry_time": 2056720182000,
+            "trigger_type": "enter",
+            "locations": [
+                {
+                    "id": 88,
+                    "name": "Kensington Market",
+                    "lat": 43.654834,
+                    "long": -79.4028751,
+                    "rad": 1400
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "data": {
+                "ios":{"alertBody":"Coding here!"},
+                "android":{"message":"Coding here!"}
+            },
+            "expiry_time": 2056720182000,
+            "trigger_type": "enter",
+            "locations": [
+                {
+                    "id": 66,
+                    "name": "Pivotal Toronto",
+                    "lat": 43.649949,
+                    "long": -79.375754,
+                    "rad": 1500
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "data": {
+                "ios":{"alertBody":"Crowded here!"},
+                "android":{"message":"Crowded here!"}
+            },
+            "expiry_time": 2056720182000,
+            "trigger_type": "enter",
+            "locations": [
+                {
+                    "id": 66,
+                    "name": "Downtown Toronto",
+                    "lat": 43.653226,
+                    "long": -79.383184,
+                    "rad": 2500
+                }
+            ]
+        }
+    ]
+}

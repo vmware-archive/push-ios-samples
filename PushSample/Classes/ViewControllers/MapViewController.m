@@ -12,7 +12,7 @@
 
 #define MAP_PADDING 1.1
 #define MINIMUM_VISIBLE_LATITUDE 0.01
-#define METERS_PER_DEGREEE_LATITUDE 111131.74
+#define METERS_PER_DEGREE_LATITUDE 111131.74
 
 @interface MapViewController()
 
@@ -137,10 +137,10 @@
     __block CLLocationDegrees maxLongitude = -DBL_MAX;
 
     for (MKCircle *circle in overlays) {
-        minLatitude = fmin(circle.coordinate.latitude - (circle.radius / METERS_PER_DEGREEE_LATITUDE), minLatitude);
-        maxLatitude = fmax(circle.coordinate.latitude + (circle.radius / METERS_PER_DEGREEE_LATITUDE), maxLatitude);
-        minLongitude = fmin(circle.coordinate.longitude - (circle.radius / METERS_PER_DEGREEE_LATITUDE), minLongitude);
-        maxLongitude = fmax(circle.coordinate.longitude + (circle.radius / METERS_PER_DEGREEE_LATITUDE), maxLongitude);
+        minLatitude = fmin(circle.coordinate.latitude - (circle.radius / METERS_PER_DEGREE_LATITUDE), minLatitude);
+        maxLatitude = fmax(circle.coordinate.latitude + (circle.radius / METERS_PER_DEGREE_LATITUDE), maxLatitude);
+        minLongitude = fmin(circle.coordinate.longitude - (circle.radius / METERS_PER_DEGREE_LATITUDE), minLongitude);
+        maxLongitude = fmax(circle.coordinate.longitude + (circle.radius / METERS_PER_DEGREE_LATITUDE), maxLongitude);
     }
 
     [self setMapRegionForMinLat:minLatitude minLong:minLongitude maxLat:maxLatitude maxLong:maxLongitude];
