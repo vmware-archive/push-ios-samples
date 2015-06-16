@@ -12,6 +12,6 @@
 // These settings are NOT used when registering with the server.  Please see the file
 // "PCFParameters.plist" to change the registration parameters.
 
-NSString *const APP_UUID = @"3f19f4a4-67b4-45a9-aa19-e73b9fc8bc68";
-NSString *const API_KEY = @"92d293de-ebf7-4426-8546-b98c8ebb4333";
-NSString *const BACK_END_PUSH_MESSAGE_API = @"http://transit-push.cfapps.io/v1/push";
+NSString *const APP_UUID = @"4db64303-faa9-46d0-b405-853eb2680213";
+NSString *const API_KEY = @"c267222c-643d-46e6-a120-b7dab2955da3";
+NSString *const BACK_END_PUSH_MESSAGE_API = @"http://push-notifications.gulch.cf-app.com/v1/push";
