@@ -4,12 +4,14 @@
 <dict>
 	<key>pivotal.push.geofencesEnabled</key>
 	<true/>
+	<key>pivotal.push.trustAllSslCertificates</key>
+	<false/>
 	<key>pivotal.push.serviceUrl</key>
-	<string>http://them-pirates.cfapps.io</string>
+	<string>http://push-notifications.gulch.cf-app.com</string>
 	<key>pivotal.push.platformUuidDevelopment</key>
-	<string>17067c6a-e4b0-449f-a131-4ec9525fba9f</string>
+	<string>f068005b-6948-40d8-8511-50ca8425c50c</string>
 	<key>pivotal.push.platformSecretDevelopment</key>
-	<string>37d061b6-8de6-454d-b055-a5e6085cce78</string>
+	<string>a084d037-e970-4ab0-a208-8e2578ffd170</string>
 	<key>pivotal.push.platformUuidProduction</key>
 	<string>5053a7f8-d5e3-426c-a2ed-ccd0f3bdccc3</string>
 	<key>pivotal.push.platformSecretProduction</key>
