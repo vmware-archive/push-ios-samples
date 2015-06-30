@@ -2,9 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>pivotal.push.pinnedSSLCertificateNames</key>
+	<array/>
 	<key>pivotal.push.geofencesEnabled</key>
 	<true/>
-	<key>pivotal.push.trustAllSslCertificates</key>
+	<key>pivotal.push.trustAllSSLCertificates</key>
 	<false/>
 	<key>pivotal.push.serviceUrl</key>
 	<string>http://push-notifications.gulch.cf-app.com</string>
