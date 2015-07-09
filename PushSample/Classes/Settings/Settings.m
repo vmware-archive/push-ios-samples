@@ -26,6 +26,6 @@
 
 @end
 
-NSString *const APP_UUID = @"4db64303-faa9-46d0-b405-853eb2680213";
-NSString *const API_KEY = @"c267222c-643d-46e6-a120-b7dab2955da3";
-NSString *const BACK_END_PUSH_MESSAGE_API = @"http://push-notifications.gulch.cf-app.com/v1/push";
+NSString *const APP_UUID = @"51c3a5e2-0d35-4de5-bb92-228efdd7d34f";
+NSString *const API_KEY = @"2afd21db-ce9f-4fca-a042-317327430fba";
+NSString *const BACK_END_PUSH_MESSAGE_API = @"http://push-api.gulch.cf-app.com/v1/push";
