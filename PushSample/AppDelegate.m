@@ -82,7 +82,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     }
 
     [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken tags:tags deviceAlias:UIDevice.currentDevice.name success:^{
-        PCFPushLog(@"CF registration succeeded!");
+        PCFPushLog(@"CF registration succeeded. The Device UUID is \"%@\".", [PCFPush deviceUuid]);
     } failure:^(NSError *error) {
         PCFPushLog(@"CF registration failed: %@", error);
     }];
