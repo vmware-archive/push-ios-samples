@@ -90,11 +90,18 @@
 
 - (void) moreActionsPressed
 {
+    NSString *geofenceOption;
+    if ([Settings areGeofencesEnabled]) {
+        geofenceOption = @"Disable geofences";
+    } else {
+        geofenceOption = @"Enable geofences";
+    }
+
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Options"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Unregistration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Send to Tag", @"Send with Category", @"About", nil];
+                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Unregistration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Send to Tag", @"Send with Category", geofenceOption, @"About", nil];
 
     sheet.tag = ACTION_SHEET_ACTIONS;
 
@@ -112,7 +119,8 @@
             case 4: [self unsubscribeFromTag]; break;
             case 5: [self sendWithTagPressed]; break;
             case 6: [self sendWithCategoryPressed]; break;
-            case 7: [self aboutPressed]; break;
+            case 7: [self toggleGeofences]; break;
+            case 8: [self aboutPressed]; break;
             default: break;
         }
 
@@ -126,6 +134,7 @@
 
 - (void)subscribeToTag:(NSString *)tag
 {
+    [self updateCurrentBaseRowColour];
     [PCFPush subscribeToTags:[NSSet setWithObject:tag] success:^{
         PCFPushLog(@"Successfully subscribed to tag '%@'", tag);
         Settings.tag = tag;
@@ -138,13 +147,13 @@
 
 - (void)unsubscribeFromTag
 {
+    [self updateCurrentBaseRowColour];
     if (!Settings.tag) {
         PCFPushLog(@"Not currently subscribed to any tags.");
     } else {
         [PCFPush subscribeToTags:[NSSet set] success:^{
             PCFPushLog(@"Successfully unsubscribed from tags.");
             Settings.tag = nil;
-            
         } failure:^(NSError *error) {
             PCFPushLog(@"Error unsubscribing from tags: %@", error);
         }];
@@ -153,6 +162,7 @@
 
 - (void)unregistrationPressed
 {
+    [self updateCurrentBaseRowColour];
     [PCFPush unregisterFromPCFPushNotificationsWithSuccess:^{
         PCFPushLog(@"Successfully unregistered.");
     } failure:^(NSError *error) {
@@ -167,6 +177,24 @@
         [s appendString:[NSString stringWithFormat:@"%@\t%@\n", logItem.timestamp, logItem.message]];
     }
     [self copyStringToPasteboard:s];
+}
+
+- (void) toggleGeofences
+{
+    [self updateCurrentBaseRowColour];
+    BOOL areGeofencesEnabled = !Settings.areGeofencesEnabled;
+    if (areGeofencesEnabled) {
+        PCFPushLog(@"Enabling geofences...");
+    } else {
+        PCFPushLog(@"Disabling geofences...");
+    }
+
+    [PCFPush setAreGeofencesEnabled:areGeofencesEnabled success:^{
+        PCFPushLog(@"Registering after successfully setting areGeofencesEnabled");
+        [Settings setAreGeofencesEnabled:areGeofencesEnabled];
+    } failure:^(NSError *error) {
+        PCFPushLog(@"Failed to set areGeofencesEnabled parameter: %@", error);
+    }];
 }
 
 - (void) aboutPressed

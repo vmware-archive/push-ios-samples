@@ -4,8 +4,6 @@
 <dict>
 	<key>pivotal.push.pinnedSslCertificateNames</key>
 	<array/>
-	<key>pivotal.push.geofencesEnabled</key>
-	<true/>
 	<key>pivotal.push.trustAllSslCertificates</key>
 	<false/>
 	<key>pivotal.push.serviceUrl</key>

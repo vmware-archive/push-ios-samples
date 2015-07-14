@@ -41,7 +41,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
         // iOS 8.0 +
         [application registerUserNotificationSettings:[self getUserNotificationSettings]];
         [application registerForRemoteNotifications];
-        
+
         // Required before geofences can be monitored on iOS 8.0+
         self.locationManager = [[CLLocationManager alloc] init];
         [self.locationManager requestAlwaysAuthorization];
@@ -81,7 +81,13 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
         tags  = [NSSet setWithObject:Settings.tag];
     }
 
-    [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken tags:tags deviceAlias:UIDevice.currentDevice.name success:^{
+    BOOL areGeofencesEnabled = Settings.areGeofencesEnabled;
+
+    [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken
+                                                       tags:tags
+                                                deviceAlias:UIDevice.currentDevice.name
+                                        areGeofencesEnabled:areGeofencesEnabled
+                                                    success:^{
         PCFPushLog(@"CF registration succeeded. The Device UUID is \"%@\".", [PCFPush deviceUuid]);
     } failure:^(NSError *error) {
         PCFPushLog(@"CF registration failed: %@", error);
@@ -109,11 +115,11 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     [self handleRemoteNotification:userInfo];
 
     [PCFPush didReceiveRemoteNotification:userInfo completionHandler:^(BOOL wasIgnored, UIBackgroundFetchResult fetchResult, NSError *error) {
-        
+
         if (wasIgnored) {
             PCFPushLog(@"PCFPush ignored this remote notification.");
         }
-        
+
         if (completionHandler) {
             completionHandler(fetchResult);
         }

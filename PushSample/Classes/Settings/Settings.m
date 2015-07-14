@@ -24,6 +24,16 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"TAG"];
 }
 
++ (void) setAreGeofencesEnabled:(BOOL)areGeofencesEnabled
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@(areGeofencesEnabled) forKey:@"ARE_GEOFENCES_ENABLED"];
+}
+
++ (BOOL) areGeofencesEnabled
+{
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"ARE_GEOFENCES_ENABLED"] boolValue];
+}
+
 @end
 
 NSString *const APP_UUID = @"51c3a5e2-0d35-4de5-bb92-228efdd7d34f";
