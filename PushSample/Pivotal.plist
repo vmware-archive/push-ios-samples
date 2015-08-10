@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>pivotal.push.areAnalyticsEnabled</key>
+	<true/>
 	<key>pivotal.push.pinnedSslCertificateNames</key>
 	<array/>
 	<key>pivotal.push.trustAllSslCertificates</key>
