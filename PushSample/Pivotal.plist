@@ -4,6 +4,10 @@
 <dict>
 	<key>pivotal.push.sslCertValidationMode</key>
 	<string>default</string>
+	<key>pivotal.push.areAnalyticsEnabled</key>
+	<true/>
+	<key>pivotal.push.pinnedSslCertificateNames</key>
+	<array/>
 	<key>pivotal.push.serviceUrl</key>
 	<string>http://push-api.gulch.cf-app.com</string>
 	<key>pivotal.push.platformUuidDevelopment</key>
