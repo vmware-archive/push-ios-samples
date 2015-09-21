@@ -221,7 +221,7 @@
 		F1FDE19C18D7806B009EBE38 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "DX123-XL";
 				TargetAttributes = {
 					F1FDE1A318D7806B009EBE38 = {
@@ -344,6 +344,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -415,6 +416,7 @@
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -438,6 +440,7 @@
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
