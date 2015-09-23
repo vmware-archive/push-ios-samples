@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>pivotal.push.sslCertValidationMode</key>
+	<string>default</string>
+	<key>pivotal.push.areAnalyticsEnabled</key>
+	<true/>
+	<key>pivotal.push.pinnedSslCertificateNames</key>
+	<array/>
+	<key>pivotal.push.serviceUrl</key>
+	<string>http://push-api.gulch.cf-app.com</string>
+	<key>pivotal.push.platformUuidDevelopment</key>
+	<string>54e98b75-789e-4653-8aae-1338987fa10a</string>
+	<key>pivotal.push.platformSecretDevelopment</key>
+	<string>7b492140-a1dc-4b60-9cc6-8faa2417c35d</string>
+	<key>pivotal.push.platformUuidProduction</key>
+	<string>54e98b75-789e-4653-8aae-1338987fa10a</string>
+	<key>pivotal.push.platformSecretProduction</key>
+	<string>7b492140-a1dc-4b60-9cc6-8faa2417c35d</string>
+</dict>
+</plist>
