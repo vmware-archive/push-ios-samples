@@ -22,6 +22,7 @@
 		F1CF4FC51BB336FD00F147FF /* PCFPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CF4FC31BB336F500F147FF /* PCFPush.framework */; };
 		F1CF4FC61BB336FD00F147FF /* PCFPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F1CF4FC31BB336F500F147FF /* PCFPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1CF4FC81BB3371800F147FF /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CF4FC71BB3371800F147FF /* Pivotal.plist */; settings = {ASSET_TAGS = (); }; };
+		F1CF4FCA1BB4765B00F147FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CF4FC91BB4765B00F147FF /* CoreLocation.framework */; };
 		F1FDE1B218D7806B009EBE38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1B018D7806B009EBE38 /* InfoPlist.strings */; };
 		F1FDE1B418D7806B009EBE38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B318D7806B009EBE38 /* main.m */; };
 		F1FDE1B818D7806B009EBE38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B718D7806B009EBE38 /* AppDelegate.m */; };
@@ -69,6 +70,7 @@
 		F15D062E1BB2F700002D181F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1CF4FC31BB336F500F147FF /* PCFPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PCFPush.framework; sourceTree = "<group>"; };
 		F1CF4FC71BB3371800F147FF /* Pivotal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pivotal.plist; sourceTree = "<group>"; };
+		F1CF4FC91BB4765B00F147FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F1FDE1A418D7806B009EBE38 /* PushSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1FDE1AF18D7806B009EBE38 /* PushSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PushSample-Info.plist"; sourceTree = "<group>"; };
 		F1FDE1B118D7806B009EBE38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1CF4FCA1BB4765B00F147FF /* CoreLocation.framework in Frameworks */,
 				F1CF4FC51BB336FD00F147FF /* PCFPush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +124,7 @@
 		6773DF5A92AB4D20BED68347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1CF4FC91BB4765B00F147FF /* CoreLocation.framework */,
 				F12C79CA1AF2739B00556DAE /* MapKit.framework */,
 				545A6EF71EAC4A33AFE4ECC8 /* libPods.a */,
 			);
@@ -144,8 +148,8 @@
 				F15D06221BB2F700002D181F /* AppDelegate.swift */,
 				F15D06241BB2F700002D181F /* ViewController.swift */,
 				F15D06261BB2F700002D181F /* Main.storyboard */,
-				F15D06291BB2F700002D181F /* Assets.xcassets */,
 				F15D062B1BB2F700002D181F /* LaunchScreen.storyboard */,
+				F15D06291BB2F700002D181F /* Assets.xcassets */,
 				F15D062E1BB2F700002D181F /* Info.plist */,
 			);
 			path = SwiftPushSample;

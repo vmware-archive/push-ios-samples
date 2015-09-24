@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HSy-1s-EI0">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -17,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IPu-d6-2Gj">
-                                <rect key="frame" x="20" y="72" width="560" height="508"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQ1-Ck-83T">
+                                <rect key="frame" x="30" y="0.0" width="537" height="600"/>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -26,15 +27,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IPu-d6-2Gj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="CSY-Ld-XQ9"/>
-                            <constraint firstItem="IPu-d6-2Gj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Fbj-n0-mxd"/>
-                            <constraint firstItem="IPu-d6-2Gj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="NSH-Bu-TuJ"/>
-                            <constraint firstAttribute="bottom" secondItem="IPu-d6-2Gj" secondAttribute="bottom" constant="20" symbolic="YES" id="oTR-sd-VR0"/>
+                            <constraint firstItem="qQ1-Ck-83T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="BfW-nC-97L"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qQ1-Ck-83T" secondAttribute="trailing" constant="13" id="K5u-L7-OVq"/>
+                            <constraint firstItem="qQ1-Ck-83T" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="OG8-ow-TOv"/>
+                            <constraint firstItem="qQ1-Ck-83T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="abQ-Dg-JCf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PCF Push Swift Sample App" id="Q1U-kl-XjW"/>
+                    <navigationItem key="navigationItem" title="PCF Push Swift Sample App" id="Q1U-kl-XjW">
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="bli-a6-8Ij">
+                            <connections>
+                                <action selector="sendButtonPressed:" destination="BYZ-38-t0r" id="pTA-Kg-69f"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="textView" destination="IPu-d6-2Gj" id="zb4-g1-ZEE"/>
+                        <outlet property="textView" destination="qQ1-Ck-83T" id="EzV-ID-1Dc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

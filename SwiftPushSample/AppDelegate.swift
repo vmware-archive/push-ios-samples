@@ -8,6 +8,7 @@
 
 import UIKit
 import PCFPush
+import CoreLocation
 
 let kNotificationCategoryIdent = "ACTIONABLE"
 let kNotificationActionOneIdent = "ACTION_ONE"
@@ -17,9 +18,13 @@ let kNotificationActionTwoIdent = "ACTION_TWO"
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var locationManager: CLLocationManager?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        locationManager = CLLocationManager()
+        locationManager?.requestAlwaysAuthorization()
+
         application.registerUserNotificationSettings(getUserNotificationSettings())
         application.registerForRemoteNotifications()
 
@@ -28,27 +33,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
 
+        ViewController.addLogMessage("Registering for PCF Push...")
+
         PCFPush.registerForPCFPushNotificationsWithDeviceToken(deviceToken,
             tags: nil,
             deviceAlias: UIDevice.currentDevice().name,
-            areGeofencesEnabled: false,
-            success: { () -> Void in
-                NSLog("CF registration succeeded. The device UUID is \"%@\"", PCFPush.deviceUuid()) },
-            failure: { (error: NSError!) -> Void in
-                NSLog("CF registration failed: %@", error); })
+            areGeofencesEnabled: true,
+            success: {
+                ViewController.addLogMessage("CF registration succeeded.")
+                ViewController.addLogMessage("The device UUID is  \(PCFPush.deviceUuid()) ") },
+            failure: { error in
+                ViewController.addLogMessage("CF registration failed: \(error)") })
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        NSLog("APNS registration failed: %@", error)
+        ViewController.addLogMessage("APNS registration failed: \(error)")
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: UIBackgroundFetchResult -> Void) {
         
-        PCFPush.didReceiveRemoteNotification(userInfo) { (wasIgnored: Bool, fetchResult: UIBackgroundFetchResult, error: NSError!) -> Void in
+        PCFPush.didReceiveRemoteNotification(userInfo) { wasIgnored, fetchResult, error in
             completionHandler(fetchResult)
         }
         
-        NSLog("Received push message: %@", userInfo)
+        ViewController.addLogMessage("Received push message: \(userInfo)")
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        if let userInfo = notification.userInfo {
+            if let condition = userInfo["pivotal.push.geofence_trigger_condition"] {
+                if let alertBody = notification.alertBody {
+                    ViewController.addLogMessage("Received \(condition) geofence '\(alertBody)'.")
+                } else {
+                    ViewController.addLogMessage("Received \(condition) geofence.")
+                }
+            }
+        }
     }
     
     func getUserNotificationSettings() -> UIUserNotificationSettings {
