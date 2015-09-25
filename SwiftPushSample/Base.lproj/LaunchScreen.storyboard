@@ -16,8 +16,25 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PCF Push Notification Service Swift Sample App" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBi-PX-kXi">
+                                <rect key="frame" x="157" y="257" width="286" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="9c5-3y-dM0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.074509803921568626" green="0.50196078431372548" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fBi-PX-kXi" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Yw-BR-3tM"/>
+                            <constraint firstItem="fBi-PX-kXi" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="PVZ-n6-KrG"/>
+                            <constraint firstItem="fBi-PX-kXi" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="237" id="qck-J4-aUj"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

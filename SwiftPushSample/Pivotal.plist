@@ -11,12 +11,12 @@
 	<key>pivotal.push.serviceUrl</key>
 	<string>http://push-api.gulch.cf-app.com</string>
 	<key>pivotal.push.platformUuidDevelopment</key>
-	<string>54e98b75-789e-4653-8aae-1338987fa10a</string>
+	<string>b74b8af5-dcbf-44c7-922d-0b5f5f83bc57</string>
 	<key>pivotal.push.platformSecretDevelopment</key>
-	<string>7b492140-a1dc-4b60-9cc6-8faa2417c35d</string>
+	<string>e4b692a5-11b2-4b3a-af9b-8861f4dd650c</string>
 	<key>pivotal.push.platformUuidProduction</key>
-	<string>54e98b75-789e-4653-8aae-1338987fa10a</string>
+	<string>b74b8af5-dcbf-44c7-922d-0b5f5f83bc57</string>
 	<key>pivotal.push.platformSecretProduction</key>
-	<string>7b492140-a1dc-4b60-9cc6-8faa2417c35d</string>
+	<string>e4b692a5-11b2-4b3a-af9b-8861f4dd650c</string>
 </dict>
 </plist>
