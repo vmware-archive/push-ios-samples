@@ -10,6 +10,10 @@
 		9BA17B6C8B044B3BBF263058 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545A6EF71EAC4A33AFE4ECC8 /* libPods.a */; };
 		D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ABDA119D1BB8A0092BFB7 /* Settings.m */; };
 		E7226B5F1987F61C00ABD0E5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */; };
+		F10D7C3B1BB9DF1400506B25 /* PushSample.app in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1A418D7806B009EBE38 /* PushSample.app */; };
+		F10D7C461BB9E0CE00506B25 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CF4FC91BB4765B00F147FF /* CoreLocation.framework */; };
+		F10D7C721BBAED3D00506B25 /* PCFPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10D7C701BBAED3700506B25 /* PCFPush.framework */; };
+		F10D7C731BBAED3D00506B25 /* PCFPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F10D7C701BBAED3700506B25 /* PCFPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1103A7C1B13C04100C5420D /* GeofenceOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F1103A7B1B13C04100C5420D /* GeofenceOverlay.m */; };
 		F114D27D190958030008BE3C /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F114D27C190958030008BE3C /* Pivotal.plist */; };
 		F12C79C91AF2732C00556DAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12C79C81AF2732C00556DAE /* MapViewController.m */; };
@@ -18,10 +22,7 @@
 		F15D06251BB2F700002D181F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D06241BB2F700002D181F /* ViewController.swift */; };
 		F15D06281BB2F700002D181F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D06261BB2F700002D181F /* Main.storyboard */; };
 		F15D062D1BB2F700002D181F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D062B1BB2F700002D181F /* LaunchScreen.storyboard */; };
-		F1CF4FC51BB336FD00F147FF /* PCFPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CF4FC31BB336F500F147FF /* PCFPush.framework */; };
-		F1CF4FC61BB336FD00F147FF /* PCFPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F1CF4FC31BB336F500F147FF /* PCFPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1CF4FC81BB3371800F147FF /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CF4FC71BB3371800F147FF /* Pivotal.plist */; settings = {ASSET_TAGS = (); }; };
-		F1CF4FCA1BB4765B00F147FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CF4FC91BB4765B00F147FF /* CoreLocation.framework */; };
 		F1CF4FCB1BB5981700F147FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1BF18D7806B009EBE38 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		F1FDE1B218D7806B009EBE38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1B018D7806B009EBE38 /* InfoPlist.strings */; };
 		F1FDE1B418D7806B009EBE38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B318D7806B009EBE38 /* main.m */; };
@@ -34,14 +35,24 @@
 		F1FDE1F518D78115009EBE38 /* LogItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1EE18D78115009EBE38 /* LogItemCell.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F10D7C3C1BB9DF1400506B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1FDE19C18D7806B009EBE38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1FDE1A318D7806B009EBE38;
+			remoteInfo = PushSample;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		F15D06391BB31D5B002D181F /* Embed Frameworks */ = {
+		F10D7C4B1BB9E0EB00506B25 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F1CF4FC61BB336FD00F147FF /* PCFPush.framework in Embed Frameworks */,
+				F10D7C731BBAED3D00506B25 /* PCFPush.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +66,7 @@
 		D49ABDA119D1BB8A0092BFB7 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
 		E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		F070C8BF7425886F6690AB66 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F10D7C701BBAED3700506B25 /* PCFPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PCFPush.framework; sourceTree = "<group>"; };
 		F1103A7A1B13C04100C5420D /* GeofenceOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceOverlay.h; sourceTree = "<group>"; };
 		F1103A7B1B13C04100C5420D /* GeofenceOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeofenceOverlay.m; sourceTree = "<group>"; };
 		F114D27C190958030008BE3C /* Pivotal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pivotal.plist; sourceTree = "<group>"; };
@@ -67,7 +79,6 @@
 		F15D06271BB2F700002D181F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F15D062C1BB2F700002D181F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F15D062E1BB2F700002D181F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1CF4FC31BB336F500F147FF /* PCFPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PCFPush.framework; sourceTree = "<group>"; };
 		F1CF4FC71BB3371800F147FF /* Pivotal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pivotal.plist; sourceTree = "<group>"; };
 		F1CF4FC91BB4765B00F147FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F1FDE1A418D7806B009EBE38 /* PushSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,8 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1CF4FCA1BB4765B00F147FF /* CoreLocation.framework in Frameworks */,
-				F1CF4FC51BB336FD00F147FF /* PCFPush.framework in Frameworks */,
+				F10D7C721BBAED3D00506B25 /* PCFPush.framework in Frameworks */,
+				F10D7C461BB9E0CE00506B25 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +153,8 @@
 		F15D06211BB2F700002D181F /* SwiftPushSample */ = {
 			isa = PBXGroup;
 			children = (
+				F10D7C701BBAED3700506B25 /* PCFPush.framework */,
 				F1CF4FC71BB3371800F147FF /* Pivotal.plist */,
-				F1CF4FC31BB336F500F147FF /* PCFPush.framework */,
 				F15D06221BB2F700002D181F /* AppDelegate.swift */,
 				F15D06241BB2F700002D181F /* ViewController.swift */,
 				F15D06261BB2F700002D181F /* Main.storyboard */,
@@ -261,11 +272,12 @@
 				F15D061C1BB2F6FF002D181F /* Sources */,
 				F15D061D1BB2F6FF002D181F /* Frameworks */,
 				F15D061E1BB2F6FF002D181F /* Resources */,
-				F15D06391BB31D5B002D181F /* Embed Frameworks */,
+				F10D7C4B1BB9E0EB00506B25 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F10D7C3D1BB9DF1400506B25 /* PBXTargetDependency */,
 			);
 			name = SwiftPushSample;
 			productName = SwiftPushSample;
@@ -342,6 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F10D7C3B1BB9DF1400506B25 /* PushSample.app in Resources */,
 				F15D062D1BB2F700002D181F /* LaunchScreen.storyboard in Resources */,
 				F1CF4FCB1BB5981700F147FF /* Images.xcassets in Resources */,
 				F1CF4FC81BB3371800F147FF /* Pivotal.plist in Resources */,
@@ -424,6 +437,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F10D7C3D1BB9DF1400506B25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1FDE1A318D7806B009EBE38 /* PushSample */;
+			targetProxy = F10D7C3C1BB9DF1400506B25 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		F15D06261BB2F700002D181F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -457,11 +478,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftPushSample",
+					"$(PROJECT_DIR)",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SwiftPushSample/Info.plist;
@@ -480,12 +504,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftPushSample",
+					"$(PROJECT_DIR)",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SwiftPushSample/Info.plist;

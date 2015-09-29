@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         // Listen for log message notifications when the view controller is visible
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onLogNotification:", name: kLogNotification, object: nil)
+        ViewController.addLogMessage("PCF Push SDK version is \(PCFPush.sdkVersion()).")
     }
 
     override func viewDidDisappear(animated: Bool) {
