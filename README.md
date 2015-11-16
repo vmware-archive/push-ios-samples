@@ -13,12 +13,12 @@ Device Requirements
 
 The device must be registered on a developer profile which includes push notifications for the app bundle ID.
 
-Sample Application
-------------------
+Sample Application (Objective-C)
+--------------------------------
 
 This application has a visible UI that can be used to demonstrate and exercise the features of the Push SDK.  This application requires iOS 7.0 or greater.
 
-By default, this application uses Cocoapods to link to the PCF Push Client SDK.  If you want to link to the framework itself then please feel free to remove the Cocoapods settings in your working copy.
+By default, this application uses Cocoapods to link to the PCF Push Client SDK.  If you want to link to the framework itself then please feel free to remove the Cocoapods settings in your working copy (please see instructions below).
 
 You can use this sample application to test registration against the Apple Push Notification Service (APNS) and the Pivotal Mobile Services Suite back-end server for push messages.  Although not currently supported by the library itself, you can also send and receive push messages with the sample application.
 
@@ -56,3 +56,44 @@ As above, create a new application on the Apple Developer iOS Member Center and 
 You can press the "Send" button at the top-right of the screen to try and send a push message.  Enter your App UUID, API Key, and Service URL into the appropriate variables in the `ViewController.swift` file.
 
 The application will print remote notifications and triggered geofences to the screen as it runs.
+
+Cocoapods
+---------
+
+The Sample Application uses Cocoapods to link to the PCF Push framework, by default.  This is done mostly as a convenience to the project developers.  It is our expectation that most developers will link to the PCF Push SDK as a framework, not via Cocoapods. If you would like to locally change the sample app to use the framework directly, please try the following steps:
+
+1. If you currently have the Push Sample Application workspace open then please close it.
+
+1. If you have cloned the Push Sample repository then please start a new branch.  Please do not submit any pull requests that remove Cocoapods from the project.
+
+1. Delete the following directories and all of their contents: PushSample.xcworkspace, Pods.
+
+1. Delete the following files: Podfile, Podfile.lock.
+
+1. Open the project file directly ("PushSample.xcodeproj").
+
+1. Open the PushSample Project "Info" tab and example the "Configurations" section.  Set the PushSample configuration to be based on "None" (instead of "Pods.debug"/"Pods.release") for both debug and release.
+
+1. Open the PushSample Target "Build Phases" tab.  Delete the following build phases: Check Pods Manifest.lock, Copy Pods Resources.
+
+1. Remove "libPods.a" from the "Link Binary with Libraries" section of the build phases.
+
+1. Delete "libPods.a" from the "Frameworks" group in the project files listing.
+
+1. Delete the "Pods" group in the project files listing.
+
+1. Drop the PCFPush framework file into the project "Frameworks" group.  Ensure that "Copy items if needed" is checked.
+
+1. Open the PushSample target "General" tab.  Remove "PCFPush.framework" from the list of Linked Frameworks and Libraries.  Add it to the list of Embedded Libraries instead.
+
+1. Open the "LogTableViewController.m" source code file.  Comment out the #include for "PCFPushDebug.h", "PCFPushPersistentStorage.h", "PCFPushGeofencePersistentStore.h", and "PCFPushGeofenceRegistrar.h" and all lines of code that call the P"CFPushLog and PCFPushCriticalLog" functions and the "PCFPushDebug setLogListener" method.
+
+1. Open the "BackEndMessageRequest.m" source code file.  Comment out the #include for "PCFPushDebug.h" and all lines of code that call the "PCFPushLog" and "PCFPushCriticalLog" functions.
+
+1. Open the "AppDelegate.m" source code file.  Comment out the #include for "PCFPushDebug.h" and all lines of code that call the "PCFPushLog" and "PCFPushCriticalLog" functions.
+
+1. Open the "MapViewController.m" source code file.  Comment out the #include for "PCFPushDebug.h" and all lines of code that call the "PCFPushLog" and "PCFPushCriticalLog" functions.
+
+1. Open the "LogTableViewController.m" source code file.  Comment out the #include for "PCFPushDebug.h" and all lines of code that call the "PCFPushLog" and "PCFPushCriticalLog" functions.
+
+Please note that in the future we intend to reduce (or completely remove) the Sample App's code dependencies on the private parts of the Push SDK so the code changes above should no longer be necessary.
