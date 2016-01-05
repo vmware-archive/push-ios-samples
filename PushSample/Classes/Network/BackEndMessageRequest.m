@@ -73,8 +73,15 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
 - (NSDictionary*) getRequestDictionary
 {
     id message;
-    if (self.category) {
-        id ios = @{ @"category" : @"ACTIONABLE" };
+    if (self.category || self.extra) {
+        id ios;
+        if (self.extra && self.category) {
+            ios = @{@"category" : @"ACTIONABLE", @"extra" : self.extra};
+        } else if (self.extra) {
+            ios = @{ @"extra" : self.extra };
+        } else {
+            ios = @{ @"category" : @"ACTIONABLE" };
+        }
         id custom = @{ @"ios" : ios };
         message = @{ @"body" : self.messageBody, @"custom" : custom };
     } else {

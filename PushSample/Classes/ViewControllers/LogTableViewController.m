@@ -4,15 +4,12 @@
 
 #import <PCFPush/PCFPushDebug.h>
 #import <PCFPush/PCFPushPersistentStorage.h>
-#import <CoreLocation/CoreLocation.h>
 #import <PCFPush/PCFPush.h>
 #import "LogItem.h"
 #import "LogItemCell.h"
 #import "LogTableViewController.h"
 #import "BackEndMessageRequest.h"
 #import "Settings.h"
-#import "PCFPushGeofencePersistentStore.h"
-#import "PCFPushGeofenceRegistrar.h"
 
 #define ACTION_SHEET_ACTIONS           0
 #define ACTION_SHEET_SEND_TO_TAG       1
@@ -40,7 +37,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 
-    self.availableTags = @[ @"ALPHA", @"BETA", @"GAMMA", @"OMEGA" ];
+    self.availableTags = @[ @"ALPHA", @"BETA", @"GAMMA", @"OMEGA", @"PCF.PUSH.HEARTBEAT" ];
 
     // Listen for push messages to get posted to the debug log so that we
     // can echo them to the display.
@@ -92,16 +89,16 @@
 {
     NSString *geofenceOption;
     if ([Settings areGeofencesEnabled]) {
-        geofenceOption = @"Disable geofences";
+        geofenceOption = @"Disable Geofences";
     } else {
-        geofenceOption = @"Enable geofences";
+        geofenceOption = @"Enable Geofences";
     }
 
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Options"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Unregistration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Send to Tag", @"Send with Category", geofenceOption, @"About", nil];
+                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Unregistration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Send to Tag", @"Send with Category", @"Send Heartbeat", geofenceOption, @"About", nil];
 
     sheet.tag = ACTION_SHEET_ACTIONS;
 
@@ -119,13 +116,14 @@
             case 4: [self unsubscribeFromTag]; break;
             case 5: [self sendWithTagPressed]; break;
             case 6: [self sendWithCategoryPressed]; break;
-            case 7: [self toggleGeofences]; break;
-            case 8: [self aboutPressed]; break;
+            case 7: [self sendHeartbeatPressed]; break;
+            case 8: [self toggleGeofences]; break;
+            case 9: [self aboutPressed]; break;
             default: break;
         }
 
     } else if (popup.tag == ACTION_SHEET_SEND_TO_TAG && buttonIndex < self.availableTags.count) {
-        [self sendMessageWithCategory:nil tag:self.availableTags[(NSUInteger) buttonIndex]];
+        [self sendMessageWithCategory:nil tag:self.availableTags[(NSUInteger) buttonIndex] extra:nil];
 
     } else if (popup.tag == ACTION_SHEET_SUBSCRIBE_TO_TAG && buttonIndex < self.availableTags.count) {
         [self subscribeToTag:self.availableTags[(NSUInteger) buttonIndex]];
@@ -254,7 +252,7 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:self.availableTags[0], self.availableTags[1], self.availableTags[2], self.availableTags[3], nil];
+                                              otherButtonTitles:self.availableTags[0], self.availableTags[1], self.availableTags[2], self.availableTags[3], self.availableTags[4], nil];
 
     sheet.tag = ACTION_SHEET_SUBSCRIBE_TO_TAG;
 
@@ -293,15 +291,15 @@
 
 - (void) sendWithCategoryPressed
 {
-    [self sendMessageWithCategory:@"ACTIONABLE" tag:nil];
+    [self sendMessageWithCategory:@"ACTIONABLE" tag:nil extra:nil];
 }
 
 - (void) sendButtonPressed
 {
-    [self sendMessageWithCategory:nil tag:nil];
+    [self sendMessageWithCategory:nil tag:nil extra:nil];
 }
 
-- (void)sendMessageWithCategory:(NSString *)category tag:(NSString *)tag
+- (void)sendMessageWithCategory:(NSString *)category tag:(NSString *)tag extra:(NSDictionary *)extra
 {
     [self updateCurrentBaseRowColour];
     NSString *backEndDeviceID = [PCFPushPersistentStorage serverDeviceID];
@@ -319,10 +317,17 @@
     request.apiKey = API_KEY;
     request.targetDevices = @[backEndDeviceID];
     request.category = category;
+    request.extra = extra;
     if (tag) {
         request.tags = [NSSet setWithObject:tag];
     }
     [request sendMessage];
+}
+
+- (void)sendHeartbeatPressed
+{
+    int64_t timestamp = (int64_t)([[NSDate date] timeIntervalSince1970] * 1000);
+    [self sendMessageWithCategory:nil tag:@"pcf.push.heartbeat" extra:@{ @"pcf.push.heartbeat.sentAt" : @(timestamp) }];
 }
 
 #pragma mark - Table view data source
