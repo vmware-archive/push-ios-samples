@@ -199,8 +199,7 @@
 
 - (void) aboutPressed
 {
-    NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
-    NSString* version = [infoDict objectForKey:@"CFBundleVersion"];
+    NSString *version = [PCFPush sdkVersion];
     NSString *message = [@"PCF Push version " stringByAppendingString:version];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"PCF Push Test" message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertView show];
