@@ -1,5 +1,5 @@
 PODS:
-  - PCFPush (1.4.0)
+  - PCFPush (1.5.0)
 
 DEPENDENCIES:
   - PCFPush (from `../push-ios`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../push-ios"
 
 SPEC CHECKSUMS:
-  PCFPush: 74083cc12ad708fef81a526bc6ba29680aa49906
+  PCFPush: d589c736d027b5e5a7e33d167ce2b872cd5a92dd
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

@@ -22,8 +22,8 @@
 		F15D06251BB2F700002D181F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D06241BB2F700002D181F /* ViewController.swift */; };
 		F15D06281BB2F700002D181F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D06261BB2F700002D181F /* Main.storyboard */; };
 		F15D062D1BB2F700002D181F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15D062B1BB2F700002D181F /* LaunchScreen.storyboard */; };
-		F1CF4FC81BB3371800F147FF /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CF4FC71BB3371800F147FF /* Pivotal.plist */; settings = {ASSET_TAGS = (); }; };
-		F1CF4FCB1BB5981700F147FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1BF18D7806B009EBE38 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		F1CF4FC81BB3371800F147FF /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CF4FC71BB3371800F147FF /* Pivotal.plist */; };
+		F1CF4FCB1BB5981700F147FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1BF18D7806B009EBE38 /* Images.xcassets */; };
 		F1FDE1B218D7806B009EBE38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1B018D7806B009EBE38 /* InfoPlist.strings */; };
 		F1FDE1B418D7806B009EBE38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B318D7806B009EBE38 /* main.m */; };
 		F1FDE1B818D7806B009EBE38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1B718D7806B009EBE38 /* AppDelegate.m */; };
@@ -293,6 +293,7 @@
 				F1FDE1A118D7806B009EBE38 /* Frameworks */,
 				F1FDE1A218D7806B009EBE38 /* Resources */,
 				B2DAF1AB63424CD49C12032A /* Copy Pods Resources */,
+				432E5227A548948538E58297 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,6 +378,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		432E5227A548948538E58297 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B2DAF1AB63424CD49C12032A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
