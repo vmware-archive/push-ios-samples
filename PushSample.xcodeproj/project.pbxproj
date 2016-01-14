@@ -10,9 +10,7 @@
 		9BA17B6C8B044B3BBF263058 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545A6EF71EAC4A33AFE4ECC8 /* libPods.a */; };
 		D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ABDA119D1BB8A0092BFB7 /* Settings.m */; };
 		E7226B5F1987F61C00ABD0E5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */; };
-		F10D7C3B1BB9DF1400506B25 /* PushSample.app in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1A418D7806B009EBE38 /* PushSample.app */; };
 		F10D7C461BB9E0CE00506B25 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CF4FC91BB4765B00F147FF /* CoreLocation.framework */; };
-		F10D7C721BBAED3D00506B25 /* PCFPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10D7C701BBAED3700506B25 /* PCFPush.framework */; };
 		F10D7C731BBAED3D00506B25 /* PCFPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F10D7C701BBAED3700506B25 /* PCFPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1103A7C1B13C04100C5420D /* GeofenceOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F1103A7B1B13C04100C5420D /* GeofenceOverlay.m */; };
 		F114D27D190958030008BE3C /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F114D27C190958030008BE3C /* Pivotal.plist */; };
@@ -34,16 +32,6 @@
 		F1FDE1F418D78115009EBE38 /* LogItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FDE1ED18D78115009EBE38 /* LogItemCell.m */; };
 		F1FDE1F518D78115009EBE38 /* LogItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FDE1EE18D78115009EBE38 /* LogItemCell.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F10D7C3C1BB9DF1400506B25 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F1FDE19C18D7806B009EBE38 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F1FDE1A318D7806B009EBE38;
-			remoteInfo = PushSample;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		F10D7C4B1BB9E0EB00506B25 /* Embed Frameworks */ = {
@@ -105,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F10D7C721BBAED3D00506B25 /* PCFPush.framework in Frameworks */,
 				F10D7C461BB9E0CE00506B25 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +264,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F10D7C3D1BB9DF1400506B25 /* PBXTargetDependency */,
 			);
 			name = SwiftPushSample;
 			productName = SwiftPushSample;
@@ -355,7 +341,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F10D7C3B1BB9DF1400506B25 /* PushSample.app in Resources */,
 				F15D062D1BB2F700002D181F /* LaunchScreen.storyboard in Resources */,
 				F1CF4FCB1BB5981700F147FF /* Images.xcassets in Resources */,
 				F1CF4FC81BB3371800F147FF /* Pivotal.plist in Resources */,
@@ -453,14 +438,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		F10D7C3D1BB9DF1400506B25 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F1FDE1A318D7806B009EBE38 /* PushSample */;
-			targetProxy = F10D7C3C1BB9DF1400506B25 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		F15D06261BB2F700002D181F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -510,7 +487,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "27ff4ac0-a051-4fbd-9e8f-80d3ce1a20de";
+				PROVISIONING_PROFILE = "ec43c910-c238-49c5-b749-a3a85d10f6cf";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -537,7 +514,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "27ff4ac0-a051-4fbd-9e8f-80d3ce1a20de";
+				PROVISIONING_PROFILE = "ec43c910-c238-49c5-b749-a3a85d10f6cf";
 			};
 			name = Release;
 		};
