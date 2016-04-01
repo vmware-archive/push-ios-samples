@@ -487,7 +487,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec43c910-c238-49c5-b749-a3a85d10f6cf";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -514,7 +514,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec43c910-c238-49c5-b749-a3a85d10f6cf";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
