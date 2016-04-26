@@ -13,10 +13,15 @@
 #import "Settings.h"
 #import "PCFPushGeofencePersistentStore.h"
 #import "PCFPushGeofenceRegistrar.h"
+#import "AppDelegate.h"
 
-#define ACTION_SHEET_ACTIONS           0
-#define ACTION_SHEET_SEND_TO_TAG       1
-#define ACTION_SHEET_SUBSCRIBE_TO_TAG  2
+#define ACTION_SHEET_ACTIONS            0
+#define ACTION_SHEET_SEND               1
+#define ACTION_SHEET_SEND_TO_TAG        2
+#define ACTION_SHEET_SUBSCRIBE_TO_TAG   3
+
+#define ALERT_SEND_CUSTOM_USER_ID       0
+#define ALERT_SET_CUSTOM_USER_ID        1
 
 @interface LogTableViewController ()
 
@@ -51,10 +56,9 @@
     }];
 
     // Set up tool bar buttons
-    UIBarButtonItem *sendButton = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStylePlain target:self action:@selector(sendButtonPressed)];
+    UIBarButtonItem *sendButton = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStylePlain target:self action:@selector(sendOptionsButtonPressed)];
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *moreActions = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(moreActionsPressed)];
-
     [self setToolbarItems:@[sendButton, space, moreActions] animated:NO];
 
     [self addLogItem:@"Press the \"Send\" button below to send a push message via the back-end server." timestamp:[NSDate date]];
@@ -88,6 +92,19 @@
     [alert show];
 }
 
+- (void) sendOptionsButtonPressed
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Send Options"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles:@"Send Push", @"Send to Tag", @"Send with Category", @"Send to Custom User ID", nil];
+
+    sheet.tag = ACTION_SHEET_SEND;
+
+    [sheet showInView:UIApplication.sharedApplication.keyWindow];
+}
+
 - (void) moreActionsPressed
 {
     NSString *geofenceOption;
@@ -101,7 +118,7 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Unregistration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Send to Tag", @"Send with Category", geofenceOption, @"About", nil];
+                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Unregistration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Set Custom User ID", geofenceOption, @"About", nil];
 
     sheet.tag = ACTION_SHEET_ACTIONS;
 
@@ -117,15 +134,23 @@
             case 2: [self unregistrationPressed]; break;
             case 3: [self subscribeToTag]; break;
             case 4: [self unsubscribeFromTag]; break;
-            case 5: [self sendWithTagPressed]; break;
-            case 6: [self sendWithCategoryPressed]; break;
-            case 7: [self toggleGeofences]; break;
-            case 8: [self aboutPressed]; break;
+            case 5: [self showCustomUserIdInputBox:ALERT_SET_CUSTOM_USER_ID]; break;
+            case 6: [self toggleGeofences]; break;
+            case 7: [self aboutPressed]; break;
+            default: break;
+        }
+
+    } else if (popup.tag == ACTION_SHEET_SEND) {
+        switch (buttonIndex) {
+            case 0: [self sendPushPressed]; break;
+            case 1: [self sendWithTagPressed]; break;
+            case 2: [self sendWithCategoryPressed]; break;
+            case 3: [self sendWithCustomUserIdPressed]; break;
             default: break;
         }
 
     } else if (popup.tag == ACTION_SHEET_SEND_TO_TAG && buttonIndex < self.availableTags.count) {
-        [self sendMessageWithCategory:nil tag:self.availableTags[(NSUInteger) buttonIndex]];
+        [self sendMessageWithCategory:nil tag:self.availableTags[(NSUInteger) buttonIndex] customUserIds:nil];
 
     } else if (popup.tag == ACTION_SHEET_SUBSCRIBE_TO_TAG && buttonIndex < self.availableTags.count) {
         [self subscribeToTag:self.availableTags[(NSUInteger) buttonIndex]];
@@ -268,7 +293,115 @@
     PCFPushLog(@"%@", status);
 }
 
+#pragma mark - Custom User ID
+
+- (void) showCustomUserIdInputBox:(NSUInteger)tag
+{
+    NSString *message;
+    NSString *currentCustomUserId = [Settings customUserId];
+    NSArray *otherButtons;
+    NSString *defaultTextFieldContents = nil;
+
+    if (tag == ALERT_SEND_CUSTOM_USER_ID) {
+
+        if (!currentCustomUserId || currentCustomUserId.length == 0) {
+            message = @"There is no custom user ID currently set on this device.\n\nYou can target multiple custom user IDs by separating them with commas. Please note that custom user IDs are case-sensitive.";
+        } else {
+            message = [NSString stringWithFormat:@"The current custom user ID for this device is '%@'.\n\nYou can target multiple custom user IDs by separating them with commas. Please note that custom user IDs are case-sensitive.", currentCustomUserId];
+            defaultTextFieldContents = currentCustomUserId;
+        }
+
+        otherButtons = @[ @"Send" ];
+
+    } else if (tag == ALERT_SET_CUSTOM_USER_ID) {
+
+        if (!currentCustomUserId || currentCustomUserId.length == 0) {
+            message = @"There is no custom user ID currently set. Please enter a new custom user ID:";
+        } else {
+            message = [NSString stringWithFormat:@"The current custom user ID for this device is '%@'. Please enter a new custom user ID to register:", currentCustomUserId];
+        }
+
+        otherButtons = @[ @"Set", @"Clear" ];
+
+    } else {
+        return;
+    }
+
+    UIAlertView *customUserIdView = [[UIAlertView alloc] initWithTitle:@"Custom User ID" message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    customUserIdView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    customUserIdView.tag = tag;
+    for (NSString *otherButton in otherButtons) {
+        [customUserIdView addButtonWithTitle:otherButton];
+    }
+
+    [customUserIdView show];
+
+    if (defaultTextFieldContents) {
+        UITextField *textField = [customUserIdView textFieldAtIndex:0];
+        textField.placeholder = defaultTextFieldContents;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        return; // Cancel button pressed
+    }
+
+    UITextField *customUserIdTextField = [alertView textFieldAtIndex:0];
+
+    NSString *customUserIdText = [customUserIdTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+
+    if (alertView.tag == ALERT_SEND_CUSTOM_USER_ID) {
+
+        if (!customUserIdText || customUserIdText.length <= 0) {
+            NSString *currentCustomUserId = [Settings customUserId];
+            if (!currentCustomUserId || currentCustomUserId.length <= 0)
+            {
+                UIAlertView *hogey = [[UIAlertView alloc] initWithTitle:@"Lo, Hogey!" message:@"You cannot push to an empty custom user ID." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK, SORRY", nil];
+                [hogey show];
+                return;
+            }
+            customUserIdText = currentCustomUserId;
+        }
+
+        [self addLogItem:[NSString stringWithFormat:@"Sending push notification to custom user ID '%@'.", customUserIdText] timestamp:NSDate.date];
+        NSArray *customUserIds = [self customUserIdsFromCommaDelimitedString:customUserIdText];
+        [self sendMessageWithCategory:nil tag:nil customUserIds:customUserIds];
+
+    } else if (alertView.tag == ALERT_SET_CUSTOM_USER_ID) {
+
+        NSString *customUserIdToSet = nil;
+
+        if (buttonIndex == 1) { // Set button
+            if (customUserIdText.length > 0) {
+                customUserIdToSet = customUserIdText;
+            }
+        }
+
+        if (customUserIdToSet) {
+            [self addLogItem:[NSString stringWithFormat:@"Setting to custom user ID to '%@'.", customUserIdText] timestamp:NSDate.date];
+        } else {
+            [self addLogItem:@"Clearing current custom user ID." timestamp:NSDate.date];
+        }
+
+        [self updateCurrentBaseRowColour];
+
+        [Settings setCustomUserId:customUserIdToSet];
+
+        [AppDelegate startRegistration];
+
+    } else {
+        return;
+    }
+}
+
 #pragma mark - Sending Messages
+
+- (void) sendPushPressed
+{
+    [self sendMessageWithCategory:nil tag:nil customUserIds:nil];
+}
 
 - (void) sendWithTagPressed
 {
@@ -294,15 +427,15 @@
 
 - (void) sendWithCategoryPressed
 {
-    [self sendMessageWithCategory:@"ACTIONABLE" tag:nil];
+    [self sendMessageWithCategory:@"ACTIONABLE" tag:nil customUserIds:nil];
 }
 
-- (void) sendButtonPressed
+- (void) sendWithCustomUserIdPressed
 {
-    [self sendMessageWithCategory:nil tag:nil];
+    [self showCustomUserIdInputBox:ALERT_SEND_CUSTOM_USER_ID];
 }
 
-- (void)sendMessageWithCategory:(NSString *)category tag:(NSString *)tag
+- (void)sendMessageWithCategory:(NSString *)category tag:(NSString *)tag customUserIds:(NSArray *)customUserIds
 {
     [self updateCurrentBaseRowColour];
     NSString *backEndDeviceID = [PCFPushPersistentStorage serverDeviceID];
@@ -311,11 +444,10 @@
         [self addLogItem:@"You must register with the back-end server before attempting to send a message" timestamp:[NSDate date]];
         return;
     }
-
     // Prepare a request that is used to request a push message from the Pivotal CF Mobile Services push server.
     // This feature is NOT a feature of the Push Client SDK but is useful for helping debug.
     BackEndMessageRequest *request = [[BackEndMessageRequest alloc] init];
-    request.messageBody = [NSString stringWithFormat:@"This message was sent to the back-end at %@.", [[LogItem getDateFormatter] stringFromDate:[NSDate date]]];
+    request.messageBody = [self messageForTag:tag customUserIds:customUserIds];
     request.appUuid = APP_UUID;
     request.apiKey = API_KEY;
     request.targetDevices = @[backEndDeviceID];
@@ -323,8 +455,35 @@
     if (tag) {
         request.tags = [NSSet setWithObject:tag];
     }
+    if (customUserIds) {
+        request.customUserIds = customUserIds;
+    }
     [request sendMessage];
 }
+
+- (NSArray *) customUserIdsFromCommaDelimitedString:(NSString *)string{
+    NSArray *customUserIds = [string componentsSeparatedByString:@","];
+    NSMutableArray *trimmedCustomUserIds = [NSMutableArray array];
+    for (NSString *s in customUserIds) {
+        [trimmedCustomUserIds addObject:[s stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]];
+    }
+    return trimmedCustomUserIds;
+}
+
+- (NSString *) messageForTag:(NSString *)tag customUserIds:(NSArray *)customUserIds
+{
+    NSString *date = [[LogItem getDateFormatter] stringFromDate:NSDate.date];
+
+    if (tag.length > 0 && customUserIds.count > 0) {
+        return [NSString stringWithFormat:@"This message was sent to tag '%@' and custom user ID(s) '%@' at %@.", tag, [customUserIds componentsJoinedByString:@", "], date];
+    } else if (tag.length > 0) {
+        return [NSString stringWithFormat:@"This message was sent to tag '%@' at %@.", tag, date];
+    } else if (customUserIds.count > 0) {
+        return [NSString stringWithFormat:@"This message was sent to custom user ID(s) '%@' at %@.", [customUserIds componentsJoinedByString:@", "], date];
+    } else {
+        return [NSString stringWithFormat:@"This message was sent to this device at %@.", date];
+    }
+ }
 
 #pragma mark - Table view data source
 

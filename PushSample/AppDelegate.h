@@ -8,4 +8,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
++ (void) startRegistration;
+
 @end

@@ -12,6 +12,8 @@ OBJC_EXTERN NSString *const BACK_END_PUSH_MESSAGE_API;
 
 + (void) setTag:(NSString*)tag;
 + (NSString*) tag;
++ (void) setCustomUserId:(NSString*)customUserId;
++ (NSString*) customUserId;
 + (void) setAreGeofencesEnabled:(BOOL)areGeofencesEnabled;
 + (BOOL) areGeofencesEnabled;
 

@@ -15,6 +15,7 @@ let kNotificationActionOneIdent = "ACTION_ONE"
 let kNotificationActionTwoIdent = "ACTION_TWO"
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?

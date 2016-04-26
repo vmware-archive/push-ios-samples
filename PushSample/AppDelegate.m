@@ -21,6 +21,11 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 
 @implementation AppDelegate
 
++ (void) startRegistration
+{
+    [UIApplication.sharedApplication.delegate application:UIApplication.sharedApplication didFinishLaunchingWithOptions:nil];
+}
+
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Register for push notifications with the Apple Push Notification Service (APNS).
@@ -86,6 +91,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken
                                                        tags:tags
                                                 deviceAlias:UIDevice.currentDevice.name
+                                               customUserId:[Settings customUserId]
                                         areGeofencesEnabled:areGeofencesEnabled
                                                     success:^{
         PCFPushLog(@"CF registration succeeded. The Device UUID is \"%@\".", [PCFPush deviceUuid]);

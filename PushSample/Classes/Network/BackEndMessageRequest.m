@@ -6,7 +6,7 @@
 #import "BackEndMessageRequest.h"
 #import "Settings.h"
 
-static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
+static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS = 60.0;
 
 @interface BackEndMessageRequest ()
 
@@ -52,7 +52,10 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
         return [plainData base64EncodedStringWithOptions:0];
 
     } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         return [plainData base64Encoding];
+#pragma clang diagnostic pop
     }
 }
 
@@ -81,14 +84,16 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS   = 60.0;
         message = @{ @"body" : self.messageBody};
     }
 
-    id target;
-    if (self.tags) {
-        target = @{@"platform" : @"ios", @"tags" : self.tags.allObjects};
+    NSMutableDictionary *targetDict = [NSMutableDictionary dictionaryWithObject:@"ios" forKey:@"platform"];
+
+    if (self.tags || self.customUserIds) {
+        if (self.tags) { targetDict[@"tags"] = self.tags.allObjects; }
+        if (self.customUserIds) { targetDict[@"custom_user_ids"] = self.customUserIds; }
     } else {
-        target = @{@"platform" : @"ios", @"devices" : self.targetDevices};
+        targetDict[@"devices"] = self.targetDevices;
     }
 
-    return @{ @"message" : message, @"target" : target };
+    return @{ @"message" : message, @"target" : targetDict };
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error

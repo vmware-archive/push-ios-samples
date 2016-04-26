@@ -10,6 +10,7 @@
 @property (nonatomic) NSString *apiKey;
 @property (nonatomic) NSString *messageBody;
 @property (nonatomic) NSString *category;
+@property (nonatomic) NSArray *customUserIds;
 @property (nonatomic) NSArray *targetDevices;
 @property (nonatomic) NSSet *tags;
 
