@@ -84,7 +84,7 @@ static CGFloat BACK_END_PUSH_MESSAGE_TIMEOUT_IN_SECONDS = 60.0;
         message = @{ @"body" : self.messageBody};
     }
 
-    NSMutableDictionary *targetDict = [NSMutableDictionary dictionaryWithObject:@"ios" forKey:@"platform"];
+    NSMutableDictionary *targetDict = [NSMutableDictionary dictionary];
 
     if (self.tags || self.customUserIds) {
         if (self.tags) { targetDict[@"tags"] = self.tags.allObjects; }

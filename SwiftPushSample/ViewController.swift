@@ -69,9 +69,9 @@ class ViewController: UIViewController {
         // In order to REGISTER for push notifications you will need to enter your platformUuid, platformSecret and serviceUrl
         // in the Pivotal.plist file.
         //
-        let appUuid = "44d26dcd-9abe-4bbb-b424-097985ac6ec5"
-        let apiKey = "f60dee44-0ff1-45ca-97e1-0790090970b3"
-        let serviceUrl = "http://push-api.gulch.cf-app.com"
+        let appUuid = "23a83339-b40b-453a-92da-92414321a7ab"
+        let apiKey = "753a05ad-d88e-43b4-8819-7497d644c917"
+        let serviceUrl = "http://push-api.kitkat.cf-app.com"
         
         if let deviceUuid = PCFPush.deviceUuid() {
 
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
             dateFormatter.dateStyle = .LongStyle
             dateFormatter.timeStyle = .LongStyle
             let message = [ "body":"This message was sent to the PCF Push back-end server at " + dateFormatter.stringFromDate(NSDate()) ]
-            let target = [ "platform":"ios", "devices":[ deviceUuid ]]
+            let target = [ "devices":[ deviceUuid ]]
             let requestBody = [ "message":message, "target":target]
 
             let httpBody = try? NSJSONSerialization.dataWithJSONObject(requestBody, options:[])
