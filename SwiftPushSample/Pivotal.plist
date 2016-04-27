@@ -11,12 +11,12 @@
 	<key>pivotal.push.serviceUrl</key>
 	<string>https://push-api.kitkat.cf-app.com</string>
 	<key>pivotal.push.platformUuidDevelopment</key>
-	<string>34b6e707-8c1a-4e8e-beb0-01e9e22df118</string>
+	<string>94975b91-4716-4a97-8aef-b5b385bec69d</string>
 	<key>pivotal.push.platformSecretDevelopment</key>
-	<string>f1cc2caa-3c9c-4e67-90b4-c410b3c0e1e7</string>
+	<string>63f0933b-f98d-49aa-a2c3-700afdd597d8</string>
 	<key>pivotal.push.platformUuidProduction</key>
-	<string>34b6e707-8c1a-4e8e-beb0-01e9e22df118</string>
+	<string>94975b91-4716-4a97-8aef-b5b385bec69d</string>
 	<key>pivotal.push.platformSecretProduction</key>
-	<string>f1cc2caa-3c9c-4e67-90b4-c410b3c0e1e7</string>
+	<string>63f0933b-f98d-49aa-a2c3-700afdd597d8</string>
 </dict>
 </plist>

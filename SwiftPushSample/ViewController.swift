@@ -28,9 +28,9 @@ class ViewController: UIViewController {
         if let navigationController = self.navigationController {
             navigationController.toolbarHidden = false
             
-            let sendButton = UIBarButtonItem(title: "Send Message", style: .Plain, target: self, action: "sendButtonPressed")
+            let sendButton = UIBarButtonItem(title: "Send Message", style: .Plain, target: self, action: #selector(sendButtonPressed))
             let space = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-            let unregisterButton = UIBarButtonItem(title: "Unregister", style: .Plain, target: self, action: "unregisterButtonPressed")
+            let unregisterButton = UIBarButtonItem(title: "Unregister", style: .Plain, target: self, action: #selector(unregisterButtonPressed))
             
             self.setToolbarItems([unregisterButton, space, sendButton], animated: false)
         }
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         // Listen for log message notifications when the view controller is visible
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onLogNotification:", name: kLogNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onLogNotification), name: kLogNotification, object: nil)
         ViewController.addLogMessage("PCF Push SDK version is \(PCFPush.sdkVersion()).")
     }
 
