@@ -374,9 +374,7 @@
         NSString *customUserIdToSet = nil;
 
         if (buttonIndex == 1) { // Set button
-            if (customUserIdText.length > 0) {
-                customUserIdToSet = customUserIdText;
-            }
+            customUserIdToSet = customUserIdText;
         }
 
         if (customUserIdToSet) {

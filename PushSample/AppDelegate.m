@@ -88,16 +88,37 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 
     BOOL areGeofencesEnabled = Settings.areGeofencesEnabled;
 
-    [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken
-                                                       tags:tags
-                                                deviceAlias:UIDevice.currentDevice.name
-                                               customUserId:[Settings customUserId]
-                                        areGeofencesEnabled:areGeofencesEnabled
-                                                    success:^{
-        PCFPushLog(@"CF registration succeeded. The Device UUID is \"%@\".", [PCFPush deviceUuid]);
-    } failure:^(NSError *error) {
-        PCFPushLog(@"CF registration failed: %@", error);
-    }];
+    NSString *customUserId = [Settings customUserId];
+    
+    if (customUserId) {
+
+        PCFPushLog(@"Note - custom user ID is \"%@\".", customUserId);
+
+        [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken
+                                                           tags:tags
+                                                    deviceAlias:UIDevice.currentDevice.name
+                                                   customUserId:customUserId
+                                            areGeofencesEnabled:areGeofencesEnabled
+                                                        success:^{
+            PCFPushLog(@"CF registration succeeded. The Device UUID is \"%@\".", [PCFPush deviceUuid]);
+        } failure:^(NSError *error) {
+            PCFPushLog(@"CF registration failed: %@", error);
+        }];
+
+    } else {
+
+        PCFPushLog(@"Note - custom user ID is nil.");
+
+        [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken
+                                                           tags:tags
+                                                    deviceAlias:UIDevice.currentDevice.name
+                                            areGeofencesEnabled:areGeofencesEnabled
+                                                        success:^{
+                                                            PCFPushLog(@"CF registration succeeded. The Device UUID is \"%@\".", [PCFPush deviceUuid]);
+                                                        } failure:^(NSError *error) {
+                                                            PCFPushLog(@"CF registration failed: %@", error);
+                                                        }];
+    }
 }
 
 // This method is called when APNS registration fails.
