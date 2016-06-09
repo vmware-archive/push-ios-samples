@@ -6,7 +6,17 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>push-api.kitkat.cf-app.com</key>
+			<key>push-api.butterfinger.cf-app.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>push-api.bounty.cf-app.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>push-api.twix.cf-app.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
