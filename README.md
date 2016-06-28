@@ -72,7 +72,7 @@ The Sample Application uses Cocoapods to link to the PCF Push framework, by defa
 
 1. Open the project file directly ("PushSample.xcodeproj").
 
-1. Open the PushSample Project "Info" tab and example the "Configurations" section.  Set the PushSample configuration to be based on "None" (instead of "Pods.debug"/"Pods.release") for both debug and release.
+1. Open the PushSample Project "Info" tab and navigate to the "Configurations" section.  Set the PushSample configuration to be based on "None" (instead of "Pods.debug"/"Pods.release") for both debug and release.
 
 1. Open the PushSample Target "Build Phases" tab.  Delete the following build phases: Check Pods Manifest.lock, Copy Pods Resources.
 
