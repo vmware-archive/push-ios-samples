@@ -8,7 +8,7 @@
 
 #import "MapViewController.h"
 #import "GeofenceOverlay.h"
-#import "PCFPushDebug.h"
+#import <PCFPush/PCFPushDebug.h>
 
 #define MAP_PADDING 1.1
 #define MINIMUM_VISIBLE_LATITUDE 0.01

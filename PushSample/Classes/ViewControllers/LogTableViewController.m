@@ -2,17 +2,15 @@
 //  Copyright (C) 2014 Pivotal Software, Inc. All rights reserved.
 //
 
-#import <PCFPush/PCFPushDebug.h>
 #import <PCFPush/PCFPushPersistentStorage.h>
 #import <CoreLocation/CoreLocation.h>
 #import <PCFPush/PCFPush.h>
+#import <PCFPush/PCFPushDebug.h>
 #import "LogItem.h"
 #import "LogItemCell.h"
 #import "LogTableViewController.h"
 #import "BackEndMessageRequest.h"
 #import "Settings.h"
-#import "PCFPushGeofencePersistentStore.h"
-#import "PCFPushGeofenceRegistrar.h"
 #import "AppDelegate.h"
 
 #define ACTION_SHEET_ACTIONS            0
