@@ -9,14 +9,14 @@
 	<key>pivotal.push.pinnedSslCertificateNames</key>
 	<array/>
 	<key>pivotal.push.serviceUrl</key>
-	<string>http://push-api.gulch.cf-app.com</string>
+	<string>https://push-api.kitkat.cf-app.com</string>
 	<key>pivotal.push.platformUuidDevelopment</key>
-	<string>b74b8af5-dcbf-44c7-922d-0b5f5f83bc57</string>
+	<string>94975b91-4716-4a97-8aef-b5b385bec69d</string>
 	<key>pivotal.push.platformSecretDevelopment</key>
-	<string>e4b692a5-11b2-4b3a-af9b-8861f4dd650c</string>
+	<string>63f0933b-f98d-49aa-a2c3-700afdd597d8</string>
 	<key>pivotal.push.platformUuidProduction</key>
-	<string>b74b8af5-dcbf-44c7-922d-0b5f5f83bc57</string>
+	<string>94975b91-4716-4a97-8aef-b5b385bec69d</string>
 	<key>pivotal.push.platformSecretProduction</key>
-	<string>e4b692a5-11b2-4b3a-af9b-8861f4dd650c</string>
+	<string>63f0933b-f98d-49aa-a2c3-700afdd597d8</string>
 </dict>
 </plist>
