@@ -49,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		3DA996CD3086668CAC5A5156 /* libPods-PushSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PushSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DC1131F1DBFE4F400982F94 /* SwiftPushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftPushSample.entitlements; sourceTree = "<group>"; };
 		AD998C54C4C13EEF9FBC9AD4 /* Pods-PushSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PushSample/Pods-PushSample.debug.xcconfig"; sourceTree = "<group>"; };
 		AE476ACF1DDA506500866A4E /* PushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushSample.entitlements; sourceTree = "<group>"; };
 		D49ABDA019D1BB8A0092BFB7 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Settings/Settings.h; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		F15D06211BB2F700002D181F /* SwiftPushSample */ = {
 			isa = PBXGroup;
 			children = (
+				5DC1131F1DBFE4F400982F94 /* SwiftPushSample.entitlements */,
 				F10D7C701BBAED3700506B25 /* PCFPush.framework */,
 				F1CF4FC71BB3371800F147FF /* Pivotal.plist */,
 				F15D06221BB2F700002D181F /* AppDelegate.swift */,
@@ -306,6 +308,7 @@
 					F15D061F1BB2F6FF002D181F = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = BVZYXK966R;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -494,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = SwiftPushSample/SwiftPushSample.entitlements;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -510,6 +514,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -518,6 +523,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = SwiftPushSample/SwiftPushSample.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
@@ -534,6 +540,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
