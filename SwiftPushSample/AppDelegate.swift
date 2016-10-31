@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var locationManager: CLLocationManager?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         // In order to monitor geofences you will need to authorize location services.  This request will use the text in the
         // 'NSLocationAlwaysUsageDescription' key in your Info.plist file.
@@ -36,15 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
 
         ViewController.addLogMessage("Registering for PCF Push...")
 
         // After successfully registering for remote notifications with APNS you will need to register for remote
         // notifications with the PCF Push Notification Service here.
-        PCFPush.registerForPCFPushNotifications(withDeviceToken: deviceToken,
+        PCFPush.registerForPCFPushNotificationsWithDeviceToken(deviceToken,
             tags: nil,
-            deviceAlias: UIDevice.current.name,
+            deviceAlias: UIDevice.currentDevice().name,
             areGeofencesEnabled: true,
             success: {
                 ViewController.addLogMessage("CF registration succeeded.")
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 ViewController.addLogMessage("CF registration failed: \(error)") })
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         ViewController.addLogMessage("APNS registration failed: \(error)")
     }
     
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // notification has the "content-available" key set to "1" and the application has configured the "background
     // fetch" capability in the Info.plist file them this method will be called even if the application
     // is in the background.
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: UIBackgroundFetchResult -> Void) {
         
         // Make sure to pass all the received push notifications to the PCF Push Notification service here:
         PCFPush.didReceiveRemoteNotification(userInfo) { wasIgnored, fetchResult, error in
@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ViewController.addLogMessage("Received push message: \(userInfo)")
     }
     
-    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         if let userInfo = notification.userInfo {
             
             // Any local notifications with the "pivotal.push.geofence_trigger_condition" key are PCF Push Notification Service
@@ -90,24 +90,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // This method returns the custom remote notification settings.
     func getUserNotificationSettings() -> UIUserNotificationSettings {
         let action1 = UIMutableUserNotificationAction()
-        action1.activationMode = .background
+        action1.activationMode = .Background
         action1.title = "Action 1"
         action1.identifier = kNotificationActionOneIdent
-        action1.isDestructive = false
-        action1.isAuthenticationRequired = false
+        action1.destructive = false
+        action1.authenticationRequired = false
         
         let action2 = UIMutableUserNotificationAction()
-        action2.activationMode = .background
+        action2.activationMode = .Background
         action2.title = "Action 2"
         action2.identifier = kNotificationActionTwoIdent
-        action2.isDestructive = false
-        action2.isAuthenticationRequired = false
+        action2.destructive = false
+        action2.authenticationRequired = false
         
         let actionCategory = UIMutableUserNotificationCategory()
         actionCategory.identifier = kNotificationCategoryIdent
-        actionCategory.setActions([action1, action2], for: .default)
+        actionCategory.setActions([action1, action2], forContext: .Default)
         
-        return UIUserNotificationSettings(types: [.alert, .sound, .badge], categories: Set([actionCategory]))
+        return UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: Set([actionCategory]))
     }
 }
 

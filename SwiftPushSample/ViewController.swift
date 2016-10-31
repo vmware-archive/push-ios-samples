@@ -16,39 +16,39 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
 
     // This method requests that a log message be added to the screen.
-    class func addLogMessage(_ logMessage: String) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: kLogNotification), object:logMessage)
+    class func addLogMessage(logMessage: String) {
+        NSNotificationCenter.defaultCenter().postNotificationName(kLogNotification, object:logMessage)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.isEditable = false
-        textView.isSelectable = false
+        textView.editable = false
+        textView.selectable = false
         textView.attributedText = nil
         if let navigationController = self.navigationController {
-            navigationController.isToolbarHidden = false
+            navigationController.toolbarHidden = false
             
-            let sendButton = UIBarButtonItem(title: "Send Message", style: .plain, target: self, action: #selector(sendButtonPressed))
-            let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let unregisterButton = UIBarButtonItem(title: "Unregister", style: .plain, target: self, action: #selector(unregisterButtonPressed))
+            let sendButton = UIBarButtonItem(title: "Send Message", style: .Plain, target: self, action: #selector(sendButtonPressed))
+            let space = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+            let unregisterButton = UIBarButtonItem(title: "Unregister", style: .Plain, target: self, action: #selector(unregisterButtonPressed))
             
             self.setToolbarItems([unregisterButton, space, sendButton], animated: false)
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         // Listen for log message notifications when the view controller is visible
-        NotificationCenter.default.addObserver(self, selector: #selector(onLogNotification), name: NSNotification.Name(rawValue: kLogNotification), object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onLogNotification), name: kLogNotification, object: nil)
         ViewController.addLogMessage("PCF Push SDK version is \(PCFPush.sdkVersion()).")
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
+    override func viewDidDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     // This method adds a log message to the screen.
-    func onLogNotification(_ notification: Notification) {
-        DispatchQueue.main.async(execute: {
+    func onLogNotification(notification: NSNotification) {
+        dispatch_async(dispatch_get_main_queue(), {
             if let logLine = notification.object as? String {
                 if self.textView.text != nil && self.textView.text.characters.count > 0 {
                     self.textView.text! += "\n\n" + logLine
@@ -75,35 +75,35 @@ class ViewController: UIViewController {
         
         if let deviceUuid = PCFPush.deviceUuid() {
 
-            let session = URLSession.shared
-            let request = NSMutableURLRequest(url: URL(string:"\(serviceUrl)/v1/push")!)
-            request.httpMethod = "POST"
+            let session = NSURLSession.sharedSession()
+            let request = NSMutableURLRequest(URL: NSURL(string:"\(serviceUrl)/v1/push")!)
+            request.HTTPMethod = "POST"
 
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .long
-            let message = [ "body":"This message was sent to the PCF Push back-end server at " + dateFormatter.string(from: Date()) ]
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = .LongStyle
+            dateFormatter.timeStyle = .LongStyle
+            let message = [ "body":"This message was sent to the PCF Push back-end server at " + dateFormatter.stringFromDate(NSDate()) ]
             let target = [ "devices":[ deviceUuid ]]
-            let requestBody = [ "message":message, "target":target] as [String : Any]
+            let requestBody = [ "message":message, "target":target]
 
-            let httpBody = try? JSONSerialization.data(withJSONObject: requestBody, options:[])
+            let httpBody = try? NSJSONSerialization.dataWithJSONObject(requestBody, options:[])
             if httpBody == nil {
                 ViewController.addLogMessage("ERROR: Not able to serialize JSON")
                 return
             }
-            request.httpBody = httpBody!
+            request.HTTPBody = httpBody!
             request.addValue("application/json", forHTTPHeaderField:"Content-Type")
             request.addValue(getBasicAuth(appUuid, apiKey: apiKey), forHTTPHeaderField:"Authorization")
 
             ViewController.addLogMessage("Sending push message...")
 
-            let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-                if let httpUrlResponse = response as? HTTPURLResponse {
+            let task = session.dataTaskWithRequest(request) { data, response, error in
+                if let httpUrlResponse = response as? NSHTTPURLResponse {
                     if httpUrlResponse.statusCode != 200 {
                         ViewController.addLogMessage("Error POSTING push message \(response)")
                     }
                 }
-            })
+            }
             task.resume()
             
         } else {
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
     
     func unregisterButtonPressed() {
         ViewController.addLogMessage("Unregistering push notifications...")
-        PCFPush.unregisterFromPCFPushNotifications(success: {
+        PCFPush.unregisterFromPCFPushNotificationsWithSuccess({
             ViewController.addLogMessage("Successfully unregistered.")},
             failure: { error in
                 if let e = error {
@@ -124,10 +124,10 @@ class ViewController: UIViewController {
         })        
     }
 
-    func getBasicAuth(_ appUuid:String, apiKey:String) -> String {
+    func getBasicAuth(appUuid:String, apiKey:String) -> String {
         let authStr = appUuid + ":" + apiKey
-        let authData = authStr.data(using: String.Encoding.utf8)
-        return "Basic " + authData!.base64EncodedString(options: [])
+        let authData = authStr.dataUsingEncoding(NSUTF8StringEncoding)
+        return "Basic " + authData!.base64EncodedStringWithOptions([])
     }
 }
 
