@@ -1,4 +1,5 @@
 source 'git@github.com:cfmobile/cocoapods'
+source "https://github.com/CocoaPods/Old-Specs"
 
 platform :ios, '7.0'
 
