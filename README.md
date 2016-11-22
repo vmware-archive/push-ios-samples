@@ -1,22 +1,24 @@
 PCF Push SDK Sample for iOS
 ===========================
 
-The PCF Push SDK requires iOS 7.0 or greater.
+The PCF Push SDK requires iOS 8.0 or greater.
 
 PCF Push SDK Usage
 --------------
 
-For more information please visit the [iOS Push docs site](https://docs.pivotal.io/mobile/push/ios).
+For more information please visit the [iOS Push docs site](https://docs.pivotal.io/push/ios).
 
 Device Requirements
 -------------------
 
-The device must be registered on a developer profile which includes push notifications for the app bundle ID.
+The device must be registered on a developer profile which includes Push Notifications for the App Bundle ID.
 
 Sample Application (Objective-C)
 --------------------------------
 
-This application has a visible UI that can be used to demonstrate and exercise the features of the Push SDK.  This application requires iOS 7.0 or greater.
+This application has a visible UI that can be used to demonstrate and exercise the features of the Push SDK.  This application requires iOS 8.0 or greater.
+
+Building the Sample App requires **Cocoapods 0.39.0**.
 
 By default, this application uses Cocoapods to link to the PCF Push Client SDK.  If you want to link to the framework itself then please feel free to remove the Cocoapods settings in your working copy (please see instructions below).
 
