@@ -45,31 +45,19 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     //
     // On iOS 8.0+ you need to provide your user notification settings by calling
     // [UIApplication.sharedDelegate registerUserNotificationSettings:] and then
-    // [UIApplication.sharedDelegate registerForRemoteNotifications];
+    // [UIApplication.sharedDelegate registerForRemoteNotifications].
     //
-    // On < iOS 8.0 you need to provide your remote notification settings by calling
-    // [UIApplication.sharedDelegate registerForRemoteNotificationTypes:].  There are no
-    // user notification settings on < iOS 8.0.
-    //
-    // If this line gives you a compiler error then you need to make sure you have updated
-    // your Xcode to at least Xcode 6.0:
-    //
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    // On iOS 10.0 you may use the new UserNotifications framework to configure your notification settings, but you
+    // will still need to use the [UIApplication registerForRemoteNotifications method in order to register for remote
+    // notifications with APNS.  Note that the older [UIApplication registerUserNotificationSettings:] method continues
+    // to work on iOS 10.0, even if it is deprecated.
 
-        // iOS 8.0 +
-        [application registerUserNotificationSettings:[self getUserNotificationSettings]];
-        [application registerForRemoteNotifications];
+    [application registerUserNotificationSettings:[self getUserNotificationSettings]];
+    [application registerForRemoteNotifications];
 
-        // Required before geofences can be monitored on iOS 8.0+
-        self.locationManager = [[CLLocationManager alloc] init];
-        [self.locationManager requestAlwaysAuthorization];
-
-    } else {
-
-        // < iOS 8.0
-        UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
-        [application registerForRemoteNotificationTypes:notificationTypes];
-    }
+    // Required before geofences can be monitored on iOS 8.0+
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager requestAlwaysAuthorization];
 
     return YES;
 }
@@ -177,8 +165,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 #pragma mark - Helpers
 
 // Returns the user notification settings object used on iOS 8.0 +
-// This code will compile on apps that can run on < iOS 8.0 but will NOT run.
-// Do NOT call this method if running on < iOS 8.0.
+// This code will still run on iOS 10.0, but you can migrate to the UserNotifications framework if you want.
 - (UIUserNotificationSettings*) getUserNotificationSettings
 {
     UIMutableUserNotificationAction *action1;

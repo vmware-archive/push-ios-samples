@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AEE8422F1DE7775600F652B6 /* PCFPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE8422D1DE7774800F652B6 /* PCFPush.framework */; };
+		AEE842301DE7775600F652B6 /* PCFPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEE8422D1DE7774800F652B6 /* PCFPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ABDA119D1BB8A0092BFB7 /* Settings.m */; };
 		DE736F69B2D39B7E206C77B5 /* libPods-PushSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA996CD3086668CAC5A5156 /* libPods-PushSample.a */; };
 		E7226B5F1987F61C00ABD0E5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */; };
 		F10D7C461BB9E0CE00506B25 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CF4FC91BB4765B00F147FF /* CoreLocation.framework */; };
-		F10D7C731BBAED3D00506B25 /* PCFPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F10D7C701BBAED3700506B25 /* PCFPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1103A7C1B13C04100C5420D /* GeofenceOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F1103A7B1B13C04100C5420D /* GeofenceOverlay.m */; };
 		F114D27D190958030008BE3C /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = F114D27C190958030008BE3C /* Pivotal.plist */; };
 		F12C79C91AF2732C00556DAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12C79C81AF2732C00556DAE /* MapViewController.m */; };
@@ -40,7 +41,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F10D7C731BBAED3D00506B25 /* PCFPush.framework in Embed Frameworks */,
+				AEE842301DE7775600F652B6 /* PCFPush.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,11 +53,11 @@
 		5DC1131F1DBFE4F400982F94 /* SwiftPushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftPushSample.entitlements; sourceTree = "<group>"; };
 		AD998C54C4C13EEF9FBC9AD4 /* Pods-PushSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PushSample/Pods-PushSample.debug.xcconfig"; sourceTree = "<group>"; };
 		AE476ACF1DDA506500866A4E /* PushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushSample.entitlements; sourceTree = "<group>"; };
+		AEE8422D1DE7774800F652B6 /* PCFPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PCFPush.framework; sourceTree = "<group>"; };
 		D49ABDA019D1BB8A0092BFB7 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Settings/Settings.h; sourceTree = "<group>"; };
 		D49ABDA119D1BB8A0092BFB7 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
 		E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		EBC1736E7F9A58A5219AEAD1 /* Pods-PushSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PushSample/Pods-PushSample.release.xcconfig"; sourceTree = "<group>"; };
-		F10D7C701BBAED3700506B25 /* PCFPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PCFPush.framework; sourceTree = "<group>"; };
 		F1103A7A1B13C04100C5420D /* GeofenceOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceOverlay.h; sourceTree = "<group>"; };
 		F1103A7B1B13C04100C5420D /* GeofenceOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeofenceOverlay.m; sourceTree = "<group>"; };
 		F114D27C190958030008BE3C /* Pivotal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pivotal.plist; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE8422F1DE7775600F652B6 /* PCFPush.framework in Frameworks */,
 				F10D7C461BB9E0CE00506B25 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,8 +144,8 @@
 		F15D06211BB2F700002D181F /* SwiftPushSample */ = {
 			isa = PBXGroup;
 			children = (
+				AEE8422D1DE7774800F652B6 /* PCFPush.framework */,
 				5DC1131F1DBFE4F400982F94 /* SwiftPushSample.entitlements */,
-				F10D7C701BBAED3700506B25 /* PCFPush.framework */,
 				F1CF4FC71BB3371800F147FF /* Pivotal.plist */,
 				F15D06221BB2F700002D181F /* AppDelegate.swift */,
 				F15D06241BB2F700002D181F /* ViewController.swift */,
@@ -309,6 +311,7 @@
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = BVZYXK966R;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -320,6 +323,7 @@
 					};
 					F1FDE1A318D7806B009EBE38 = {
 						DevelopmentTeam = BVZYXK966R;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -431,7 +435,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -499,6 +503,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = SwiftPushSample/SwiftPushSample.entitlements;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = BVZYXK966R;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -526,6 +531,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwiftPushSample/SwiftPushSample.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = BVZYXK966R;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -577,7 +583,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -609,7 +615,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -622,6 +628,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = PushSample/PushSample.entitlements;
+				DEVELOPMENT_TEAM = BVZYXK966R;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -631,7 +638,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
 				WRAPPER_EXTENSION = app;
@@ -645,6 +652,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = PushSample/PushSample.entitlements;
+				DEVELOPMENT_TEAM = BVZYXK966R;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -654,7 +662,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
 				WRAPPER_EXTENSION = app;

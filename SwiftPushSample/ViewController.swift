@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         // Listen for log message notifications when the view controller is visible
         NotificationCenter.default.addObserver(self, selector: #selector(onLogNotification), name: NSNotification.Name(rawValue: kLogNotification), object: nil)
-        ViewController.addLogMessage("PCF Push SDK version is \(PCFPush.sdkVersion()).")
+        ViewController.addLogMessage("PCF Push SDK version is \(PCFPush.sdkVersion()!).")
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -52,8 +52,6 @@ class ViewController: UIViewController {
             if let logLine = notification.object as? String {
                 if self.textView.text != nil && self.textView.text.characters.count > 0 {
                     self.textView.text! += "\n\n" + logLine
-                    let bottom = NSMakeRange(self.textView.attributedText!.length - 1, 1)
-                    self.textView.scrollRangeToVisible(bottom)
                 } else {
                     self.textView.text = logLine
                 }
@@ -91,6 +89,7 @@ class ViewController: UIViewController {
                 ViewController.addLogMessage("ERROR: Not able to serialize JSON")
                 return
             }
+
             request.httpBody = httpBody!
             request.addValue("application/json", forHTTPHeaderField:"Content-Type")
             request.addValue(getBasicAuth(appUuid, apiKey: apiKey), forHTTPHeaderField:"Authorization")

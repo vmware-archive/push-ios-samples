@@ -28,9 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager = CLLocationManager()
         locationManager?.requestAlwaysAuthorization()
 
+        // Configure the user notification settings.  This method is deprecated on iOS 10.0 (but still works).  On iOS 10.0+
+        // you may use the UserNotifications framework instead.
+        application.registerUserNotificationSettings(getUserNotificationSettings())
+
+        
         // Register for remote notifications with APNS.  After the registration either the 'application:didRegisterForRemoteNotificationsWithDeviceToken'
         // or the 'application:didFailToRegisterForRemoteNotificationsWithError' methods below will be called.
-        application.registerUserNotificationSettings(getUserNotificationSettings())
         application.registerForRemoteNotifications()
 
         return true
@@ -48,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             areGeofencesEnabled: true,
             success: {
                 ViewController.addLogMessage("CF registration succeeded.")
-                ViewController.addLogMessage("The device UUID is  \(PCFPush.deviceUuid()) ") },
+                ViewController.addLogMessage("The device UUID is  \(PCFPush.deviceUuid()!) ") },
             failure: { error in
                 ViewController.addLogMessage("CF registration failed: \(error)") })
     }
