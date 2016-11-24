@@ -518,6 +518,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e79d54a2-6065-4da1-a38d-1b4fb0103971";
+				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Swift Push Sample Dev";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -546,6 +548,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e79d54a2-6065-4da1-a38d-1b4fb0103971";
+				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Swift Push Sample Dev";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -641,6 +645,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
+				PROVISIONING_PROFILE = "245438ff-7de8-4ff1-b442-9677f43560db";
+				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Push Sample App Dev";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -665,6 +671,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
+				PROVISIONING_PROFILE = "d692486c-cedb-4e93-9672-7f01ba7c0542";
+				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Push Sample App Dev";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
