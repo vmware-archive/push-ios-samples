@@ -53,6 +53,8 @@
 		5DC1131F1DBFE4F400982F94 /* SwiftPushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftPushSample.entitlements; sourceTree = "<group>"; };
 		AD998C54C4C13EEF9FBC9AD4 /* Pods-PushSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PushSample/Pods-PushSample.debug.xcconfig"; sourceTree = "<group>"; };
 		AE476ACF1DDA506500866A4E /* PushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushSample.entitlements; sourceTree = "<group>"; };
+		AE48C1BF1DE786F400BD47EB /* ci-config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ci-config.xcconfig"; sourceTree = "<group>"; };
+		AE48C1C01DE7875500BD47EB /* swift-ci-config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "swift-ci-config.xcconfig"; sourceTree = "<group>"; };
 		AEE8422D1DE7774800F652B6 /* PCFPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PCFPush.framework; sourceTree = "<group>"; };
 		D49ABDA019D1BB8A0092BFB7 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Settings/Settings.h; sourceTree = "<group>"; };
 		D49ABDA119D1BB8A0092BFB7 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				F15D06261BB2F700002D181F /* Main.storyboard */,
 				F15D062B1BB2F700002D181F /* LaunchScreen.storyboard */,
 				F15D062E1BB2F700002D181F /* Info.plist */,
+				AE48C1C01DE7875500BD47EB /* swift-ci-config.xcconfig */,
 			);
 			path = SwiftPushSample;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				F1FDE1B018D7806B009EBE38 /* InfoPlist.strings */,
 				F1FDE1B318D7806B009EBE38 /* main.m */,
 				F1FDE1B518D7806B009EBE38 /* PushSample-Prefix.pch */,
+				AE48C1BF1DE786F400BD47EB /* ci-config.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -518,7 +522,6 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Swift Push Sample CI";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -547,7 +550,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.push.ios.SwiftPushSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Swift Push Sample CI";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -643,7 +645,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
-				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Push Sample App CI";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -668,7 +669,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
-				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Push Sample App CI";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
