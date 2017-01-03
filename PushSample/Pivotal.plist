@@ -3,20 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>pivotal.push.sslCertValidationMode</key>
-	<string>default</string>
+	<string>trustall</string>
 	<key>pivotal.push.areAnalyticsEnabled</key>
 	<true/>
 	<key>pivotal.push.pinnedSslCertificateNames</key>
 	<array/>
 	<key>pivotal.push.serviceUrl</key>
-	<string>https://push-api.kitkat.cf-app.com</string>
+	<string>https://push-api.zeus.push.gcp.cf-app.com</string>
 	<key>pivotal.push.platformUuidDevelopment</key>
-	<string>34b6e707-8c1a-4e8e-beb0-01e9e22df118</string>
+	<string>5cd427b4-aa21-4e88-b396-b27364bd6a9c</string>
 	<key>pivotal.push.platformSecretDevelopment</key>
-	<string>f1cc2caa-3c9c-4e67-90b4-c410b3c0e1e7</string>
+	<string>08d19662-b134-4ef6-b58c-e9c5150101ee</string>
 	<key>pivotal.push.platformUuidProduction</key>
-	<string>34b6e707-8c1a-4e8e-beb0-01e9e22df118</string>
+	<string>5cd427b4-aa21-4e88-b396-b27364bd6a9c</string>
 	<key>pivotal.push.platformSecretProduction</key>
-	<string>f1cc2caa-3c9c-4e67-90b4-c410b3c0e1e7</string>
+	<string>08d19662-b134-4ef6-b58c-e9c5150101ee</string>
 </dict>
 </plist>

@@ -64,7 +64,6 @@ class PushSampleUITests: XCTestCase , URLSessionDelegate {
         urlRequest.httpBody = jsonData
         
         print(urlRequest.allHTTPHeaderFields!)
-        print(urlRequest.httpBody)
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue.main)
@@ -73,20 +72,12 @@ class PushSampleUITests: XCTestCase , URLSessionDelegate {
         // make the request
         let task = session.dataTask(with: urlRequest) {
             (data, response, error) in
-            // check for any errors
-            print(data)
-            print(response)
-            print(error)
-            guard error == nil else {
-                print("error calling GET on /todos/1")
-                print(error)
-                return
-            }
-            // make sure we got data
-            guard let responseData = data else {
-                print("Error: did not receive data")
-                return
-            }
+            
+            assert(response != nil, "Error: received nil response")
+            assert(error == nil, "Error when sending a push \(error!)")
+            assert(data != nil, "Error: did not receive data")
+            
+            print(data!)
         }
         
         task.resume()
