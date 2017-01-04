@@ -37,11 +37,22 @@ class PushSampleUITests: XCTestCase , URLSessionDelegate {
         
         waitForExpectations(timeout: waitTime, handler: nil)
     }
+
     
     func sendPush(_ message: String, scheduledTime: TimeInterval? = nil) throws {
+
+        let path = Bundle.init(for: PushSampleUITests.self).path(forResource: "Pivotal", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!)
+
+        let appUuid = dict?["pivotal.push.applicationUuid"]! as! String
+        let apiKey = dict?["pivotal.push.applicationApiKey"]! as! String
+        let serviceUrl = dict?["pivotal.push.serviceUrl"]! as! String
+
         // make api call to let server to send push
-        let todoEndpoint: String = "https://push-api.zeus.push.gcp.cf-app.com/v1/push"
-        guard let url = URL(string: todoEndpoint) else {
+
+        let apiEndpoint: String = "\(serviceUrl)/v1/push"
+        print(apiEndpoint)
+        guard let url = URL(string: apiEndpoint) else {
             print("Error: cannot create URL")
             return
         }
@@ -56,7 +67,7 @@ class PushSampleUITests: XCTestCase , URLSessionDelegate {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        let auth = "d71c0f28-3673-460d-9297-e0f4f598b44c:932b9973-b5db-4a54-a2b1-a4075e868983".data(using: String.Encoding.utf8)?.base64EncodedString()
+        let auth = "\(appUuid):\(apiKey)".data(using: String.Encoding.utf8)?.base64EncodedString()
         
         urlRequest.setValue("Basic \(auth!)", forHTTPHeaderField: "Authorization")
         
@@ -77,7 +88,7 @@ class PushSampleUITests: XCTestCase , URLSessionDelegate {
             assert(error == nil, "Error when sending a push \(error!)")
             assert(data != nil, "Error: did not receive data")
             
-            print(data!)
+            print("DATA: ", String.init(data: data!, encoding: .utf8))
         }
         
         task.resume()
