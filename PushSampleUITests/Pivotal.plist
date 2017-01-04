@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>pivotal.push.applicationApiKey</key>
+	<string>1d413f55-87aa-4bd5-9130-dbc121926b7f</string>
+	<key>pivotal.push.applicationUuid</key>
+	<string>1d0ecb7d-5243-4254-8873-d0d59b21bad9</string>
+	<key>pivotal.push.serviceUrl</key>
+	<string>https://push-api.cfapps.io</string>
+</dict>
+</plist>
