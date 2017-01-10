@@ -776,7 +776,7 @@
 					"-framework",
 					"\"CoreLocation\"",
 					"-force_load",
-					"\"/Users/pivotal/workspace/push-ios-samples/calabash.framework/calabash\"",
+					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-framework",
 					CFNetwork,
 				);
