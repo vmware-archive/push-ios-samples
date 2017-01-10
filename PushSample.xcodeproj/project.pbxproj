@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		538A7DFA60A314F1033F0067 /* libPods-PushSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4084B5AC70D2F25A44123994 /* libPods-PushSample.a */; };
+		AE2387E61E1EC7FB00BF8836 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2387E51E1EC7FB00BF8836 /* CFNetwork.framework */; };
+		AE59B7E41E1EAC5A00F45C6D /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE59B7E31E1EAC5A00F45C6D /* calabash.framework */; };
 		AE9672EA1E1D4C2700A98650 /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE41A5EA1E1C5E0400EBABA6 /* Pivotal.plist */; };
 		AEC13C9C1E15AF9200C11490 /* PushSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC13C9B1E15AF9200C11490 /* PushSampleUITests.swift */; };
 		D49ABDA219D1BB8A0092BFB7 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ABDA119D1BB8A0092BFB7 /* Settings.m */; };
@@ -62,8 +64,10 @@
 		28ED3AAD3649D895E5DF9868 /* Pods-PushSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PushSample/Pods-PushSample.debug.xcconfig"; sourceTree = "<group>"; };
 		4084B5AC70D2F25A44123994 /* libPods-PushSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PushSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC1131F1DBFE4F400982F94 /* SwiftPushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftPushSample.entitlements; sourceTree = "<group>"; };
+		AE2387E51E1EC7FB00BF8836 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		AE41A5EA1E1C5E0400EBABA6 /* Pivotal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pivotal.plist; sourceTree = "<group>"; };
 		AE476ACF1DDA506500866A4E /* PushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushSample.entitlements; sourceTree = "<group>"; };
+		AE59B7E31E1EAC5A00F45C6D /* calabash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		AEC13C991E15AF9200C11490 /* PushSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PushSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC13C9B1E15AF9200C11490 /* PushSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSampleUITests.swift; sourceTree = "<group>"; };
 		AEC13C9D1E15AF9200C11490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -126,8 +130,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE2387E61E1EC7FB00BF8836 /* CFNetwork.framework in Frameworks */,
 				F12C79CB1AF2739B00556DAE /* MapKit.framework in Frameworks */,
 				538A7DFA60A314F1033F0067 /* libPods-PushSample.a in Frameworks */,
+				AE59B7E41E1EAC5A00F45C6D /* calabash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +143,8 @@
 		6773DF5A92AB4D20BED68347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE2387E51E1EC7FB00BF8836 /* CFNetwork.framework */,
+				AE59B7E31E1EAC5A00F45C6D /* calabash.framework */,
 				F1CF4FC91BB4765B00F147FF /* CoreLocation.framework */,
 				F12C79CA1AF2739B00556DAE /* MapKit.framework */,
 				4084B5AC70D2F25A44123994 /* libPods-PushSample.a */,
@@ -759,6 +767,17 @@
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"PCFPush\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-force_load",
+					"\"/Users/pivotal/workspace/push-ios-samples/calabash.framework/calabash\"",
+					"-framework",
+					CFNetwork,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
 				WRAPPER_EXTENSION = app;
@@ -799,7 +818,7 @@
 				AEC13CA21E15AF9200C11490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		F15D062F1BB2F700002D181F /* Build configuration list for PBXNativeTarget "SwiftPushSample" */ = {
 			isa = XCConfigurationList;
@@ -808,7 +827,7 @@
 				F15D06311BB2F700002D181F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		F1FDE19F18D7806B009EBE38 /* Build configuration list for PBXProject "PushSample" */ = {
 			isa = XCConfigurationList;
@@ -817,7 +836,7 @@
 				F1FDE1D518D7806B009EBE38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		F1FDE1D618D7806B009EBE38 /* Build configuration list for PBXNativeTarget "PushSample" */ = {
 			isa = XCConfigurationList;
@@ -826,7 +845,7 @@
 				F1FDE1D818D7806B009EBE38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

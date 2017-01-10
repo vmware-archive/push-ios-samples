@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AEEFE6BF1E158F87006B5E6E"
-               BuildableName = "PushSampleUITests.xctest"
-               BlueprintName = "PushSampleUITests"
+               BlueprintIdentifier = "AEC13C8A1E15AF5900C11490"
+               BuildableName = "PushSampleUITests2.xctest"
+               BlueprintName = "PushSampleUITests2"
                ReferencedContainer = "container:PushSample.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AEC13C8A1E15AF5900C11490"
-               BuildableName = "PushSampleUITests2.xctest"
-               BlueprintName = "PushSampleUITests2"
+               BlueprintIdentifier = "AEC13C981E15AF9200C11490"
+               BuildableName = "PushSampleUITests.xctest"
+               BlueprintName = "PushSampleUITests"
                ReferencedContainer = "container:PushSample.xcodeproj">
             </BuildableReference>
          </TestableReference>

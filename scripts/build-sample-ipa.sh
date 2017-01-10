@@ -8,6 +8,7 @@ xcodebuild \
   -scheme PushSample \
   -archivePath build/PushSample.xcarchive \
   -xcconfig PushSample/ci-config.xcconfig \
+  -configuration Debug \
   archive
 
 # Exports the build archive as an IPA file
