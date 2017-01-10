@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		538A7DFA60A314F1033F0067 /* libPods-PushSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4084B5AC70D2F25A44123994 /* libPods-PushSample.a */; };
 		AE2387E61E1EC7FB00BF8836 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2387E51E1EC7FB00BF8836 /* CFNetwork.framework */; };
+		AE478B341E252E64003BC74E /* ci-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AE478B331E252E64003BC74E /* ci-config.xcconfig */; };
+		AE478B361E252E7E003BC74E /* swift-ci-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AE478B351E252E7E003BC74E /* swift-ci-config.xcconfig */; };
 		AE59B7E41E1EAC5A00F45C6D /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE59B7E31E1EAC5A00F45C6D /* calabash.framework */; };
 		AE9672EA1E1D4C2700A98650 /* Pivotal.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE41A5EA1E1C5E0400EBABA6 /* Pivotal.plist */; };
 		AEC13C9C1E15AF9200C11490 /* PushSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC13C9B1E15AF9200C11490 /* PushSampleUITests.swift */; };
@@ -53,7 +55,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AEE842301DE7775600F652B6 /* PCFPush.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +68,8 @@
 		AE2387E51E1EC7FB00BF8836 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		AE41A5EA1E1C5E0400EBABA6 /* Pivotal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pivotal.plist; sourceTree = "<group>"; };
 		AE476ACF1DDA506500866A4E /* PushSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushSample.entitlements; sourceTree = "<group>"; };
+		AE478B331E252E64003BC74E /* ci-config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "ci-config.xcconfig"; sourceTree = "<group>"; };
+		AE478B351E252E7E003BC74E /* swift-ci-config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "swift-ci-config.xcconfig"; sourceTree = "<group>"; };
 		AE59B7E31E1EAC5A00F45C6D /* calabash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		AEC13C991E15AF9200C11490 /* PushSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PushSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC13C9B1E15AF9200C11490 /* PushSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSampleUITests.swift; sourceTree = "<group>"; };
@@ -75,7 +78,6 @@
 		D49ABDA019D1BB8A0092BFB7 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Settings/Settings.h; sourceTree = "<group>"; };
 		D49ABDA119D1BB8A0092BFB7 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
 		E7226B5E1987F61C00ABD0E5 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
-		F10D7C701BBAED3700506B25 /* PCFPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PCFPush.framework; sourceTree = "<group>"; };
 		F1103A7A1B13C04100C5420D /* GeofenceOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceOverlay.h; sourceTree = "<group>"; };
 		F1103A7B1B13C04100C5420D /* GeofenceOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeofenceOverlay.m; sourceTree = "<group>"; };
 		F114D27C190958030008BE3C /* Pivotal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pivotal.plist; sourceTree = "<group>"; };
@@ -121,7 +123,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEE8422F1DE7775600F652B6 /* PCFPush.framework in Frameworks */,
 				F10D7C461BB9E0CE00506B25 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +184,7 @@
 		F15D06211BB2F700002D181F /* SwiftPushSample */ = {
 			isa = PBXGroup;
 			children = (
-				AEE8422D1DE7774800F652B6 /* PCFPush.framework */,
+				AE478B351E252E7E003BC74E /* swift-ci-config.xcconfig */,
 				5DC1131F1DBFE4F400982F94 /* SwiftPushSample.entitlements */,
 				F1CF4FC71BB3371800F147FF /* Pivotal.plist */,
 				F15D06221BB2F700002D181F /* AppDelegate.swift */,
@@ -191,7 +192,6 @@
 				F15D06261BB2F700002D181F /* Main.storyboard */,
 				F15D062B1BB2F700002D181F /* LaunchScreen.storyboard */,
 				F15D062E1BB2F700002D181F /* Info.plist */,
-				AE48C1C01DE7875500BD47EB /* swift-ci-config.xcconfig */,
 			);
 			path = SwiftPushSample;
 			sourceTree = "<group>";
@@ -235,12 +235,12 @@
 		F1FDE1AE18D7806B009EBE38 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AE478B331E252E64003BC74E /* ci-config.xcconfig */,
 				F1FDE1AF18D7806B009EBE38 /* PushSample-Info.plist */,
 				F1FDE1B018D7806B009EBE38 /* InfoPlist.strings */,
 				F114D27C190958030008BE3C /* Pivotal.plist */,
 				F1FDE1B318D7806B009EBE38 /* main.m */,
 				F1FDE1B518D7806B009EBE38 /* PushSample-Prefix.pch */,
-				AE48C1BF1DE786F400BD47EB /* ci-config.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -434,6 +434,7 @@
 				F15D062D1BB2F700002D181F /* LaunchScreen.storyboard in Resources */,
 				F1CF4FCB1BB5981700F147FF /* Images.xcassets in Resources */,
 				F1CF4FC81BB3371800F147FF /* Pivotal.plist in Resources */,
+				AE478B361E252E7E003BC74E /* swift-ci-config.xcconfig in Resources */,
 				F15D06281BB2F700002D181F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +447,7 @@
 				F1FDE1C018D7806B009EBE38 /* Images.xcassets in Resources */,
 				E7226B5F1987F61C00ABD0E5 /* Main_iPhone.storyboard in Resources */,
 				F114D27D190958030008BE3C /* Pivotal.plist in Resources */,
+				AE478B341E252E64003BC74E /* ci-config.xcconfig in Resources */,
 				F1FDE1B218D7806B009EBE38 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -780,6 +782,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
+				PROVISIONING_PROFILE = "55c62e9f-0e97-495b-a343-09e7687dde28";
+				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Push Sample App Dev";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -804,6 +808,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
+				PROVISIONING_PROFILE = "55c62e9f-0e97-495b-a343-09e7687dde28";
+				PROVISIONING_PROFILE_SPECIFIER = "Pivotal CF Mobile Services Push Sample App Dev";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
