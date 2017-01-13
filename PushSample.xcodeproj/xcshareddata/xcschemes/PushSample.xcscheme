@@ -83,18 +83,35 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-developmentPushVariantSecret"
+            argument = "developmentPushVariantSecret"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-developmentPushVariantUUID"
+            argument = "developmentPushVariantUUID"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-pushApiUrl"
+            argument = "pushApiUrl"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "IOS_VARIANT_SECRET"
+            value = ""
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "IOS_VARIANT_UUID"
+            value = ""
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "API_URL"
+            value = ""
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
