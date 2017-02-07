@@ -6,6 +6,11 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>push-api.atlas.push.gcp.cf-app.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>push-api.butterfinger.cf-app.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
