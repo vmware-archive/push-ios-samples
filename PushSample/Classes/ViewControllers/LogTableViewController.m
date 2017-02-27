@@ -131,7 +131,7 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Copy Log", @"Clear Log", @"Unregistration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Set Custom User ID", geofenceOption, @"About", nil];
+                                              otherButtonTitles:@"Edit Service Info", @"Copy Log", @"Clear Log", @"Unregistration", @"Subscribe to Tag", @"Unsubscribe from Tag", @"Set Custom User ID", geofenceOption, @"About", nil];
 
     sheet.tag = ACTION_SHEET_ACTIONS;
 
@@ -142,14 +142,15 @@
 {
     if (popup.tag == ACTION_SHEET_ACTIONS) {
         switch (buttonIndex) {
-            case 0: [self copyButtonPressed]; break;
-            case 1: [self clearLogPressed]; break;
-            case 2: [self unregistrationPressed]; break;
-            case 3: [self subscribeToTag]; break;
-            case 4: [self unsubscribeFromTag]; break;
-            case 5: [self showCustomUserIdInputBox:ALERT_SET_CUSTOM_USER_ID]; break;
-            case 6: [self toggleGeofences]; break;
-            case 7: [self aboutPressed]; break;
+            case 0: [self showServiceInfoInputBox]; break;
+            case 1: [self copyButtonPressed]; break;
+            case 2: [self clearLogPressed]; break;
+            case 3: [self unregistrationPressed]; break;
+            case 4: [self subscribeToTag]; break;
+            case 5: [self unsubscribeFromTag]; break;
+            case 6: [self showCustomUserIdInputBox:ALERT_SET_CUSTOM_USER_ID]; break;
+            case 7: [self toggleGeofences]; break;
+            case 8: [self aboutPressed]; break;
             default: break;
         }
 
@@ -353,6 +354,48 @@
         UITextField *textField = [customUserIdView textFieldAtIndex:0];
         textField.placeholder = defaultTextFieldContents;
     }
+}
+
+- (void)showServiceInfoInputBox
+{
+    UIAlertController *serviceInfoView = [UIAlertController alertControllerWithTitle:@"Edit Service Info"
+                                                                              message:@"Edit URL, Platform UUID and Secret"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    [serviceInfoView addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        [textField setPlaceholder:@"Service URL"];
+        [textField setTextContentType:UITextContentTypeURL];
+    }];
+    
+    [serviceInfoView addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        [textField setPlaceholder:@"Platform UUID"];
+    }];
+    
+    [serviceInfoView addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        [textField setPlaceholder:@"Platform Secret"];
+    }];
+    
+    UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                    
+                                                           NSString *pushApiUrl = [serviceInfoView textFields][0].text;
+                                                           NSString *platformUuid = [serviceInfoView textFields][1].text;
+                                                           NSString *platformSecret = [serviceInfoView textFields][2].text;
+                                                           
+                                                           [AppDelegate startRegistrationWithApiUrl: pushApiUrl platformUuid: platformUuid platformSecret: platformSecret];
+                                                       }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    [serviceInfoView addAction:cancelAction];
+    [serviceInfoView addAction:saveAction];
+    
+    [serviceInfoView setModalInPopover:YES];
+    
+    [self presentViewController:serviceInfoView animated:YES completion:nil];
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

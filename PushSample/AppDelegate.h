@@ -23,4 +23,8 @@
 
 + (void) startRegistration;
 
++ (void) startRegistrationWithApiUrl:(NSString *)apiUrl
+                        platformUuid:(NSString *)platformUuid
+                      platformSecret:(NSString *)platformSecret;
+
 @end

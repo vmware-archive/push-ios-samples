@@ -32,11 +32,37 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
 
 @end
 
+void runStartPushRegistrationWithServiceInfo(PCFPushServiceInfo *serviceInfo)
+{
+    [PCFPush setPushServiceInfo:serviceInfo];
+    [AppDelegate startRegistration];
+}
+
 @implementation AppDelegate
 
 + (void) startRegistration
 {
     [UIApplication.sharedApplication.delegate application:UIApplication.sharedApplication didFinishLaunchingWithOptions:nil];
+}
+
++ (void) startRegistrationWithApiUrl:(NSString *)apiUrl
+                        platformUuid:(NSString *)platformUuid
+                      platformSecret:(NSString *)platformSecret
+{
+    PCFPushServiceInfo *serviceInfo = [[PCFPushServiceInfo alloc] initWithApi:apiUrl
+                                                              devPlatformUuid:platformUuid
+                                                            devPlatformSecret:platformSecret
+                                                             prodPlatformUuid:platformUuid
+                                                           prodPlatformSecret:platformSecret];
+    
+    [PCFPush unregisterFromPCFPushNotificationsWithSuccess:^{
+        PCFPushLog(@"Unregistration success");
+        runStartPushRegistrationWithServiceInfo(serviceInfo);
+    } failure:^(NSError *error) {
+        PCFPushLog(@"Unregistration failed: %@", error);
+        runStartPushRegistrationWithServiceInfo(serviceInfo);
+    }];
+    
 }
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -86,7 +112,7 @@ NSString * const kNotificationActionTwoIdent = @"ACTION_TWO";
     if (Settings.tag) {
         tags  = [NSSet setWithObject:Settings.tag];
     }
-
+    
     [PCFPush registerForPCFPushNotificationsWithDeviceToken:deviceToken
                                                        tags:tags
                                                 deviceAlias:UIDevice.currentDevice.name
