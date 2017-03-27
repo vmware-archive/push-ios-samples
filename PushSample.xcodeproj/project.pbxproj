@@ -600,7 +600,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
 				WRAPPER_EXTENSION = app;
@@ -622,7 +622,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushSample/PushSample-Prefix.pch";
 				INFOPLIST_FILE = "PushSample/PushSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.pivotal.ios.push.demo;
 				PRODUCT_NAME = PushSample;
 				WRAPPER_EXTENSION = app;
