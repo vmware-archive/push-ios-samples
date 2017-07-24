@@ -364,15 +364,20 @@
     
     [serviceInfoView addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         [textField setPlaceholder:@"Service URL"];
-        [textField setTextContentType:UITextContentTypeURL];
+        NSString *url = [PCFPushPersistentStorage pushApiUrl] ?: BACK_END_PUSH_MESSAGE_API;
+        [textField setText: url];
     }];
     
     [serviceInfoView addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         [textField setPlaceholder:@"Platform UUID"];
+        NSString *uuid = [PCFPushPersistentStorage variantUUID] ?: APP_UUID;
+        [textField setText: uuid];
     }];
     
     [serviceInfoView addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         [textField setPlaceholder:@"Platform Secret"];
+        NSString *secret = [PCFPushPersistentStorage variantSecret] ?: API_KEY;
+        [textField setText: secret];
     }];
     
     UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save"
